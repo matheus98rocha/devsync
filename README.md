@@ -1,6 +1,6 @@
-# Aplicação ReactJS com Next.js
+# Nome do Projeto
 
-Este é o README para a aplicação ReactJS utilizando o framework Next.js. 
+Este é o README para o PROJETO utilizando o framework Next.js. 
 
 ## Requisitos
 
@@ -10,6 +10,8 @@ Este é o README para a aplicação ReactJS utilizando o framework Next.js.
 
 Nesta aplicação, estamos utilizando o Tailwind CSS como processador CSS. O Tailwind CSS é uma biblioteca utilitária de CSS altamente personalizável que oferece uma maneira rápida e fácil de estilizar seus componentes.
 
+Todos os estilos padrões da aplicação se encontram no tailwind.config.js
+
 ## Fluxo de Trabalho
 
 Antes de começar o desenvolvimento de uma nova funcionalidade, siga estas etapas:
@@ -18,7 +20,7 @@ Antes de começar o desenvolvimento de uma nova funcionalidade, siga estas etapa
 2. Implemente a funcionalidade na nova branch.
 3. Realize testes e verifique se a funcionalidade está funcionando corretamente.
 4. Faça o commit das alterações e faça um push da nova branch para o repositório remoto.
-5. Crie um Pull Request para mesclar sua branch com a branch principal.
+5. Crie um Pull Request para mesclar sua branch com a branch principal(dev).
 
 ## Gerenciador de Pacotes
 
