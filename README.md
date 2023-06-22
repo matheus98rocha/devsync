@@ -17,10 +17,11 @@ Todos os estilos padrões da aplicação se encontram no tailwind.config.js
 Antes de começar o desenvolvimento de uma nova funcionalidade, siga estas etapas:
 
 1. Crie uma nova branch com o formato `feature/nome-da-tarefa` a partir da branch principal.
-2. Implemente a funcionalidade na nova branch.
-3. Realize testes e verifique se a funcionalidade está funcionando corretamente.
-4. Faça o commit das alterações e faça um push da nova branch para o repositório remoto.
-5. Crie um Pull Request para mesclar sua branch com a branch principal(dev).
+2. Faça merge ou rebase da dev
+3. Implemente a funcionalidade na nova branch.
+4. Realize testes e verifique se a funcionalidade está funcionando corretamente.
+5. Faça o commit das alterações e faça um push da nova branch para o repositório remoto.
+6. Crie um Pull Request para mesclar sua branch com a branch principal(dev).
 
 ## Gerenciador de Pacotes
 
