@@ -1,5 +1,8 @@
+'use client'
 import React from 'react'
 import { PrimaryInputProps } from './primary-input.types'
+
+import { BsEye, BsEyeSlash } from 'react-icons/bs'
 
 function PrimaryInput({
   valueInput,
@@ -8,38 +11,67 @@ function PrimaryInput({
   type,
   placeholder,
 }: PrimaryInputProps) {
+  const [canShowPassword, setCanShowPassword] = React.useState(false)
+
   return (
     <>
-      <label
-        htmlFor="UserEmail"
-        className="block
+      <div
+        className="
+        relative
+        w-full
         overflow-hidden
         rounded-md border
         border-primary
+        bg-backgroud
+        shadow-lg
         px-3
         py-2
-        shadow-sm
         focus-within:border-primaryFocus
         focus-within:ring-1
-        focus-within:ring-primaryFocus"
+        focus-within:ring-primaryFocus
+        "
       >
         <span
-          className="text-xs
-        font-medium
+          className="
+          text-sm
         text-gray-700"
         >
           {label}
         </span>
 
         <input
-          type={type}
+          type={canShowPassword ? 'text' : type}
           id="primaryInput"
           placeholder={placeholder}
-          className="mt-1 w-full border-none p-0 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
+          className="
+          bg-backgroud 
+          mt-1 
+          w-full
+          h-12
+          border-none 
+          p-0 
+          text-base
+          focus:border-transparent
+          focus:outline-none
+          focus:ring-0 
+          sm:text-sm"
           value={valueInput}
           onChange={handleChangeInput}
         />
-      </label>
+        {valueInput.length > 0 && type === 'password' && canShowPassword && (
+          <BsEye
+            onClick={() => setCanShowPassword(false)}
+            className="absolute right-4 bottom-6"
+          />
+        )}
+
+        {valueInput.length > 0 && type === 'password' && !canShowPassword && (
+          <BsEyeSlash
+            onClick={() => setCanShowPassword(true)}
+            className="absolute right-4 bottom-6"
+          />
+        )}
+      </div>
     </>
   )
 }
