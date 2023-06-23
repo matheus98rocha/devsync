@@ -7,12 +7,11 @@ module.exports = {
   ],
   theme: {
     colors: {
-      red: "#FF8585",
-      green: "#85FFA7",
-      yellow: "#FFD485",
-      white: "#F5F5F5",
-      black: "#000000",
-      white: "#FFFFFF",
+      primary: "#85FFA7",
+      primaryFocus: "#5CFF8A",
+      error: "#FF8585",
+      alert: "#FFD485",
+      backgroud: "#F5F5F5",
     },
   },
   plugins: [],
