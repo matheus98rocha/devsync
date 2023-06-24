@@ -34,7 +34,9 @@ function PrimaryInput({
         <span
           className="
           text-sm
-        text-gray-700"
+        text-gray-700
+        font-bold
+        "
         >
           {label}
         </span>

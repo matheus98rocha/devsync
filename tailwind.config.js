@@ -11,7 +11,7 @@ module.exports = {
       primaryFocus: "#5CFF8A",
       error: "#FF8585",
       alert: "#FFD485",
-      backgroud: "#F5F5F5",
+      backgroud: "#f7fafc",
     },
   },
   plugins: [],
