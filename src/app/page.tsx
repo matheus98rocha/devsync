@@ -34,6 +34,7 @@ export default function Home() {
         px-10
         rounded-md
         shadow-lg
+        animate-fade-up
         "
       >
         <h1 className="text-primary text-4xl font-bold">Titulo do site</h1>
