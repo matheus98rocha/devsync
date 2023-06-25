@@ -2,6 +2,7 @@
 
 import PrimaryInput from './components/input/primary-input.component'
 import React from 'react'
+import SocialMediaIcons from './components/social-media-icons/social-media-icons.components'
 
 export default function Home() {
   const [email, setEmail] = React.useState('')
@@ -30,6 +31,7 @@ export default function Home() {
             handleChangeInput={(event) => setPassword(event.target.value)}
           />
           <button>Logar</button>
+          <SocialMediaIcons />
         </div>
       </div>
     </div>
