@@ -86,6 +86,10 @@ O Storybook será iniciado e estará disponível em `http://localhost:6006`.
 
 Se você quiser contribuir para este projeto, sinta-se à vontade para abrir um Pull Request. Teremos prazer em revisar suas alterações.
 
+## Guia de desenvolvimento
+
+Estamos utilizando o tailwindcss-animated para facilitar a animação de elementos. https://www.tailwindcss-animated.com/
+
 ## Licença
 
 Este projeto está licenciado sob a [MIT License](LICENSE).
