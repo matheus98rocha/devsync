@@ -9,13 +9,46 @@ export default function Home() {
   const [password, setPassword] = React.useState('')
 
   return (
-    <div className="bg-backgroud h-screen w-full p-4 grid md:grid-cols-2 ">
-      <div className="w-full h-full flex items-center justify-center flex-col">
+    <div className="
+      bg-contrastBackgroud 
+      h-screen 
+      w-screen 
+      flex 
+      items-center 
+      justify-center
+      md:flex-none
+    ">
+      <div
+        className="
+        flex
+        items-center
+        justify-center
+        flex-col
+        gap-8
+        bg-backgroud
+        w-screen
+        h-screen
+        md:w-1/4
+        md:h-3/5
+        py-9
+        px-10
+        rounded-md
+        shadow-lg
+        "
+      >
         <h1 className="text-primary text-4xl font-bold">Titulo do site</h1>
-        <h2 className="text-lg font-semibold">Faça seu login na plataforma</h2>
-      </div>
-      <div className="w-full h-full flex items-center justify-center flex-col">
-        <div className="w-4/5 flex items-center justify-center flex-col gap-4">
+        <div
+          className="
+          flex
+          items-center
+          justify-between
+          flex-col
+          gap-6
+          w-full
+          pb-4
+          border-b border-solid border-[#d0d0d0]
+          "
+        >
           <PrimaryInput
             label="E-mail"
             type="e-mail"
@@ -31,8 +64,8 @@ export default function Home() {
             handleChangeInput={(event) => setPassword(event.target.value)}
           />
           <button>Logar</button>
-          <SocialMediaIcons />
         </div>
+        <SocialMediaIcons />
       </div>
     </div>
   )
