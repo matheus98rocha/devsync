@@ -90,6 +90,10 @@ Se você quiser contribuir para este projeto, sinta-se à vontade para abrir um 
 
 Estamos utilizando o tailwindcss-animated para facilitar a animação de elementos. https://www.tailwindcss-animated.com/
 
+Para auxilio da criação de componentes temos as seguintes opções:
+https://www.hyperui.dev/components/marketing/buttons (Gratuito)
+https://tailwindui.com/components/application-ui/overlays/modals (Gratuito com limitações)
+
 ## Licença
 
 Este projeto está licenciado sob a [MIT License](LICENSE).
