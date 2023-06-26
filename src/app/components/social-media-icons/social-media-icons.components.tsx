@@ -28,10 +28,10 @@ function SocialMediaIcons() {
       justify-center
       gap-6"
     >
-      {iconsData.map((item) => (
-        <>
-          <div
-            className="
+      {iconsData.map((item, index) => (
+        <div
+          key={index}
+          className="
           flex
           items-center
           justify-center
@@ -40,11 +40,10 @@ function SocialMediaIcons() {
           hover:animate-jump
           hover:text-primary
           "
-          >
-            <p>{item.label}</p>
-            {item.icon}
-          </div>
-        </>
+        >
+          <p>{item.label}</p>
+          {item.icon}
+        </div>
       ))}
     </div>
   )
