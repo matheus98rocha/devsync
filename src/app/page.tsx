@@ -1,31 +1,26 @@
-'use client'
-
-import PrimaryInput from './components/input/primary-input.component'
 import React from 'react'
+import Auth from './components/auth/auth.component'
+
+export const metadata = {
+  title: 'Bem-vindo(a) de volta',
+}
 
 export default function Home() {
-  const [email, setEmail] = React.useState('')
-  const [password, setPassword] = React.useState('')
-
   return (
-    <div className="bg-backgroud h-screen w-full p-4 flex justify-center items-center flex-col gap-4">
-      <h1 className="text-black text-xl	">Seja Bem Vindo</h1>
-      <div className="w-96 h-15 flex items-center justify-center flex-col gap-4">
-        <PrimaryInput
-          label="E-mail"
-          type="e-mail"
-          placeholder="Digite seu e-mail"
-          valueInput={email}
-          handleChangeInput={(event) => setEmail(event.target.value)}
-        />
-        <PrimaryInput
-          label="Senha"
-          type="password"
-          placeholder="Digite sua senha"
-          valueInput={password}
-          handleChangeInput={(event) => setPassword(event.target.value)}
-        />
+    <>
+      <div
+        className="
+      bg-contrastBackgroud 
+      h-screen 
+      w-screen 
+      flex 
+      items-center 
+      justify-center
+      md:flex-none
+    "
+      >
+        <Auth />
       </div>
-    </div>
+    </>
   )
 }

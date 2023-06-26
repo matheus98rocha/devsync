@@ -7,12 +7,13 @@ module.exports = {
   ],
   theme: {
     colors: {
-      primary: "#85FFA7",
-      primaryFocus: "#5CFF8A",
+      primary: "#00a82d",
+      primaryFocus: "#018625",
       error: "#FF8585",
       alert: "#FFD485",
-      backgroud: "#F5F5F5",
+      backgroud: "#fefefe",
+      contrastBackgroud: "#eaecec",
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animated")],
 };
