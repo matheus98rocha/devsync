@@ -6,15 +6,15 @@ function SocialMediaIcons() {
     () => [
       {
         label: 'Facebook',
-        icon: <BS.BsFacebook />,
+        icon: <BS.BsFacebook size={25} />,
       },
       {
         label: 'Google',
-        icon: <BS.BsGoogle />,
+        icon: <BS.BsGoogle size={25} />,
       },
       {
         label: 'GitHub',
-        icon: <BS.BsGithub />,
+        icon: <BS.BsGithub size={25} />,
       },
     ],
     [],
@@ -28,10 +28,10 @@ function SocialMediaIcons() {
       justify-center
       gap-6"
     >
-      {iconsData.map((item) => (
-        <>
-          <div
-            className="
+      {iconsData.map((item, index) => (
+        <div
+          key={index}
+          className="
           flex
           items-center
           justify-center
@@ -39,12 +39,12 @@ function SocialMediaIcons() {
           flex-col
           hover:animate-jump
           hover:text-primary
+          hover:cursor-pointer
           "
-          >
-            <p>{item.label}</p>
-            {item.icon}
-          </div>
-        </>
+        >
+          <p>{item.label}</p>
+          {item.icon}
+        </div>
       ))}
     </div>
   )
