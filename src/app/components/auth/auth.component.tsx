@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import PrimaryInput from '../input/primary-input.component'
-import SocialMediaIcons from '../social-media-icons/social-media-icons.components'
+import SocialMediaIcons from './components/social-media-icons/social-media-icons.components'
 
 function Auth() {
   const [email, setEmail] = React.useState('')
@@ -12,19 +12,20 @@ function Auth() {
       className="
   flex
   items-center
-  justify-around
   flex-col
+  md:justify-around
+  justify-start
   gap-8
   bg-backgroud
   w-screen
   h-screen
   md:w-1/4
-  md:h-5/6
   py-9
   px-10
   rounded-md
   shadow-lg
   animate-fade-up
+  md:h-5/6
   "
     >
       <h1 className="text-primary text-4xl font-bold">Titulo do site</h1>
@@ -60,7 +61,11 @@ function Auth() {
           <button>Criar Conta</button>
         )}
       </div>
-      <SocialMediaIcons />
+      <SocialMediaIcons
+        handleClickFacebook={() => alert('Login with Facebook in development')}
+        handleClickGithub={() => alert('Login with Github in development')}
+        handleClickGoogle={() => alert('Login with Google in development')}
+      />
       <div
         className="
         w-full
