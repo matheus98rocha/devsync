@@ -2,7 +2,7 @@ import React from 'react'
 import Auth from './components/auth/auth.component'
 
 export const metadata = {
-  title: 'Bem-vindo(a) de volta',
+  title: 'Bem-vindo(a)',
 }
 
 export default function Home() {
