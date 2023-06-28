@@ -4,11 +4,11 @@ import SocialMediaIcons from './components/social-media-icons/social-media-icons
 import PrimaryInput from '@/app/components/input/primary-input.component'
 
 import Link from 'next/link'
+import { AuthProps } from './auth.types'
 
-function Auth() {
+function Auth({ type }: AuthProps) {
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
-  const [step, setStep] = React.useState('login')
   return (
     <div
       className="
@@ -57,15 +57,17 @@ function Auth() {
           valueInput={password}
           handleChangeInput={(event) => setPassword(event.target.value)}
         />
-        <div className="flex items-start w-full m-0">
-          <Link
-            href={'/forgot-password'}
-            className="text-sm text-primary hover:cursor-pointer"
-          >
-            Esqueceu a sua senha?
-          </Link>
-        </div>
-        {step === 'login' ? (
+        {type === 'login' && (
+          <div className="flex items-start w-full m-0">
+            <Link
+              href={'/forgot-password'}
+              className="text-sm text-primary hover:cursor-pointer"
+            >
+              Esqueceu a sua senha?
+            </Link>
+          </div>
+        )}
+        {type === 'login' ? (
           <button>Logar</button>
         ) : (
           <button>Criar Conta</button>
@@ -89,25 +91,22 @@ function Auth() {
         gap-2
     "
       >
-        {step === 'login' ? (
+        {type === 'login' ? (
           <>
             <p>Não possui uma conta?</p>
-            <p
-              className="text-primary hover:cursor-pointer"
-              onClick={() => setStep('create-account')}
+            <Link
+              href={'/create-account'}
+              className="text-sm text-primary hover:cursor-pointer"
             >
-              Criar Conta
-            </p>
+              <p className="text-primary hover:cursor-pointer">Criar Conta</p>
+            </Link>
           </>
         ) : (
           <>
             <p>Já possui uma conta?</p>
-            <p
-              className="text-primary hover:cursor-pointer"
-              onClick={() => setStep('login')}
-            >
-              Entrar
-            </p>
+            <Link href={'/'}>
+              <p className="text-primary hover:cursor-pointer">Entrar</p>
+            </Link>
           </>
         )}
       </div>
