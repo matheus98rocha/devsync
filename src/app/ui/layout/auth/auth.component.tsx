@@ -1,10 +1,10 @@
 'use client'
 import React from 'react'
 import SocialMediaIcons from './components/social-media-icons/social-media-icons.components'
-import PrimaryInput from '@/app/components/input/primary-input.component'
 
 import Link from 'next/link'
 import { AuthProps } from './auth.types'
+import PrimaryInput from '../../components/input/primary-input.component'
 
 function Auth({ type }: AuthProps) {
   const [email, setEmail] = React.useState('')

@@ -1,5 +1,5 @@
 import React from 'react'
-import Auth from '../layout/auth/auth.component'
+import Auth from '../ui/layout/auth/auth.component'
 
 export const metadata = {
   title: 'Criar Conta',
