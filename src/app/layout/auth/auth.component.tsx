@@ -16,7 +16,7 @@ function Auth() {
   items-center
   flex-col
   md:justify-around
-  justify-start
+  justify-center
   gap-8
   bg-backgroud
   w-screen

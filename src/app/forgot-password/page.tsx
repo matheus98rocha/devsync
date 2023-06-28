@@ -9,8 +9,10 @@ export default function ForgotPassword() {
   return (
     <div className="h-screen w-screen flex items-center justify-center flex-col">
       <div
-        className="bg-backgroud
-      h-1/3
+        className="
+        bg-backgroud
+      md:h-1/3
+      h-screen
       py-3
       px-8
       flex
@@ -18,6 +20,8 @@ export default function ForgotPassword() {
       justify-center
       flex-col
       gap-4
+      rounded-md
+      shadow-lg
       animate-fade-left
       "
       >
