@@ -1,8 +1,8 @@
 import React from 'react'
-import Auth from './layout/auth/auth.component'
+import Auth from '../layout/auth/auth.component'
 
 export const metadata = {
-  title: 'Bem-vindo(a)',
+  title: 'Criar Conta',
 }
 
 export default function Home() {
@@ -18,7 +18,7 @@ export default function Home() {
       md:flex-none
     "
       >
-        <Auth type="login" />
+        <Auth type="create-account" />
       </div>
     </>
   )
