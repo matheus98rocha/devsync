@@ -1,7 +1,9 @@
 'use client'
 import React from 'react'
-import PrimaryInput from '../input/primary-input.component'
 import SocialMediaIcons from './components/social-media-icons/social-media-icons.components'
+import PrimaryInput from '@/app/components/input/primary-input.component'
+
+import Link from 'next/link'
 
 function Auth() {
   const [email, setEmail] = React.useState('')
@@ -55,6 +57,14 @@ function Auth() {
           valueInput={password}
           handleChangeInput={(event) => setPassword(event.target.value)}
         />
+        <div className="flex items-start w-full m-0">
+          <Link
+            href={'/forgot-password'}
+            className="text-sm text-primary hover:cursor-pointer"
+          >
+            Esqueceu a sua senha?
+          </Link>
+        </div>
         {step === 'login' ? (
           <button>Logar</button>
         ) : (
