@@ -1,5 +1,5 @@
 import React from 'react'
-import Auth from './components/auth/auth.component'
+import Auth from './layout/auth/auth.component'
 
 export const metadata = {
   title: 'Bem-vindo(a)',
@@ -10,7 +10,6 @@ export default function Home() {
     <>
       <div
         className="
-      bg-contrastBackgroud 
       h-screen 
       w-screen 
       flex 
