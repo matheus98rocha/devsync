@@ -1,31 +1,29 @@
+'use client';
 import React from 'react'
 import * as BS from 'react-icons/bs'
-import { SocialMediaIconsProps } from './social-media-icons-types'
 
-function SocialMediaIcons({
-  handleClickFacebook,
-  handleClickGoogle,
-  handleClickGithub,
-}: SocialMediaIconsProps) {
+import { signIn, signOut, useSession } from 'next-auth/react'
+
+function SocialMediaIcons({}) {
   const iconsData = React.useMemo(
     () => [
       {
         label: 'Facebook',
         icon: <BS.BsFacebook size={25} />,
-        onClickIcon: handleClickFacebook,
+        onClickIcon: () => {},
       },
       {
         label: 'Google',
         icon: <BS.BsGoogle size={25} />,
-        onClickIcon: handleClickGoogle,
+        onClickIcon: () => signIn('google'),
       },
       {
         label: 'GitHub',
         icon: <BS.BsGithub size={25} />,
-        onClickIcon: handleClickGithub,
+        onClickIcon: () => {},
       },
     ],
-    [handleClickFacebook, handleClickGoogle, handleClickGithub],
+    [],
   )
 
   return (
