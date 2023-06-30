@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import Link from 'next/link'
-import PrimaryInput from '../ui/components/input/primary-input.component'
+import PrimaryInput from '../../ui/components/input/primary-input.component'
 
 export default function ForgotPassword() {
   const [emailRecoveryPassword, setEmailRecoveryPassword] = useState('')
