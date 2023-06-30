@@ -37,5 +37,15 @@
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "theme":{
+    "colors":{
+      "primary": "rgb(17, 184, 17)",
+      "white": "#fff",
+      "black": "#000"
+    },
+    "fontFamily": {
+      "Gothic": "'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"
+    },
+  }
 }

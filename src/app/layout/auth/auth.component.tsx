@@ -5,6 +5,7 @@ import PrimaryInput from '@/app/components/input/primary-input.component'
 
 import Link from 'next/link'
 import { AuthProps } from './auth.types'
+import PrimaryButton from '@/app/components/button/primary-button.component'
 
 function Auth({ type }: AuthProps) {
   const [email, setEmail] = React.useState('')
@@ -68,9 +69,9 @@ function Auth({ type }: AuthProps) {
           </div>
         )}
         {type === 'login' ? (
-          <button>Logar</button>
+          <PrimaryButton buttonName="Logar" handleOnClick={() => alert("Login in development")} />
         ) : (
-          <button>Criar Conta</button>
+          <PrimaryButton buttonName="Criar Conta" handleOnClick={() => alert("New account in development")} />
         )}
       </div>
       <SocialMediaIcons
