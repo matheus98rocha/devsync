@@ -10,11 +10,15 @@ Este é o README para o PROJETO utilizando o framework Next.js.
 
 Nesta aplicação, estamos utilizando o Tailwind CSS como processador CSS. O Tailwind CSS é uma biblioteca utilitária de CSS altamente personalizável que oferece uma maneira rápida e fácil de estilizar seus componentes.
 
-Todos os estilos padrões da aplicação se encontram no tailwind.config.js
+Todos os estilos e padrões da aplicação se encontram no tailwind.config.js.
 
 ## Fluxo de Trabalho
 
 Antes de começar o desenvolvimento de uma nova funcionalidade, siga estas etapas:
+
+Atenção: 
+  Nenhum desenvolvimento deve ser feito na branch master ou dev.
+  Não faça pull requests da dev para a master
 
 1. Crie uma nova branch com o formato `feature/nome-da-tarefa` a partir da branch principal, rodando o comando git flow feature start.
 2. Faça merge ou rebase da dev
@@ -22,17 +26,12 @@ Antes de começar o desenvolvimento de uma nova funcionalidade, siga estas etapa
 4. Realize testes e verifique se a funcionalidade está funcionando corretamente.
 5. Faça o commit das alterações e faça um push da nova branch para o repositório remoto.
 6. Crie um Pull Request para mesclar sua branch com a branch principal(dev), rodando o comando git flow feature finish.
+7. Envie o pull request para ser avaliado e aguarde aprovação
+8. Ao ser validado e aprovado, faça o merge e siga para a próxima tarefa.
 
 ## Gerenciador de Pacotes
 
 Utilizamos o Yarn como gerenciador de pacotes nesta aplicação. Certifique-se de ter o Yarn instalado globalmente em sua máquina antes de executar qualquer comando relacionado ao gerenciamento de dependências.
-
-## Desenvolvimento de Componentes
-
-Para cada novo componente criado, siga as seguintes etapas:
-
-1. Crie um arquivo do Storybook para visualizar e testar o componente isoladamente.
-2. Crie um teste unitário para o componente, garantindo a qualidade e a estabilidade do mesmo.
 
 ## Instalação
 
@@ -72,26 +71,30 @@ yarn test
 
 Os testes serão executados e os resultados serão exibidos no console.
 
-## Executando o Storybook
-
-Para visualizar os componentes isoladamente usando o Storybook, utilize o seguinte comando:
-
-```shell
-yarn storybook
-```
-
-O Storybook será iniciado e estará disponível em `http://localhost:6006`.
-
-## Contribuição
-
-Se você quiser contribuir para este projeto, sinta-se à vontade para abrir um Pull Request. Teremos prazer em revisar suas alterações.
-
 ## Guia de desenvolvimento
 
 Estamos utilizando o tailwindcss-animated para facilitar a animação de elementos. https://www.tailwindcss-animated.com/
 Para auxilio da criação de componentes temos as seguintes opções:
 https://www.hyperui.dev/components/marketing/buttons (Gratuito)
 https://tailwindui.com/components/application-ui/overlays/modals (Gratuito com limitações)
+
+## Desenvolvimento de Componentes
+
+Para cada novo componente criado, siga as seguintes etapas:
+
+1. Crie a pasta do componente, seguindo o padrão de que caso o componente seja reutilizável ou especifico de um único componente.
+2. Crie um teste unitário para o componente, garantindo a qualidade e a estabilidade do mesmo.
+3. Lembre-se de utilizar as cores tema da aplicação que se encontram dentro do arquivo tailwind.config.js
+4. Ao finalizar o desenvolvimento do componente o adicione em sua respectiva tela.
+
+## Desenvolvimento de telas
+
+1. Por padrão toda tela deve utilizar apenas componentes já testados.
+2. Lembre-se de utilizar os padrões de projeto para criação de novas telas e de se atentar as regras do next em sua versão 13 ou superior.
+
+## Contribuição
+
+Se você quiser contribuir para este projeto, sinta-se à vontade para abrir um Pull Request. Teremos prazer em revisar suas alterações.
 
 ## Licença
 
