@@ -6,6 +6,6 @@ export interface SidebarItemProps {
   icon: IconType;
   isExpanded: boolean;
   label: string;
-  handleClick: () => void;
+  handleClick?: () => void;
   currentRoute?: string
 }

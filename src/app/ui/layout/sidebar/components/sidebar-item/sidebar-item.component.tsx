@@ -23,7 +23,6 @@ function SidebarItem({
       ease-in-out duration-300
       p-4
       font-semibold
-      w-full
       hover:cursor-pointer`}
       onClick={handleClick}
     >

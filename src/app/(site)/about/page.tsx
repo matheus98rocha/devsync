@@ -7,7 +7,7 @@ import React from 'react'
 import { isMobile } from 'mobile-device-detect'
 import SidebarMobile from '@/app/ui/layout/sidebar-mobile/sidebar-mobile'
 
-function Home() {
+function About() {
   const { data: session } = useSession({
     required: true,
     onUnauthenticated() {
@@ -24,9 +24,9 @@ function Home() {
   return (
     <div className="h-full w-full flex">
       {isMobileDevice ? <SidebarMobile /> : <Sidebar />}
-      <h1>Home</h1>
+      <h1>Sobre</h1>
     </div>
   )
 }
 
-export default Home
+export default About

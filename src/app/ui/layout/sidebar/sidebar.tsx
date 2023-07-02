@@ -4,15 +4,23 @@ import Image from 'next/image'
 import { useSession } from 'next-auth/react'
 import { signOut } from 'next-auth/react'
 
-import { AiOutlineArrowRight, AiOutlineArrowLeft,AiOutlineHome } from 'react-icons/ai'
+import {
+  AiOutlineArrowRight,
+  AiOutlineArrowLeft,
+  AiOutlineHome,
+} from 'react-icons/ai'
 import { ImExit } from 'react-icons/im'
-import {MdPersonalVideo} from 'react-icons/md'
-import {SiHtmlacademy} from 'react-icons/si'
+import { MdPersonalVideo } from 'react-icons/md'
+import { SiHtmlacademy } from 'react-icons/si'
+import { useRouter } from 'next/router'
 
 import SidebarItem from './components/sidebar-item/sidebar-item.component'
+import { routes } from '@/constants/routes'
+import Link from 'next/link'
 function Sidebar() {
   const { data: session } = useSession()
   const [isExpanded, setIsExpanded] = React.useState(false)
+
   return (
     <div
       className={`
@@ -38,48 +46,45 @@ function Sidebar() {
           alt="use-profile"
           className="rounded-lg"
         />
-        {isExpanded && <p className='font-semibold'>{session?.user?.name}</p>}
+        {isExpanded && <p className="font-semibold">{session?.user?.name}</p>}
       </div>
 
       {/* Main Container */}
-      <div className='flex flex-col items-center justify-start gap-4'>
-        <SidebarItem
-          handleClick={() => {}}
-          icon={AiOutlineHome}
-          isExpanded={isExpanded}
-          label={'Home'}
-          currentRoute='/home'
-        />
-
-        <SidebarItem
-          handleClick={() => {}}
-          icon={MdPersonalVideo}
-          isExpanded={isExpanded}
-          label={'Meu Progreso'}
-        />
-
-        <SidebarItem
-          handleClick={() => {}}
-          icon={SiHtmlacademy}
-          isExpanded={isExpanded}
-          label={'Minhas linguagens'}
-        />
+      <div className="flex flex-col items-center justify-start gap-4">
+        {routes.map((route) => (
+          <Link href={route.route} key={route.route} className='w-full'>
+            <SidebarItem
+              icon={route.icon}
+              isExpanded={isExpanded}
+              label={route.label}
+              currentRoute={route.route}
+            />
+          </Link>
+        ))}
       </div>
 
       {/* Footer container */}
-      <div className='flex flex-col items-center justify-end gap-4'>
+      <div className="flex flex-col items-center justify-end gap-4">
         <div
           className="hover:cursor-pointer"
           onClick={() => setIsExpanded(!isExpanded)}
         >
           {!isExpanded ? (
             <div>
-              <AiOutlineArrowRight size={23} onClick={() => setIsExpanded(!isExpanded)} />
+              <AiOutlineArrowRight
+                size={23}
+                onClick={() => setIsExpanded(!isExpanded)}
+              />
             </div>
           ) : (
             <div className="flex items-center justify-center gap-2">
-              <p className="animate-fade animate-ease-in-out font-semibold">Comprimir</p>
-              <AiOutlineArrowLeft size={23} onClick={() => setIsExpanded(!isExpanded)} />
+              <p className="animate-fade animate-ease-in-out font-semibold">
+                Comprimir
+              </p>
+              <AiOutlineArrowLeft
+                size={23}
+                onClick={() => setIsExpanded(!isExpanded)}
+              />
             </div>
           )}
         </div>

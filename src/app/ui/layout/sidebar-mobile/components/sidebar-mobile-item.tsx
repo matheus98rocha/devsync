@@ -4,7 +4,6 @@ import { usePathname } from 'next/navigation'
 
 function SidebarMobileItem({
   icon: Icon,
-  handleClick,
   label,
   currentRoute,
 }: SidebarMobileItemProps) {
@@ -14,7 +13,6 @@ function SidebarMobileItem({
   return (
     <div
       key={currentRoute}
-      onClick={handleClick}
       className={`flex
       items-center
       justify-center
