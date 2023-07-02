@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useSession } from 'next-auth/react'
 import { signOut } from 'next-auth/react'
 
-import { AiOutlineArrowRight, AiOutlineArrowLeft,AiFillHome } from 'react-icons/ai'
+import { AiOutlineArrowRight, AiOutlineArrowLeft,AiOutlineHome } from 'react-icons/ai'
 import { ImExit } from 'react-icons/im'
 import {MdPersonalVideo} from 'react-icons/md'
 import {SiHtmlacademy} from 'react-icons/si'
@@ -21,7 +21,7 @@ function Sidebar() {
       grid-cols-1
       grid-rows-[300px_auto_100px]
       h-screen 
-      p-4
+      py-4
       ${isExpanded ? 'w-64' : 'w-16'}
       duration-500 
       bg-backgroud
@@ -38,16 +38,17 @@ function Sidebar() {
           alt="use-profile"
           className="rounded-lg"
         />
-        {isExpanded && <p>{session?.user?.name}</p>}
+        {isExpanded && <p className='font-semibold'>{session?.user?.name}</p>}
       </div>
 
       {/* Main Container */}
       <div className='flex flex-col items-center justify-start gap-4'>
         <SidebarItem
           handleClick={() => {}}
-          icon={AiFillHome}
+          icon={AiOutlineHome}
           isExpanded={isExpanded}
           label={'Home'}
+          currentRoute='/home'
         />
 
         <SidebarItem
@@ -73,12 +74,12 @@ function Sidebar() {
         >
           {!isExpanded ? (
             <div>
-              <AiOutlineArrowRight onClick={() => setIsExpanded(!isExpanded)} />
+              <AiOutlineArrowRight size={23} onClick={() => setIsExpanded(!isExpanded)} />
             </div>
           ) : (
             <div className="flex items-center justify-center gap-2">
-              <p className="animate-fade animate-ease-in-out">Comprimir</p>
-              <AiOutlineArrowLeft onClick={() => setIsExpanded(!isExpanded)} />
+              <p className="animate-fade animate-ease-in-out font-semibold">Comprimir</p>
+              <AiOutlineArrowLeft size={23} onClick={() => setIsExpanded(!isExpanded)} />
             </div>
           )}
         </div>
