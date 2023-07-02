@@ -21,6 +21,7 @@
     "eslint": "8.43.0",
     "eslint-config-next": "13.4.7",
     "jest-environment-jsdom": "^29.5.0",
+    "mobile-device-detect": "^0.4.3",
     "next": "13.4.7",
     "next-auth": "^4.22.1",
     "postcss": "8.4.24",
