@@ -14,7 +14,6 @@ function Home() {
   return (
     <div className="h-full w-full">
       <Sidebar />
-      <button onClick={() => signOut()}>Sair</button>
     </div>
   )
 }
