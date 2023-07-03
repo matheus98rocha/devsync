@@ -38,17 +38,4 @@
   "exclude": [
     "node_modules"
   ],
-  "theme":{
-    "colors":{
-      "primary": "rgb(17, 184, 17)",
-      "white": "#fff",
-      "black": "#000",
-      "error": "rgb(241, 76, 76)",
-      "alert": "rgb(244, 182, 26)",
-      "background": "#F5F5F5",
-    },
-    "fontFamily": {
-      "Gothic": "'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"
-    },
-  }
 }
