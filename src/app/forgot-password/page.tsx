@@ -39,7 +39,7 @@ export default function ForgotPassword() {
           handleChangeInput={(e) => setEmailRecoveryPassword(e.target.value)}
           valueInput={emailRecoveryPassword}
         />
-        <PrimaryButton buttonName='Recuperar' handleOnClick={() => alert("Recover in development")} />
+        <PrimaryButton textButton='Recuperar' handleOnClick={() => alert("Recover in development")} />
       </div>
     </div>
   )

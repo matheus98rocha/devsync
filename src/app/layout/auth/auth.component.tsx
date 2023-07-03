@@ -69,9 +69,9 @@ function Auth({ type }: AuthProps) {
           </div>
         )}
         {type === 'login' ? (
-          <PrimaryButton buttonName="Logar" handleOnClick={() => alert("Login in development")} />
+          <PrimaryButton textButton="Logar" handleOnClick={() => alert("Login in development")} />
         ) : (
-          <PrimaryButton buttonName="Criar Conta" handleOnClick={() => alert("New account in development")} />
+          <PrimaryButton textButton="Criar Conta" handleOnClick={() => alert("New account in development")} />
         )}
       </div>
       <SocialMediaIcons
