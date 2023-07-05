@@ -11,7 +11,7 @@ export default function ForgotPassword() {
     <div className="h-screen w-screen flex items-center justify-center flex-col">
       <div
         className="
-        bg-backgroud
+        bg-background
       md:h-1/3
       h-screen
       py-3

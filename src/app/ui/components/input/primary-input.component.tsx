@@ -22,7 +22,7 @@ function PrimaryInput({
         overflow-hidden
         rounded-md border
         border-primary
-        bg-backgroud
+        bg-background
         shadow-lg
         px-3
         py-2
@@ -46,7 +46,7 @@ function PrimaryInput({
           id="primaryInput"
           placeholder={placeholder}
           className="
-          bg-backgroud 
+          bg-background 
           mt-1 
           w-full
           h-12

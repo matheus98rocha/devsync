@@ -18,7 +18,7 @@ function SidebarItem({
       justify-center
       gap-2
       ${pathname === currentRoute ? 'bg-primary': 'none'}
-      ${pathname === currentRoute ? 'text-contrastBackgroud': 'text-black'}
+      ${pathname === currentRoute ? 'text-contrastBackground': 'text-black'}
       ${pathname === currentRoute ? 'hover:bg-primaryFocus': 'none'}
       ease-in-out duration-300
       p-4

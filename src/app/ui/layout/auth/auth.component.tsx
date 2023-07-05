@@ -30,7 +30,7 @@ function Auth({ type }: AuthProps) {
   md:justify-around
   justify-center
   gap-8
-  bg-backgroud
+  bg-background
   w-screen
   h-screen
   md:w-1/4
