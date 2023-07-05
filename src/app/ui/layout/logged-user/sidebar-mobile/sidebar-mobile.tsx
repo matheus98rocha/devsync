@@ -17,16 +17,20 @@ function SidebarMobile() {
   const [canShowDropdown, setCanShowDropdown] = React.useState(false)
   return (
     <>
-      <div className="absolute top-4 right-5">
-        <Image
-          src={session?.user?.image as string}
-          width={40}
-          height={40}
-          priority={true}
-          alt="use-profile"
-          className="rounded-lg"
-          onClick={() => setCanShowDropdown(!canShowDropdown)}
-        />
+      <div className="absolute top-4 right-5 shadow-md">
+        {session?.user?.image && (
+          <Image
+            src={session.user.image as string}
+            blurDataURL={session.user.image as string}
+            placeholder="blur"
+            width={40}
+            height={40}
+            priority={true}
+            alt="use-profile"
+            className="rounded-full"
+            onClick={() => setCanShowDropdown(!canShowDropdown)}
+          />
+        )}
         {canShowDropdown && (
           <div
             className="
@@ -42,7 +46,18 @@ function SidebarMobile() {
           </div>
         )}
       </div>
-      <div className="absolute bottom-0 w-screen py-4 flex items-center justify-around gap-4">
+      <div
+        className="bg-backgroud
+      shadow-lg
+      absolute
+      bottom-0
+      w-screen
+      py-4
+      flex
+      items-center
+      justify-around
+      gap-4"
+      >
         {routes.map((route) => (
           <Link href={route.route} key={route.route}>
             <SidebarMobileItem
