@@ -19,6 +19,7 @@ Antes de começar o desenvolvimento de uma nova funcionalidade, siga estas etapa
 Atenção: 
   Nenhum desenvolvimento deve ser feito na branch master ou dev.
   Não faça pull requests da dev para a master
+  Antes de desenvolver lembre de fazer um merge com a develop
 
 1. Crie uma nova branch com o formato `feature/nome-da-tarefa` a partir da branch principal, rodando o comando git flow feature start.
 2. Faça merge ou rebase da dev

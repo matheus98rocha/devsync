@@ -32,7 +32,7 @@ function Sidebar() {
       py-4
       ${isExpanded ? 'w-64' : 'w-16'}
       duration-75
-      bg-backgroud
+      bg-background
       shadow-md
       `}
     >

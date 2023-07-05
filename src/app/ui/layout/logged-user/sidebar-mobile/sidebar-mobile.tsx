@@ -38,7 +38,7 @@ function SidebarMobile() {
           mt-2
           absolute
           p-2
-          bg-contrastBackgroud
+          bg-contrastBackground
           shadow-lg
           "
           >
@@ -47,7 +47,7 @@ function SidebarMobile() {
         )}
       </div>
       <div
-        className="bg-backgroud
+        className="bg-background
       shadow-lg
       absolute
       bottom-0

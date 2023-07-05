@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import Link from 'next/link'
+import PrimaryButton from '../../components/button/primary-button.component'
 import PrimaryInput from '../../ui/components/input/primary-input.component'
 
 export default function ForgotPassword() {
@@ -10,7 +11,7 @@ export default function ForgotPassword() {
     <div className="h-screen w-screen flex items-center justify-center flex-col">
       <div
         className="
-        bg-backgroud
+        bg-background
       md:h-1/3
       h-screen
       py-3
@@ -38,7 +39,7 @@ export default function ForgotPassword() {
           handleChangeInput={(e) => setEmailRecoveryPassword(e.target.value)}
           valueInput={emailRecoveryPassword}
         />
-        <button>Recuperar</button>
+        <PrimaryButton isDisabled={false} buttonText='Recuperar' buttonType='primary' handleOnClick={() => alert("Recover in development")} />
       </div>
     </div>
   )

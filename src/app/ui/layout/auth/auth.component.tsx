@@ -4,6 +4,7 @@ import SocialMediaIcons from './components/social-media-icons/social-media-icons
 
 import Link from 'next/link'
 import { AuthProps } from './auth.types'
+import PrimaryButton from '@/app/components/button/primary-button.component'
 import PrimaryInput from '../../components/input/primary-input.component'
 import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation'
@@ -29,7 +30,7 @@ function Auth({ type }: AuthProps) {
   md:justify-around
   justify-center
   gap-8
-  bg-backgroud
+  bg-background
   w-screen
   h-screen
   md:w-1/4
@@ -79,9 +80,19 @@ function Auth({ type }: AuthProps) {
           </div>
         )}
         {type === 'login' ? (
-          <button>Logar</button>
+          <PrimaryButton
+            buttonText="Logar"
+            buttonType={'primary'}
+            handleOnClick={() => alert('Login in development')}
+            isDisabled={false}
+          />
         ) : (
-          <button>Criar Conta</button>
+          <PrimaryButton
+            buttonText="Criar Conta"
+            buttonType="primary"
+            handleOnClick={() => alert('New account in development')}
+            isDisabled={false}
+          />
         )}
       </div>
       <SocialMediaIcons />
