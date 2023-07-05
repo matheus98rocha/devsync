@@ -20,9 +20,7 @@ export default function Home() {
       md:flex-none
     "
       >
-        <Suspense fallback={<Loading />}>
           <Auth type="login" />
-        </Suspense>
       </div>
     </>
   )

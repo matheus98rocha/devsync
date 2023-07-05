@@ -42,7 +42,6 @@ function Sidebar() {
           <Image
             src={session.user.image as string}
             blurDataURL={session.user.image as string}
-            placeholder="blur"
             width={isExpanded ? 60 : 30}
             height={isExpanded ? 60 : 30}
             priority={true}
