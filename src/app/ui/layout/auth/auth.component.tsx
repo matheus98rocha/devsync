@@ -1,15 +1,26 @@
 'use client'
 import React from 'react'
 import SocialMediaIcons from './components/social-media-icons/social-media-icons.components'
-import PrimaryInput from '@/app/components/input/primary-input.component'
 
 import Link from 'next/link'
 import { AuthProps } from './auth.types'
 import PrimaryButton from '@/app/components/button/primary-button.component'
+import PrimaryInput from '../../components/input/primary-input.component'
+import { useSession } from 'next-auth/react'
+import { redirect } from 'next/navigation'
 
 function Auth({ type }: AuthProps) {
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
+
+  const { data: session } = useSession()
+
+  React.useEffect(() => {
+    if (session) {
+      redirect('/home')
+    }
+  }, [session])
+
   return (
     <div
       className="
@@ -84,11 +95,7 @@ function Auth({ type }: AuthProps) {
           />
         )}
       </div>
-      <SocialMediaIcons
-        handleClickFacebook={() => alert('Login with Facebook in development')}
-        handleClickGithub={() => alert('Login with Github in development')}
-        handleClickGoogle={() => alert('Login with Google in development')}
-      />
+      <SocialMediaIcons />
       <div
         className="
         w-full

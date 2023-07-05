@@ -1,9 +1,9 @@
 'use client'
 import { useState } from 'react'
-import PrimaryInput from '../components/input/primary-input.component'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import Link from 'next/link'
-import PrimaryButton from '../components/button/primary-button.component'
+import PrimaryButton from '../../components/button/primary-button.component'
+import PrimaryInput from '../../ui/components/input/primary-input.component'
 
 export default function ForgotPassword() {
   const [emailRecoveryPassword, setEmailRecoveryPassword] = useState('')
@@ -39,7 +39,7 @@ export default function ForgotPassword() {
           handleChangeInput={(e) => setEmailRecoveryPassword(e.target.value)}
           valueInput={emailRecoveryPassword}
         />
-        <PrimaryButton buttonText='Recuperar' buttonType='primary' handleOnClick={() => alert("Recover in development")} />
+        <PrimaryButton isDisabled={false} buttonText='Recuperar' buttonType='primary' handleOnClick={() => alert("Recover in development")} />
       </div>
     </div>
   )
