@@ -79,7 +79,7 @@ function Sidebar() {
           <AiOutlineArrowRight
             className={`${
               isExpanded ? 'rotate-180' : 'rotate-0'
-            }       duration-500`}
+            }       duration-300`}
             size={23}
             onClick={() => setIsExpanded(!isExpanded)}
           />

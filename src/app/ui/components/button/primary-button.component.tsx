@@ -20,7 +20,7 @@ const PrimaryButton = ({
       ${buttonType === 'primary' && !isDisabled && 'hover:bg-primary-hover'} 
       ${buttonType === 'alert' && !isDisabled && 'hover:bg-alert-hover'} 
       ${buttonType === 'error' && !isDisabled && 'hover:bg-error-hover'} 
-      duration-500
+      duration-300
     text-white
     font-bold 
      ${!isDisabled  ? 'cursor-pointer' : 'cursor-not-allowed'}
