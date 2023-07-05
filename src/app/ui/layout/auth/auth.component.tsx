@@ -4,10 +4,10 @@ import SocialMediaIcons from './components/social-media-icons/social-media-icons
 
 import Link from 'next/link'
 import { AuthProps } from './auth.types'
-import PrimaryButton from '@/app/components/button/primary-button.component'
 import PrimaryInput from '../../components/input/primary-input.component'
 import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation'
+import PrimaryButton from '../../components/button/primary-button.component'
 
 function Auth({ type }: AuthProps) {
   const [email, setEmail] = React.useState('')

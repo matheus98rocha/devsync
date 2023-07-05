@@ -17,7 +17,8 @@ function SidebarMobile() {
   const [canShowDropdown, setCanShowDropdown] = React.useState(false)
   return (
     <>
-      <div className="absolute top-4 right-5 shadow-md">
+      <div className="absolute top-4 right-5 shadow-md bg-transparent rounded-full">
+
         {session?.user?.image && (
           <Image
             src={session.user.image as string}
