@@ -1,6 +1,6 @@
 'use client'
 import Loading from '@/app/ui/components/loading/loading.component'
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import SidebarMobile from './sidebar-mobile/sidebar-mobile'
 import Sidebar from './sidebar/sidebar'
 import { isMobile, isMobileOnly } from 'mobile-device-detect'
@@ -35,7 +35,9 @@ function LoaggedUser({ children }: LoaggedUserProps) {
     <div className="h-full w-full flex">
       {isMobileOnly && <SidebarMobile />}
       {!isMobileOnly && <Sidebar />}
+      <Suspense fallback={<Loading/>}>
       {children}
+      </Suspense>
     </div>
   )
 }
