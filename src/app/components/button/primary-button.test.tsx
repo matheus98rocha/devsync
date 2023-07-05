@@ -6,15 +6,15 @@ import PrimaryButton from "./primary-button.component";
 
 describe("PrimaryButton", () => {
     const buttonText = "Click Me";
-    const buttonType = "primary";
 
     it("verifies if the button is rendered correctly", () => {
         const handleOnClick = jest.fn();
         const { getByText } = render(
             <PrimaryButton
                 buttonText={buttonText}
-                buttonType={buttonType}
+                buttonType={"primary"}
                 handleOnClick={handleOnClick}
+                isDisabled={false}
             />
         );
         expect(getByText(buttonText)).toBeInTheDocument();
@@ -25,8 +25,9 @@ describe("PrimaryButton", () => {
         const { getByText } = render(
             <PrimaryButton
                 buttonText={buttonText}
-                buttonType={buttonType}
+                buttonType={'primary'}
                 handleOnClick={handleOnClick}
+                isDisabled={false}
             />
         );
 
