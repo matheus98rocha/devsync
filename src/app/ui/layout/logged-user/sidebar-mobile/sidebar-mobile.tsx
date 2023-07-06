@@ -10,11 +10,14 @@ import { useSession } from 'next-auth/react'
 import { signOut } from 'next-auth/react'
 import { routes } from '@/constants/routes'
 import Link from 'next/link'
+import Modal from '../../modal/modal.component'
 
 function SidebarMobile() {
   const { data: session } = useSession()
 
-  const [canShowDropdown, setCanShowDropdown] = React.useState(false)
+  const [canShowDropdown, setCanShowDropdown] = React.useState(false);
+  const [showModal, setShowModal] = React.useState(false);
+  const handleSignOut = () => signOut();
   return (
     <>
       <div className="absolute top-4 right-5 shadow-md bg-transparent rounded-full">
@@ -43,7 +46,19 @@ function SidebarMobile() {
           shadow-lg
           "
           >
-            <p onClick={() => signOut()}>Sair</p>
+            <p onClick={() => setShowModal(true)}>Sair</p>
+            {
+              showModal &&
+              <Modal
+                onLogout={handleSignOut}
+                onCancel={() => setShowModal(false)}
+                modalTitle='Tem certeza ?'
+                modalMessage='Parece que você está tentando desconectar. Tem certeza de que deseja sair ?'
+                logoutButtonType='error'
+                cancelButtonType='alert'
+                isOnMobile={true}
+              />
+            }
           </div>
         )}
       </div>
