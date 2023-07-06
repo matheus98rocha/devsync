@@ -1,5 +1,7 @@
 const { default: NextAuth } = require("next-auth/next");
 import GoogleProvider from "next-auth/providers/google";
+import GitHubProvider from "next-auth/providers/github";
+
 
 const authOptions = {
   providers: [
@@ -7,7 +9,11 @@ const authOptions = {
       clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET as string,
     }),
-  ],
+    GitHubProvider({
+      clientId: process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID as string,
+      clientSecret: process.env.NEXT_PUBLIC_GITHUB_CLIENT_SECRET as string
+    })
+  ], 
   secret: process.env.NEXT_PUBLIC_SECRET,
   pages:{
     signIn: '/'

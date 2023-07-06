@@ -10,11 +10,14 @@ import { useSession } from 'next-auth/react'
 import { signOut } from 'next-auth/react'
 import { routes } from '@/constants/routes'
 import Link from 'next/link'
+import LogoutModal from '../../logout-modal/logout-modal.component'
 
 function SidebarMobile() {
   const { data: session } = useSession()
 
-  const [canShowDropdown, setCanShowDropdown] = React.useState(false)
+  const [canShowDropdown, setCanShowDropdown] = React.useState(false);
+  const [showLogoutModal, setShowLogoutModal] = React.useState(false);
+  const handleSignOut = () => signOut();
   return (
     <>
       <div className="absolute top-4 right-5 shadow-md bg-transparent rounded-full">
@@ -43,7 +46,13 @@ function SidebarMobile() {
           shadow-lg
           "
           >
-            <p onClick={() => signOut()}>Sair</p>
+            <p onClick={() => setShowLogoutModal(true)}>Sair</p>
+            {
+              showLogoutModal &&
+              <LogoutModal
+                handleLogout={handleSignOut}
+                handleCancel={() => setShowLogoutModal(false)} />
+            }
           </div>
         )}
       </div>
