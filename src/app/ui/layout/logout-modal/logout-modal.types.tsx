@@ -1,5 +1,5 @@
 export interface LogoutModalProps {
-    onLogout: () => void,
-    onCancel: () => void,
+    handleLogout: () => void,
+    handleCancel: () => void,
     isOnMobile: boolean,
 };

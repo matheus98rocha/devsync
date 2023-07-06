@@ -11,8 +11,8 @@ describe('Logout Modal', () => {
     test('calls onLogout and onCancel when buttons are clicked', () => {
         render(
             <LogoutModal
-                onLogout={mockOnLogout}
-                onCancel={mockOnCancel}
+                handleLogout={mockOnLogout}
+                handleCancel={mockOnCancel}
                 isOnMobile={isOnMobile}
             />
         );

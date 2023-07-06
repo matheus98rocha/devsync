@@ -1,7 +1,7 @@
 import PrimaryButton from "../../components/button/primary-button.component";
 import { LogoutModalProps } from "./logout-modal.types";
 
-const LogoutModal = ({ onLogout, onCancel, isOnMobile }: LogoutModalProps) => {
+const LogoutModal = ({ handleLogout, handleCancel, isOnMobile }: LogoutModalProps) => {
     return (
         <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center">
             <div className="fixed inset-0 bg-gray opacity-60"></div>
@@ -11,8 +11,8 @@ const LogoutModal = ({ onLogout, onCancel, isOnMobile }: LogoutModalProps) => {
                 </div>
                 <p className="mt-4 text-gray-500">Parece que você está tentando desconectar. Tem certeza de que deseja sair ?</p>
                 <div className={isOnMobile ? "mt-6 flex flex-wrap gap-4" : "mt-6 sm:flex sm:gap-4"}>
-                    <PrimaryButton buttonText="Desconectar" handleOnClick={onLogout} isDisabled={false} buttonType="error" />
-                    <PrimaryButton buttonText="Cancelar" handleOnClick={onCancel} isDisabled={false} buttonType="alert" />
+                    <PrimaryButton buttonText="Desconectar" handleOnClick={handleLogout} isDisabled={false} buttonType="error" />
+                    <PrimaryButton buttonText="Cancelar" handleOnClick={handleCancel} isDisabled={false} buttonType="alert" />
                 </div>
             </div>
         </div>
