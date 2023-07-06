@@ -17,11 +17,11 @@ import { useRouter } from 'next/router'
 import SidebarItem from './components/sidebar-item/sidebar-item.component'
 import { routes } from '@/constants/routes'
 import Link from 'next/link'
-import Modal from '../../modal/modal.component'
+import LogoutModal from '../../logout-modal/logout-modal.component'
 function Sidebar() {
   const { data: session } = useSession()
   const [isExpanded, setIsExpanded] = React.useState(false);
-  const [showModal, setShowModal] = React.useState(false);
+  const [showLogoutModal, setShowLogoutModal] = React.useState(false);
 
   const handleSignOut = () => signOut();
   return (
@@ -93,20 +93,16 @@ function Sidebar() {
         </div>
 
         <SidebarItem
-          handleClick={() => setShowModal(true)}
+          handleClick={() => setShowLogoutModal(true)}
           icon={ImExit}
           isExpanded={isExpanded}
           label={'Sair'}
         />
         {
-          showModal &&
-          <Modal
+          showLogoutModal &&
+          <LogoutModal
             onLogout={handleSignOut}
-            onCancel={() => setShowModal(false)}
-            modalTitle='Tem certeza ?'
-            modalMessage='Parece que você está tentando desconectar. Tem certeza de que deseja sair ?'
-            logoutButtonType='error'
-            cancelButtonType='alert'
+            onCancel={() => setShowLogoutModal(false)}
             isOnMobile={false}
           />
         }
