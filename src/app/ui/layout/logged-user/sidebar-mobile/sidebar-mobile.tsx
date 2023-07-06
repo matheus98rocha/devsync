@@ -51,8 +51,7 @@ function SidebarMobile() {
               showLogoutModal &&
               <LogoutModal
                 handleLogout={handleSignOut}
-                handleCancel={() => setShowLogoutModal(false)}
-                isOnMobile={true} />
+                handleCancel={() => setShowLogoutModal(false)} />
             }
           </div>
         )}

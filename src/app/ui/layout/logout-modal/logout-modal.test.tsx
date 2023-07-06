@@ -6,14 +6,12 @@ import LogoutModal from './logout-modal.component';
 describe('Logout Modal', () => {
     const mockOnLogout = jest.fn();
     const mockOnCancel = jest.fn();
-    const isOnMobile = false;
 
     test('calls onLogout and onCancel when buttons are clicked', () => {
         render(
             <LogoutModal
                 handleLogout={mockOnLogout}
                 handleCancel={mockOnCancel}
-                isOnMobile={isOnMobile}
             />
         );
 
