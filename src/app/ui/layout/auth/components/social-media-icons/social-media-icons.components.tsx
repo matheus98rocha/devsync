@@ -10,14 +10,12 @@ function SocialMediaIcons({}) {
       {
         label: 'Facebook',
         icon: <BS.BsFacebook size={25} />,
-        onClickIcon: () => {},
+        onClickIcon: () => signIn('facebook', { callbackUrl: '/home' }),
       },
       {
         label: 'Google',
         icon: <BS.BsGoogle size={25} />,
-        onClickIcon: () => signIn('google',{
-          callbackUrl: '/home'
-        }),
+        onClickIcon: () => signIn('google', { callbackUrl: '/home' }),
       },
       {
         label: 'GitHub',
