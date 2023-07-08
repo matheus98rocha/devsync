@@ -17,10 +17,13 @@ import { useRouter } from 'next/router'
 import SidebarItem from './components/sidebar-item/sidebar-item.component'
 import { routes } from '@/constants/routes'
 import Link from 'next/link'
+import LogoutModal from '../../logout-modal/logout-modal.component'
 function Sidebar() {
   const { data: session } = useSession()
-  const [isExpanded, setIsExpanded] = React.useState(false)
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  const [showLogoutModal, setShowLogoutModal] = React.useState(false);
 
+  const handleSignOut = () => signOut();
   return (
     <div
       className={`
@@ -32,7 +35,7 @@ function Sidebar() {
       py-4
       ${isExpanded ? 'w-64' : 'w-16'}
       duration-75
-      bg-backgroud
+      bg-background
       shadow-md
       `}
     >
@@ -77,9 +80,8 @@ function Sidebar() {
           onClick={() => setIsExpanded(!isExpanded)}
         >
           <AiOutlineArrowRight
-            className={`${
-              isExpanded ? 'rotate-180' : 'rotate-0'
-            }       duration-500`}
+            className={`${isExpanded ? 'rotate-180' : 'rotate-0'
+              }       duration-300`}
             size={23}
             onClick={() => setIsExpanded(!isExpanded)}
           />
@@ -91,11 +93,18 @@ function Sidebar() {
         </div>
 
         <SidebarItem
-          handleClick={() => signOut()}
+          handleClick={() => setShowLogoutModal(true)}
           icon={ImExit}
           isExpanded={isExpanded}
           label={'Sair'}
         />
+        {
+          showLogoutModal &&
+          <LogoutModal
+            handleLogout={handleSignOut}
+            handleCancel={() => setShowLogoutModal(false)}
+          />
+        }
       </div>
     </div>
   )

@@ -6,13 +6,31 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    colors: {
-      primary: "#008021",
-      primaryFocus: "#00681a",
-      error: "#FF8585",
-      alert: "#FFD485",
-      backgroud: "#fefefe",
-      contrastBackgroud: "#eaecec",
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: "#009F29",
+          hover: "#008021",
+          focus: "#00681a",
+        },
+        error: {
+          DEFAULT: "#f84b4b",
+          hover: "#e92626"
+        },
+        alert: {
+          DEFAULT: "#ebb44f",
+          hover: "#f3b005",
+        },
+        disabled: {
+          DEFAULT: "#BBBBBB",
+          hover: "#AAAAAA",
+        },
+        white: "#fff",
+        black: "#000",
+        gray: "#9b9b9b",
+        background: "#fefefe",
+        contrastBackground: "#eaecec",
+      },
     },
   },
   plugins: [require("tailwindcss-animated")],

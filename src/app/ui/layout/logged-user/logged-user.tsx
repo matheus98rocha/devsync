@@ -3,7 +3,7 @@ import Loading from '@/app/ui/components/loading/loading.component'
 import React, { Suspense, useEffect, useState } from 'react'
 import SidebarMobile from './sidebar-mobile/sidebar-mobile'
 import Sidebar from './sidebar/sidebar'
-import { isMobile, isMobileOnly } from 'mobile-device-detect'
+import { isMobileOnly } from 'mobile-device-detect'
 import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation'
 

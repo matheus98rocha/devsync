@@ -1,4 +1,4 @@
-'use client';
+'use client'
 import React from 'react'
 import * as BS from 'react-icons/bs'
 
@@ -15,14 +15,18 @@ function SocialMediaIcons({}) {
       {
         label: 'Google',
         icon: <BS.BsGoogle size={25} />,
-        onClickIcon: () => signIn('google',{
-          callbackUrl: '/home'
-        }),
+        onClickIcon: () =>
+          signIn('google', {
+            callbackUrl: '/home',
+          }),
       },
       {
         label: 'GitHub',
         icon: <BS.BsGithub size={25} />,
-        onClickIcon: () => {},
+        onClickIcon: () =>
+          signIn('github', {
+            // callbackUrl: '/home',
+          }),
       },
     ],
     [],
