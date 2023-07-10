@@ -11,7 +11,7 @@ const nextConfig = {
       "facebook.com", 
       "scontent.fbhz2-2.fna.fbcdn.net"
     ],
-  }
-}
+  },
+};
 
 module.exports = nextConfig
