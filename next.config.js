@@ -4,7 +4,13 @@ const nextConfig = {
     appDir: true
   },
   images: {
-    domains: ['google.com', 'lh3.googleusercontent.com', "facebook.com", "scontent.fbhz2-2.fna.fbcdn.net"]
+    domains: [
+      "google.com",
+      "lh3.googleusercontent.com",
+      "avatars.githubusercontent.com",
+      "facebook.com", 
+      "scontent.fbhz2-2.fna.fbcdn.net"
+    ],
   }
 }
 
