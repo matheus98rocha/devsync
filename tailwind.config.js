@@ -14,12 +14,12 @@ module.exports = {
           focus: "#00681a",
         },
         error: {
-          DEFAULT: "#FF8585",
-          hover: "#f14c4c"
+          DEFAULT: "#f84b4b",
+          hover: "#e92626"
         },
         alert: {
-          DEFAULT: "#FFD485",
-          hover: "#f4b61a",
+          DEFAULT: "#ebb44f",
+          hover: "#f3b005",
         },
         disabled: {
           DEFAULT: "#BBBBBB",
