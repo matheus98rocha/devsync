@@ -4,7 +4,7 @@ import * as BS from 'react-icons/bs'
 
 import { signIn } from 'next-auth/react'
 
-function SocialMediaIcons({}) {
+function SocialMediaIcons({ }) {
   const iconsData = React.useMemo(
     () => [
       {
@@ -15,12 +15,15 @@ function SocialMediaIcons({}) {
       {
         label: 'Google',
         icon: <BS.BsGoogle size={25} />,
-        onClickIcon: () => signIn('google', { callbackUrl: '/home' }),
+        onClickIcon: () =>
+          signIn('google', {
+            callbackUrl: '/home',
+          }),
       },
       {
         label: 'GitHub',
         icon: <BS.BsGithub size={25} />,
-        onClickIcon: () => {},
+        onClickIcon: () => { },
       },
     ],
     [],
