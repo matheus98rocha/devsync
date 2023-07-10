@@ -8,11 +8,8 @@ const nextConfig = {
       "google.com",
       "lh3.googleusercontent.com",
       "avatars.githubusercontent.com",
-<<<<<<< HEAD
       "facebook.com", 
       "scontent.fbhz2-2.fna.fbcdn.net"
-=======
->>>>>>> develop
     ],
   },
 };
