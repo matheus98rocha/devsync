@@ -23,7 +23,10 @@ function SocialMediaIcons({ }) {
       {
         label: 'GitHub',
         icon: <BS.BsGithub size={25} />,
-        onClickIcon: () => { },
+        onClickIcon: () =>
+          signIn('github', {
+            // callbackUrl: '/home',
+          }),
       },
     ],
     [],
