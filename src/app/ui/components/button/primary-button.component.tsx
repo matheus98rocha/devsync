@@ -17,7 +17,7 @@ const PrimaryButton = ({
       ${buttonType === 'error' && !isDisabled && 'bg-error'} 
       ${buttonType === 'outlined' && !isDisabled && 'bg-slate-50'}
       ${buttonType === 'outlined' && !isDisabled && 'border'} 
-      ${buttonType === 'outlined' && !isDisabled && 'text-slate-900 font-light'}
+      ${buttonType === 'outlined' && !isDisabled && 'text-zinc-950 font-light'}
       
       
       ${isDisabled && 'hover:bg-disabled-hover'}
