@@ -7,7 +7,7 @@ const LogoutModal = ({ handleLogout, handleCancel }: LogoutModalProps) => {
     <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center">
       <div className="fixed inset-0 bg-zinc-800 opacity-60"></div>
       <div
-        className="relative gap-2 flex flex-col rounded-2xl border border-blue-100 bg-white p-4 shadow-lg sm:p-6 lg:p-8 animate-jump-in animate-delay-[1ms]"
+        className="relative gap-2 flex flex-col rounded-2xl border border-blue-100 bg-contrastBackground p-4 shadow-lg sm:p-6 lg:p-8 animate-jump-in animate-delay-[1ms]"
         role="alert"
       >
         <div className="w-full flex items-center justify-center">
@@ -19,13 +19,13 @@ const LogoutModal = ({ handleLogout, handleCancel }: LogoutModalProps) => {
             buttonText="Cancelar"
             handleOnClick={handleCancel}
             isDisabled={false}
-            buttonType="primary"
+            buttonType="alert"
           />
           <PrimaryButton
             buttonText="Desconectar"
             handleOnClick={handleLogout}
             isDisabled={false}
-            buttonType="error"
+            buttonType="outlined"
           />
         </div>
       </div>

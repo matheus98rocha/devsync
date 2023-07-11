@@ -20,14 +20,15 @@ import Link from 'next/link'
 import LogoutModal from '../../logout-modal/logout-modal.component'
 function Sidebar() {
   const { data: session } = useSession()
-  const [isExpanded, setIsExpanded] = React.useState(false);
+  const [isExpanded, setIsExpanded] = React.useState(true);
   const [showLogoutModal, setShowLogoutModal] = React.useState(false);
 
   const handleSignOut = () => signOut();
   return (
     <div
       className={`
-      relative
+      fixed
+      overflow-y-auto
       grid
       grid-cols-1
       grid-rows-[300px_auto_100px]

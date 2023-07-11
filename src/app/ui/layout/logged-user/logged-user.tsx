@@ -32,7 +32,7 @@ function LoaggedUser({ children }: LoaggedUserProps) {
     )
   }
   return (
-    <div className="h-full w-full flex">
+    <div className="h-full w-full flex flex-1">
       {isMobileOnly && <SidebarMobile />}
       {!isMobileOnly && <Sidebar />}
       <Suspense fallback={<Loading/>}>
