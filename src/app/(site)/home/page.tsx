@@ -4,13 +4,21 @@ import React from 'react'
 import ClientOnly from '@/app/ui/layout/logged-user/logged-user'
 
 function Home() {
+  const [isExpandedSideMenu, setIsExpandedSideMenu] = React.useState(false)
+
   return (
     <ClientOnly>
-      <div className="flex items-center justify-center w-screen">
-        <div className="min-h-screen w-3/5 borrder shadow-md bg-background flex-col">
-
-        </div>
-      </div>
+      <div
+        className="min-h-screen
+      w-3/6
+      shadow-md
+      bg-background
+      flex
+      flex-col
+      items-center
+      justify-start
+      overflow-x-hidden "
+      ></div>
     </ClientOnly>
   )
 }
