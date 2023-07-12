@@ -28,7 +28,7 @@ function Sidebar() {
     <div
       className={`
       fixed
-      overflow-y-auto
+      left-0
       grid
       grid-cols-1
       grid-rows-[300px_auto_100px]
