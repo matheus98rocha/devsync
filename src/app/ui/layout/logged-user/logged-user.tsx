@@ -40,6 +40,6 @@ function LoaggedUser({ children }: LoaggedUserProps) {
       {!isMobileOnly && <ProgramingLinks />}
     </div>
   )
-}
+};
 
-export default LoaggedUser
+export default LoaggedUser;

@@ -12,7 +12,7 @@ function ProgramingLinks() {
       bg-background
       shadow-md
       overflow-y-hidden
-  "
+      -z-10"
     >
       <NewsItem />
       <NewsItem />
