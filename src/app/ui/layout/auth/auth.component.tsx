@@ -33,13 +33,13 @@ function Auth({ type }: AuthProps) {
   bg-background
   w-screen
   h-screen
-  md:w-1/4
+  lg:w-1/4
   py-9
   px-10
   rounded-md
   shadow-lg
   animate-fade-up
-  md:h-auto
+  lg:h-auto
   "
     >
       <h1 className="text-primary text-4xl font-bold">Titulo do site</h1>
