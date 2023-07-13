@@ -25,7 +25,7 @@ function SocialMediaIcons({}) {
         icon: <BS.BsGithub size={25} />,
         onClickIcon: () =>
           signIn('github', {
-            // callbackUrl: '/home',
+            callbackUrl: '/home',
           }),
       },
     ],

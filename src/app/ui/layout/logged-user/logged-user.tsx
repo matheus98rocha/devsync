@@ -6,6 +6,7 @@ import Sidebar from './sidebar/sidebar'
 import { isMobileOnly } from 'mobile-device-detect'
 import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation'
+import ProgramingLinks from './programing-links/programing-links'
 
 interface LoaggedUserProps {
   children: React.ReactNode
@@ -32,12 +33,11 @@ function LoaggedUser({ children }: LoaggedUserProps) {
     )
   }
   return (
-    <div className="h-full w-full flex">
+    <div className="h-screen flex items-center justify-center">
       {isMobileOnly && <SidebarMobile />}
       {!isMobileOnly && <Sidebar />}
-      <Suspense fallback={<Loading/>}>
-      {children}
-      </Suspense>
+      <Suspense fallback={<Loading />}>{children}</Suspense>
+      {!isMobileOnly && <ProgramingLinks />}
     </div>
   )
 }

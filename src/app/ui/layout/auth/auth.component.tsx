@@ -39,7 +39,7 @@ function Auth({ type }: AuthProps) {
   rounded-md
   shadow-lg
   animate-fade-up
-  md:h-5/6
+  md:h-auto
   "
     >
       <h1 className="text-primary text-4xl font-bold">Titulo do site</h1>
