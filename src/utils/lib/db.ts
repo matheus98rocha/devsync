@@ -11,4 +11,4 @@ const startDb = async () => {
   }
 }
 
-export startDb;
+export default startDb;
