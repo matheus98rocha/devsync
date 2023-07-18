@@ -2,6 +2,10 @@
 
 Este é o README para o PROJETO utilizando o framework Next.js. 
 
+## Visualização em Tempo Real
+
+Explore o projeto em tempo real [aqui](https://untitle-project.vercel.app/).
+
 ## Requisitos
 
 - Node.js: É necessário ter a versão mínima do Node.js 14 instalada para rodar a aplicação. No entanto, é recomendado utilizar a versão 20.0.0 do Node.js para um melhor desempenho.
