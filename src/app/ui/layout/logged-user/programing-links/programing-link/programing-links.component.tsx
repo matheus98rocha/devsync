@@ -28,7 +28,7 @@ function NewsItem() {
       <PrimaryButton
         buttonText="Read More"
         buttonType="outlined"
-        handleOnClick={() => {}}
+        handleOnClick={() => {alert("test")}}
         isDisabled={false}
       />
     </div>
