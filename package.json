@@ -45,6 +45,7 @@
     "@storybook/testing-library": "0.0.14-next.2",
     "eslint-plugin-storybook": "^0.6.12",
     "jest": "^29.5.0",
+    "prisma": "^5.0.0",
     "storybook": "7.0.22",
     "tailwindcss-animated": "^1.0.1"
   }
