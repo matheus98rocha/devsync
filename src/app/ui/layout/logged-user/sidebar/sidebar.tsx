@@ -18,10 +18,11 @@ import SidebarItem from './components/sidebar-item/sidebar-item.component'
 import { routes } from '@/constants/routes'
 import Link from 'next/link'
 import LogoutModal from '../../logout-modal/logout-modal.component'
-function Sidebar() {
+import { SidebarProps } from './sidebar.types'
+
+function Sidebar({ handleLogout, logout }: SidebarProps) {
   const { data: session } = useSession()
   const [isExpanded, setIsExpanded] = React.useState(true);
-  const [showLogoutModal, setShowLogoutModal] = React.useState(false);
 
   const handleSignOut = () => signOut();
   return (
@@ -94,21 +95,21 @@ function Sidebar() {
         </div>
 
         <SidebarItem
-          handleClick={() => setShowLogoutModal(true)}
+          handleClick={() => handleLogout(true)}
           icon={ImExit}
           isExpanded={isExpanded}
           label={'Sair'}
         />
         {
-          showLogoutModal &&
+          logout &&
           <LogoutModal
             handleLogout={handleSignOut}
-            handleCancel={() => setShowLogoutModal(false)}
+            handleCancel={() => handleLogout(false)}
           />
         }
       </div>
     </div>
   )
-}
+};
 
-export default Sidebar
+export default Sidebar;

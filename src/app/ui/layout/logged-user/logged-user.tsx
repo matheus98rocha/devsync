@@ -13,6 +13,7 @@ interface LoaggedUserProps {
 }
 
 function LoaggedUser({ children }: LoaggedUserProps) {
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
   const {} = useSession({
     required: true,
     onUnauthenticated() {
@@ -35,9 +36,9 @@ function LoaggedUser({ children }: LoaggedUserProps) {
   return (
     <div className="h-screen flex items-center justify-center">
       {isMobileOnly && <SidebarMobile />}
-      {!isMobileOnly && <Sidebar />}
+      {!isMobileOnly && <Sidebar logout={showLogoutModal} handleLogout={setShowLogoutModal} />}
       <Suspense fallback={<Loading />}>{children}</Suspense>
-      {!isMobileOnly && <ProgramingLinks />}
+      {!isMobileOnly && <ProgramingLinks showModal={showLogoutModal} />}
     </div>
   )
 };
