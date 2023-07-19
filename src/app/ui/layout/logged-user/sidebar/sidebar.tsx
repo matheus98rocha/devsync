@@ -20,7 +20,7 @@ import Link from 'next/link'
 import LogoutModal from '../../logout-modal/logout-modal.component'
 import { SidebarProps } from './sidebar.types'
 
-function Sidebar({ handleLogout, logout }: SidebarProps) {
+function Sidebar({ canShowlogoutModal,handleLogout }: SidebarProps) {
   const { data: session } = useSession()
   const [isExpanded, setIsExpanded] = React.useState(true);
 
@@ -100,13 +100,11 @@ function Sidebar({ handleLogout, logout }: SidebarProps) {
           isExpanded={isExpanded}
           label={'Sair'}
         />
-        {
-          logout &&
           <LogoutModal
+          canShowlogoutModal={canShowlogoutModal}
             handleLogout={handleSignOut}
             handleCancel={() => handleLogout(false)}
           />
-        }
       </div>
     </div>
   )

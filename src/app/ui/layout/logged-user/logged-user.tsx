@@ -36,7 +36,7 @@ function LoaggedUser({ children }: LoaggedUserProps) {
   return (
     <div className="h-screen flex items-center justify-center">
       {isMobileOnly && <SidebarMobile />}
-      {!isMobileOnly && <Sidebar logout={showLogoutModal} handleLogout={setShowLogoutModal} />}
+      {!isMobileOnly && <Sidebar canShowlogoutModal={showLogoutModal} handleLogout={setShowLogoutModal} />}
       <Suspense fallback={<Loading />}>{children}</Suspense>
       {!isMobileOnly && <ProgramingLinks showModal={showLogoutModal} />}
     </div>

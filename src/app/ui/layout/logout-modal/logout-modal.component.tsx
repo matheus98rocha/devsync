@@ -2,8 +2,11 @@ import PrimaryButton from '../../components/button/primary-button.component'
 import { LogoutModalProps } from './logout-modal.types'
 import { GoAlertFill } from 'react-icons/go'
 
-const LogoutModal = ({ handleLogout, handleCancel }: LogoutModalProps) => {
+const LogoutModal = ({ canShowlogoutModal,handleLogout, handleCancel }: LogoutModalProps) => {
   return (
+    <>
+    {
+      canShowlogoutModal &&
     <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center">
       <div className="fixed inset-0 bg-zinc-800 opacity-60 z-10" onClick={handleCancel}></div>
       <div
@@ -30,6 +33,8 @@ const LogoutModal = ({ handleLogout, handleCancel }: LogoutModalProps) => {
         </div>
       </div>
     </div>
+  }
+  </>
   )
 }
 
