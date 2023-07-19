@@ -1,11 +1,11 @@
-import PrimaryButton from '@/app/ui/components/button/primary-button.component'
-import React from 'react'
+import PrimaryButton from "@/app/ui/components/button/primary-button.component";
+import React from "react";
+import { ProgramingLinksProps } from "./news-item.types";
 
-function NewsItem() {
-  console.log(window.screen.height)
-
+function NewsItem({ handleBackToLink }: ProgramingLinksProps) {
   return (
-    <div className="
+    <div
+      className="
     w-full 
     h-2/4 
     flex 
@@ -16,11 +16,12 @@ function NewsItem() {
     border-solid
     border-[#d0d0d0]
     gap-2
-    pl-2">
+    pl-2"
+    >
       <h2 className="font-bold text-lg">
         React Labs: What Weve Been Working On – June 2022
       </h2>
-      <p className='text-sm'>
+      <p className="text-sm">
         React 18 was years in the making, and with it brought valuable lessons
         for the React team. Its release was the result of many years of research
         and exploring many paths. Some of those paths were successful; many more
@@ -28,11 +29,20 @@ function NewsItem() {
       <PrimaryButton
         buttonText="Read More"
         buttonType="outlined"
-        handleOnClick={() => {alert("test")}}
+        handleOnClick={() => {
+          alert("test");
+        }}
+        isDisabled={false}
+      />
+
+      <PrimaryButton
+        buttonText="Voltar"
+        buttonType="outlined"
+        handleOnClick={handleBackToLink}
         isDisabled={false}
       />
     </div>
-  )
+  );
 }
 
-export default NewsItem
+export default NewsItem;
