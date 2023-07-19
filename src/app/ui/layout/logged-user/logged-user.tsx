@@ -7,6 +7,7 @@ import { isMobileOnly } from 'mobile-device-detect'
 import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation'
 import ProgramingLinks from './programing-links/programing-links'
+import SideBarIcons from './sidebar-icons/sidebar-icons'
 
 interface LoaggedUserProps {
   children: React.ReactNode
@@ -14,6 +15,7 @@ interface LoaggedUserProps {
 
 function LoaggedUser({ children }: LoaggedUserProps) {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [showProgramLinks, setShowProgramLinks] = useState(false);
   const {} = useSession({
     required: true,
     onUnauthenticated() {
@@ -38,7 +40,8 @@ function LoaggedUser({ children }: LoaggedUserProps) {
       {isMobileOnly && <SidebarMobile />}
       {!isMobileOnly && <Sidebar canShowlogoutModal={showLogoutModal} handleLogout={setShowLogoutModal} />}
       <Suspense fallback={<Loading />}>{children}</Suspense>
-      {!isMobileOnly && <ProgramingLinks showModal={showLogoutModal} />}
+      {!isMobileOnly && <ProgramingLinks showModal={showLogoutModal} showNews={showProgramLinks} handleShowNews={setShowProgramLinks} />}
+      {!isMobileOnly && !showProgramLinks && <SideBarIcons handleShowNews={setShowProgramLinks} />}
     </div>
   )
 };
