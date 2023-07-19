@@ -1,10 +1,10 @@
 import React from 'react'
 import NewsItem from './programing-link/programing-links.component'
 
-function ProgramingLinks() {
+function ProgramingLinks({ showModal }: { showModal: boolean }) {
   return (
     <div
-      className="
+      className={`
       fixed
       right-0
       h-screen
@@ -12,13 +12,13 @@ function ProgramingLinks() {
       bg-background
       shadow-md
       overflow-y-hidden
-      -z-10"
+      ${showModal ? "-z-10" : ""}`}
     >
       <NewsItem />
       <NewsItem />
       <NewsItem />
     </div>
   )
-}
+};
 
-export default ProgramingLinks
+export default ProgramingLinks;
