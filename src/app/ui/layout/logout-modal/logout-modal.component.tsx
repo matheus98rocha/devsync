@@ -2,7 +2,7 @@ import PrimaryButton from '../../components/button/primary-button.component'
 import { LogoutModalProps } from './logout-modal.types'
 import { GoAlertFill } from 'react-icons/go'
 
-const LogoutModal = ({ canShowlogoutModal,handleLogout, handleCancel }: LogoutModalProps) => {
+const LogoutModal = ({ canShowlogoutModal, handleLogout, handleCancel }: LogoutModalProps) => {
   return (
     <>
     {
