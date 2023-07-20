@@ -4,5 +4,5 @@ export interface IconItemProps {
   icon: IconType;
   label: string;
   color: string;
-  handleSetLanguage: () => void;
+  docLink: string;
 }
