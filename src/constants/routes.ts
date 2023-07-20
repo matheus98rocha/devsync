@@ -4,7 +4,7 @@ export const routes = [
   {
     route: '/home',
     icon: AiOutlineHome,
-    label: 'Home',
+    label: 'Página Inicial',
   },
   {
     route: '/about',
