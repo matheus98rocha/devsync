@@ -1,28 +1,28 @@
-'use client'
-import React from 'react'
-import Image from 'next/image'
-import { useSession } from 'next-auth/react'
-import { signOut } from 'next-auth/react'
+"use client";
+import React from "react";
+import Image from "next/image";
+import { useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 
 import {
   AiOutlineArrowRight,
   AiOutlineArrowLeft,
   AiOutlineHome,
-} from 'react-icons/ai'
-import { ImExit } from 'react-icons/im'
-import { MdPersonalVideo } from 'react-icons/md'
-import { SiHtmlacademy } from 'react-icons/si'
-import { useRouter } from 'next/router'
+} from "react-icons/ai";
+import { ImExit } from "react-icons/im";
+import { MdPersonalVideo } from "react-icons/md";
+import { SiHtmlacademy } from "react-icons/si";
+import { useRouter } from "next/router";
 
-import SidebarItem from './components/sidebar-item/sidebar-item.component'
-import { routes } from '@/constants/routes'
-import Link from 'next/link'
-import LogoutModal from '../../logout-modal/logout-modal.component'
-import { SidebarProps } from './sidebar.types'
+import SidebarItem from "./components/sidebar-item/sidebar-item.component";
+import { routes } from "@/constants/routes";
+import Link from "next/link";
+import LogoutModal from "../../logout-modal/logout-modal.component";
+import { SidebarProps } from "./sidebar.types";
 
 function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
-  const { data: session } = useSession()
-  const [isExpanded, setIsExpanded] = React.useState(true);
+  const { data: session } = useSession();
+  const [isExpanded, setIsExpanded] = React.useState(false);
 
   const handleSignOut = () => signOut();
   return (
@@ -35,7 +35,7 @@ function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
       grid-rows-[300px_auto_100px]
       h-screen 
       py-4
-      ${isExpanded ? 'w-64' : 'w-24'}
+      ${isExpanded ? "w-64" : "w-24"}
       duration-75
       bg-background
       shadow-md
@@ -82,15 +82,14 @@ function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
           onClick={() => setIsExpanded(!isExpanded)}
         >
           <AiOutlineArrowRight
-            className={`${isExpanded ? 'rotate-180' : 'rotate-0'
-              }       duration-300`}
+            className={`${
+              isExpanded ? "rotate-180" : "rotate-0"
+            }       duration-300`}
             size={23}
             onClick={() => setIsExpanded(!isExpanded)}
           />
           {isExpanded && (
-            <p className="animate-fade animate-ease-in-out font-semibold">
-              Comprimir
-            </p>
+            <p className="slit-in-horizontal font-semibold">Comprimir</p>
           )}
         </div>
 
@@ -98,16 +97,16 @@ function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
           handleClick={() => handleLogout(true)}
           icon={ImExit}
           isExpanded={isExpanded}
-          label={'Sair'}
+          label={"Sair"}
         />
-          <LogoutModal
+        <LogoutModal
           canShowlogoutModal={canShowlogoutModal}
-            handleLogout={handleSignOut}
-            handleCancel={() => handleLogout(false)}
-          />
+          handleLogout={handleSignOut}
+          handleCancel={() => handleLogout(false)}
+        />
       </div>
     </div>
-  )
-};
+  );
+}
 
 export default Sidebar;
