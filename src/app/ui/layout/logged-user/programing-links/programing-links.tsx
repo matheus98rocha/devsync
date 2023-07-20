@@ -7,7 +7,7 @@ function ProgramingLinks({ showModal }: { showModal: boolean }) {
       className={`
       fixed
       right-0
-      w-40
+      w-24
       h-screen
       bg-background
       shadow-md
