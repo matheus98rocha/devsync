@@ -35,7 +35,7 @@ function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
       grid-rows-[300px_auto_100px]
       h-screen 
       py-4
-      ${isExpanded ? 'w-64' : 'w-16'}
+      ${isExpanded ? 'w-64' : 'w-24'}
       duration-75
       bg-background
       shadow-md

@@ -1,5 +1,5 @@
-import React from 'react'
-import NewsItem from './programing-link/programing-links.component'
+import React from "react";
+import ProgramingIcons from "./programing-icons/programing-icons.component";
 
 function ProgramingLinks({ showModal }: { showModal: boolean }) {
   return (
@@ -7,18 +7,16 @@ function ProgramingLinks({ showModal }: { showModal: boolean }) {
       className={`
       fixed
       right-0
+      w-24
       h-screen
-      w-72
       bg-background
       shadow-md
       overflow-y-hidden
       ${showModal ? "-z-10" : ""}`}
     >
-      <NewsItem />
-      <NewsItem />
-      <NewsItem />
+      <ProgramingIcons />
     </div>
-  )
-};
+  );
+}
 
 export default ProgramingLinks;
