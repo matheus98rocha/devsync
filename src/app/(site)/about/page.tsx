@@ -35,7 +35,7 @@ function About() {
         <div className='flex justify-center items-center flex-col gap-16'>
           <h2 className='text-lg'>Equipe de desenvolvedores</h2>
           <div className='flex flex-row gap-16'>
-            {collaborators.map((user: CollaboratorsTypes, index: number) => <CollaboratorsCard keyValue={index} user={user.user} avatar={user.avatar} />)}
+            {collaborators.map((user: CollaboratorsTypes, index: number) => <CollaboratorsCard key={index} keyValue={index} user={user.user} avatar={user.avatar} />)}
           </div>
         </div>
       </div>

@@ -14,7 +14,6 @@ const CollaboratorsCard = ({ user, avatar, keyValue }: CollaboratorsCardProps) =
             className="w-24 h-24 rounded-full mb-2"
         />
         <h2 className="text-xl font-semibold">{user}</h2>
-        {/* text-blue-500 hover:text-blue-700 duration-300 */}
     </a>
 );
 
