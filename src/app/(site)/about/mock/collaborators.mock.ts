@@ -1,4 +1,4 @@
-export const devTeam = [
+export const collaboratorsTeam = [
     {
         user: "wellesleymussolini",
         avatar: "",
