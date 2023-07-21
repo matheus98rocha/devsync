@@ -1,5 +1,5 @@
 export interface DevTeamCardsProps {
-    username: string;
+    user: string;
     avatar: string;
     keyValue: number;
 };

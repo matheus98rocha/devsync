@@ -1,12 +1,13 @@
 'use client';
 import React from 'react';
 import LoaggedUser from '@/app/ui/layout/logged-user/logged-user';
-import fetchContributorsData from './fetchContributorsData';
+import fetchContributorsData, { Contributor } from './fetchContributorsData';
 import DevTeamCards from './layout/cards/devTeamCards';
 import { devTeam } from './mock/devTeam';
 
 function About() {
-  const contributorsData = fetchContributorsData(devTeam);
+  const { contributorsData, isLoading } = fetchContributorsData(devTeam);
+  if (isLoading) return <div>Loading...</div>;
   return (
     <LoaggedUser>
       <div
@@ -24,11 +25,11 @@ function About() {
       >
         <h1>sobre</h1>
         <div className='flex'>
-          {contributorsData.map((user, index) => <DevTeamCards keyValue={index} username={user.user} avatar={user.avatar} />)}
+          {contributorsData.map((user: Contributor, index: number) => <DevTeamCards keyValue={index} user={user.user} avatar={user.avatar} />)}
         </div>
       </div>
     </LoaggedUser>
   );
-}
+};
 
 export default About;
