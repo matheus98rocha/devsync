@@ -33,13 +33,14 @@ function Auth({ type }: AuthProps) {
   bg-background
   w-screen
   h-screen
-  lg:w-1/4
+  lg:w-96
+  lg:h-auto
+  xl:h-[94%]
   py-9
   px-10
   rounded-md
   shadow-lg
   animate-fade-up
-  lg:h-auto
   "
     >
       <h1 className="text-primary text-4xl font-bold">Titulo do site</h1>
@@ -50,8 +51,10 @@ function Auth({ type }: AuthProps) {
     justify-between
     flex-col
     gap-6
+    xl:gap-2
     w-full
     pb-4
+    xl:pb-2
     border-b border-solid border-[#d0d0d0]
     "
       >
@@ -102,6 +105,7 @@ function Auth({ type }: AuthProps) {
         border-t
         border-solid
         border-[#d0d0d0]
+        xl:py-1
         py-9
         flex
         items-center
