@@ -1,13 +1,15 @@
-import React, { Suspense } from 'react'
+"use client";
+import React from "react";
 
-import Auth from './ui/layout/auth/auth.component'
-import Loading from './ui/components/loading/loading.component'
-
-export const metadata = {
-  title: 'Bem-vindo(a)',
-}
+import Auth from "./ui/layout/auth/auth.component";
+import Loading from "./ui/components/loading/loading.component";
+import { useSession } from "next-auth/react";
 
 export default function Home() {
+  const { data: session } = useSession();
+
+  session && <Loading />;
+
   return (
     <>
       <div
@@ -20,8 +22,8 @@ export default function Home() {
       md:flex-none
     "
       >
-          <Auth type="login" />
+        <Auth type="login" />
       </div>
     </>
-  )
+  );
 }
