@@ -1,18 +1,18 @@
-'use client'
-import React from 'react'
+"use client";
+import React from "react";
 
-import ClientOnly from '@/app/ui/layout/logged-user/logged-user'
+import ClientOnly from "@/app/ui/layout/logged-user/logged-user";
 
 function Home() {
-  const [isExpandedSideMenu, setIsExpandedSideMenu] = React.useState(false)
+  const [isExpandedSideMenu, setIsExpandedSideMenu] = React.useState(false);
 
   return (
     <ClientOnly>
       <div
         className="min-h-screen
       w-3/6
-      shadow-md
-      bg-background
+      lg:shadow-md
+      lg:bg-background
       flex
       flex-col
       items-center
@@ -20,7 +20,7 @@ function Home() {
       overflow-x-hidden "
       ></div>
     </ClientOnly>
-  )
+  );
 }
 
-export default Home
+export default Home;

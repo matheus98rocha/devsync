@@ -7,6 +7,7 @@ import { isMobileOnly } from 'mobile-device-detect'
 import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation'
 import ProgramingLinks from './programing-links/programing-links'
+import ProgramingLinksMobile from './programing-links-mobile/programing-links-mobile.component'
 
 interface LoaggedUserProps {
   children: React.ReactNode
@@ -37,8 +38,9 @@ function LoaggedUser({ children }: LoaggedUserProps) {
     <div className="h-screen flex items-center justify-center">
       {isMobileOnly && <SidebarMobile />}
       {!isMobileOnly && <Sidebar canShowlogoutModal={showLogoutModal} handleLogout={setShowLogoutModal} />}
-      <Suspense fallback={<Loading />}>{children}</Suspense>
       {!isMobileOnly && <ProgramingLinks showModal={showLogoutModal} />}
+      {isMobileOnly && <ProgramingLinksMobile />}
+      <Suspense fallback={<Loading />}>{children}</Suspense>
     </div>
   )
 };
