@@ -17,8 +17,8 @@ import { useRouter } from "next/router";
 import SidebarItem from "./components/sidebar-item/sidebar-item.component";
 import { routes } from "@/constants/routes";
 import Link from "next/link";
-import LogoutModal from "../../logout-modal/logout-modal.component";
 import { SidebarProps } from "./sidebar.types";
+import LogoutModal from "../../../logout-modal/logout-modal.component";
 
 function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
   const { data: session } = useSession();
