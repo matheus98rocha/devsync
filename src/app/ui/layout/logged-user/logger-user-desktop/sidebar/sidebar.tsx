@@ -19,15 +19,18 @@ import { routes } from "@/constants/routes";
 import Link from "next/link";
 import { SidebarProps } from "./sidebar.types";
 import LogoutModal from "../../../logout-modal/logout-modal.component";
+import packageJson from "../../../../../../../package.json";
 
 function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
   const { data: session } = useSession();
   const [isExpanded, setIsExpanded] = React.useState(false);
+  const appVersion = packageJson.version || "N/A";
 
   const handleSignOut = () => signOut();
   return (
-    <div
-      className={`
+    <>
+      <div
+        className={`
       fixed
       left-0
       grid
@@ -40,72 +43,76 @@ function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
       bg-background
       shadow-md
       `}
-    >
-      {/* User container */}
-      <div className="flex items-center justify-start flex-col gap-4">
-        {session?.user?.image && (
-          <Image
-            src={session.user.image as string}
-            blurDataURL={session.user.image as string}
-            width={isExpanded ? 60 : 30}
-            height={isExpanded ? 60 : 30}
-            priority={true}
-            alt="use-profile"
-            className="rounded-full"
-          />
-        )}
-        {isExpanded && (
-          <p className="font-semibold animate-fade animate-duration-[3ms] break-all">
-            {session?.user?.name}
-          </p>
-        )}
-      </div>
-
-      {/* Main Container */}
-      <div className="flex flex-col items-center justify-start gap-4">
-        {routes.map((route) => (
-          <Link href={route.route} key={route.route} className="w-full">
-            <SidebarItem
-              icon={route.icon}
-              isExpanded={isExpanded}
-              label={route.label}
-              currentRoute={route.route}
+      >
+        {/* User container */}
+        <div className="flex items-center justify-start flex-col gap-4">
+          {session?.user?.image && (
+            <Image
+              src={session.user.image as string}
+              blurDataURL={session.user.image as string}
+              width={isExpanded ? 60 : 30}
+              height={isExpanded ? 60 : 30}
+              priority={true}
+              alt="use-profile"
+              className="rounded-full"
             />
-          </Link>
-        ))}
-      </div>
-
-      {/* Footer container */}
-      <div className="flex flex-col items-center justify-end gap-4">
-        <div
-          className="hover:cursor-pointer flex items-center justify-center gap-2"
-          onClick={() => setIsExpanded(!isExpanded)}
-        >
-          <AiOutlineArrowRight
-            className={`${
-              isExpanded ? "rotate-180" : "rotate-0"
-            }       duration-300`}
-            size={23}
-            onClick={() => setIsExpanded(!isExpanded)}
-          />
+          )}
           {isExpanded && (
-            <p className="slit-in-horizontal font-semibold">Comprimir</p>
+            <p className="font-semibold animate-fade animate-duration-[3ms] break-all">
+              {session?.user?.name}
+            </p>
           )}
         </div>
 
-        <SidebarItem
-          handleClick={() => handleLogout(true)}
-          icon={ImExit}
-          isExpanded={isExpanded}
-          label={"Sair"}
-        />
-        <LogoutModal
-          canShowlogoutModal={canShowlogoutModal}
-          handleLogout={handleSignOut}
-          handleCancel={() => handleLogout(false)}
-        />
+        {/* Main Container */}
+        <div className="flex flex-col items-center justify-start gap-4">
+          {routes.map((route) => (
+            <Link href={route.route} key={route.route} className="w-full">
+              <SidebarItem
+                icon={route.icon}
+                isExpanded={isExpanded}
+                label={route.label}
+                currentRoute={route.route}
+              />
+            </Link>
+          ))}
+        </div>
+
+        {/* Footer container */}
+        <div className="flex flex-col items-center justify-end gap-4">
+          <div
+            className="hover:cursor-pointer flex items-center justify-center gap-2"
+            onClick={() => setIsExpanded(!isExpanded)}
+          >
+            <AiOutlineArrowRight
+              className={`${
+                isExpanded ? "rotate-180" : "rotate-0"
+              }       duration-300`}
+              size={23}
+              onClick={() => setIsExpanded(!isExpanded)}
+            />
+            {isExpanded && (
+              <p className="slit-in-horizontal font-semibold">Comprimir</p>
+            )}
+          </div>
+
+          <SidebarItem
+            handleClick={() => handleLogout(true)}
+            icon={ImExit}
+            isExpanded={isExpanded}
+            label={"Sair"}
+          />
+          <LogoutModal
+            canShowlogoutModal={canShowlogoutModal}
+            handleLogout={handleSignOut}
+            handleCancel={() => handleLogout(false)}
+          />
+        </div>
       </div>
-    </div>
+      <p className="fixed bottom-0 left-2 text-primary text-xs">
+        Versão: {appVersion}
+      </p>
+    </>
   );
 }
 
