@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import ProgramingIcons from "../programing-links/programing-icons/programing-icons.component";
 import HamburguerMenu from "@/app/ui/components/hamburguer-menu/hamburguer-menu.component";
+import ProgramingIcons from "../../logger-user-desktop/programing-links/programing-icons/programing-icons.component";
 
 function ProgramingLinksMobile() {
   const [showIcons, setShowIcons] = useState(false);
