@@ -20,14 +20,14 @@ function SidebarItem({
       ${pathname === currentRoute ? 'bg-primary': 'none'}
       ${pathname === currentRoute ? 'text-contrastBackground': 'text-black'}
       ${pathname === currentRoute ? 'hover:bg-primaryFocus': 'none'}
-      ease-in-out duration-300
+      slit-in-horizontal
       p-4
       font-semibold
       hover:cursor-pointer`}
       onClick={handleClick}
     >
       {isExpanded && (
-        <p className="animate-fade animate-ease-in-out">{label}</p>
+        <p className="slit-in-horizontal">{label}</p>
       )}
       <Icon size={23} />
     </div>

@@ -1,25 +1,25 @@
-'use client'
-import React from 'react'
-import SocialMediaIcons from './components/social-media-icons/social-media-icons.components'
+"use client";
+import React from "react";
+import SocialMediaIcons from "./components/social-media-icons/social-media-icons.components";
 
-import Link from 'next/link'
-import { AuthProps } from './auth.types'
-import PrimaryInput from '../../components/input/primary-input.component'
-import { useSession } from 'next-auth/react'
-import { redirect } from 'next/navigation'
-import PrimaryButton from '../../components/button/primary-button.component'
+import Link from "next/link";
+import { AuthProps } from "./auth.types";
+import PrimaryInput from "../../components/input/primary-input.component";
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
+import PrimaryButton from "../../components/button/primary-button.component";
 
 function Auth({ type }: AuthProps) {
-  const [email, setEmail] = React.useState('')
-  const [password, setPassword] = React.useState('')
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
 
-  const { data: session } = useSession()
+  const { data: session } = useSession();
 
   React.useEffect(() => {
     if (session) {
-      redirect('/home')
+      redirect("/home");
     }
-  }, [session])
+  }, [session]);
 
   return (
     <div
@@ -31,15 +31,13 @@ function Auth({ type }: AuthProps) {
   justify-center
   gap-8
   bg-background
-  w-screen
-  h-screen
-  lg:w-1/4
+  lg:h-auto
+  lg:min-w-[550px]
   py-9
   px-10
   rounded-md
   shadow-lg
   animate-fade-up
-  lg:h-auto
   "
     >
       <h1 className="text-primary text-4xl font-bold">Titulo do site</h1>
@@ -69,28 +67,28 @@ function Auth({ type }: AuthProps) {
           valueInput={password}
           handleChangeInput={(event) => setPassword(event.target.value)}
         />
-        {type === 'login' && (
+        {type === "login" && (
           <div className="flex items-start w-full m-0">
             <Link
-              href={'/forgot-password'}
+              href={"/forgot-password"}
               className="text-sm text-primary hover:cursor-pointer"
             >
               Esqueceu a sua senha?
             </Link>
           </div>
         )}
-        {type === 'login' ? (
+        {type === "login" ? (
           <PrimaryButton
             buttonText="Logar"
-            buttonType={'primary'}
-            handleOnClick={() => alert('Login in development')}
+            buttonType={"primary"}
+            handleOnClick={() => alert("Login in development")}
             isDisabled={false}
           />
         ) : (
           <PrimaryButton
             buttonText="Criar Conta"
             buttonType="primary"
-            handleOnClick={() => alert('New account in development')}
+            handleOnClick={() => alert("New account in development")}
             isDisabled={false}
           />
         )}
@@ -109,11 +107,11 @@ function Auth({ type }: AuthProps) {
         gap-2
     "
       >
-        {type === 'login' ? (
+        {type === "login" ? (
           <>
             <p>Não possui uma conta?</p>
             <Link
-              href={'/create-account'}
+              href={"/create-account"}
               className="text-sm text-primary hover:cursor-pointer"
             >
               <p className="text-primary hover:cursor-pointer">Criar Conta</p>
@@ -122,14 +120,14 @@ function Auth({ type }: AuthProps) {
         ) : (
           <>
             <p>Já possui uma conta?</p>
-            <Link href={'/'}>
+            <Link href={"/"}>
               <p className="text-primary hover:cursor-pointer">Entrar</p>
             </Link>
           </>
         )}
       </div>
     </div>
-  )
+  );
 }
 
-export default Auth
+export default Auth;

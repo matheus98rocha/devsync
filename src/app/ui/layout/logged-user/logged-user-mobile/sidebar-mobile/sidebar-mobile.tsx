@@ -1,16 +1,13 @@
 "use client";
 import React from "react";
-import { AiOutlineHome } from "react-icons/ai";
 import SidebarMobileItem from "./components/sidebar-mobile-item";
-import { MdPersonalVideo } from "react-icons/md";
-import { SiHtmlacademy } from "react-icons/si";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 
 import { signOut } from "next-auth/react";
 import { routes } from "@/constants/routes";
 import Link from "next/link";
-import LogoutModal from "../../logout-modal/logout-modal.component";
+import LogoutModal from "../../../logout-modal/logout-modal.component";
 
 function SidebarMobile() {
   const { data: session } = useSession();
