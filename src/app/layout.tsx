@@ -1,6 +1,7 @@
 import Provider from "@/utils/lib/provider";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import { ThemeProvider } from "@/context/elements.context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-contrastBackground`}>
-        <Provider>{children}</Provider>
+        <ThemeProvider>
+          <Provider>{children}</Provider>
+        </ThemeProvider>
       </body>
     </html>
   );

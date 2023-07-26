@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { memo } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
@@ -20,11 +20,12 @@ import Link from "next/link";
 import { SidebarProps } from "./sidebar.types";
 import LogoutModal from "../../../logout-modal/logout-modal.component";
 import packageJson from "../../../../../../../package.json";
+import { useElementsContext } from "@/context/elements.context";
 
 function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
   const { data: session } = useSession();
-  const [isExpanded, setIsExpanded] = React.useState(false);
   const appVersion = packageJson.version || "N/A";
+  const { isOpenSidebar, toggleIsOpenSidebar } = useElementsContext();
 
   const handleSignOut = () => signOut();
   return (
@@ -38,7 +39,7 @@ function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
       grid-rows-[300px_auto_100px]
       h-screen 
       py-4
-      ${isExpanded ? "w-64" : "w-24"}
+      ${isOpenSidebar ? "w-64" : "w-24"}
       duration-75
       bg-background
       shadow-md
@@ -50,14 +51,14 @@ function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
             <Image
               src={session.user.image as string}
               blurDataURL={session.user.image as string}
-              width={isExpanded ? 60 : 30}
-              height={isExpanded ? 60 : 30}
+              width={isOpenSidebar ? 60 : 30}
+              height={isOpenSidebar ? 60 : 30}
               priority={true}
               alt="use-profile"
               className="rounded-full"
             />
           )}
-          {isExpanded && (
+          {isOpenSidebar && (
             <p className="font-semibold animate-fade animate-duration-[3ms] break-all">
               {session?.user?.name}
             </p>
@@ -70,7 +71,7 @@ function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
             <Link href={route.route} key={route.route} className="w-full">
               <SidebarItem
                 icon={route.icon}
-                isExpanded={isExpanded}
+                isExpanded={isOpenSidebar}
                 label={route.label}
                 currentRoute={route.route}
               />
@@ -82,16 +83,16 @@ function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
         <div className="flex flex-col items-center justify-end gap-4">
           <div
             className="hover:cursor-pointer flex items-center justify-center gap-2"
-            onClick={() => setIsExpanded(!isExpanded)}
+            onClick={() => () => toggleIsOpenSidebar()}
           >
             <AiOutlineArrowRight
               className={`${
-                isExpanded ? "rotate-180" : "rotate-0"
+                isOpenSidebar ? "rotate-180" : "rotate-0"
               }       duration-300`}
               size={23}
-              onClick={() => setIsExpanded(!isExpanded)}
+              onClick={() => toggleIsOpenSidebar()}
             />
-            {isExpanded && (
+            {isOpenSidebar && (
               <p className="slit-in-horizontal font-semibold">Comprimir</p>
             )}
           </div>
@@ -99,7 +100,7 @@ function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
           <SidebarItem
             handleClick={() => handleLogout(true)}
             icon={ImExit}
-            isExpanded={isExpanded}
+            isExpanded={isOpenSidebar}
             label={"Sair"}
           />
           <LogoutModal
@@ -116,4 +117,4 @@ function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
   );
 }
 
-export default Sidebar;
+export default memo(Sidebar);
