@@ -8,12 +8,13 @@ import { signOut } from "next-auth/react";
 import { routes } from "@/constants/routes";
 import Link from "next/link";
 import LogoutModal from "../../../logout-modal/logout-modal.component";
+import { useElementsContext } from "@/context/elements.context";
 
 function SidebarMobile() {
   const { data: session } = useSession();
-
-  const [canShowDropdown, setCanShowDropdown] = React.useState(false);
   const [showLogoutModal, setShowLogoutModal] = React.useState(false);
+  const { isOpenDropdownMenuMobile, toggleIsOpenDropdownMenuMobile } =
+    useElementsContext();
   const handleSignOut = () => signOut();
   return (
     <>
@@ -28,10 +29,10 @@ function SidebarMobile() {
             priority={true}
             alt="use-profile"
             className="rounded-full"
-            onClick={() => setCanShowDropdown(!canShowDropdown)}
+            onClick={() => toggleIsOpenDropdownMenuMobile()}
           />
         )}
-        {canShowDropdown && (
+        {isOpenDropdownMenuMobile && (
           <div
             className="
           right-1

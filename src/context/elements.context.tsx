@@ -6,6 +6,8 @@ type ElementsContextState = {
   toggleIsOpenSidebar: () => void;
   isExpandedIconsMobile: boolean;
   toggleIsExpandedIconsMobile: () => void;
+  isOpenDropdownMenuMobile: boolean;
+  toggleIsOpenDropdownMenuMobile: () => void;
 };
 
 type ElementsContextProps = {
@@ -20,6 +22,8 @@ const ElementsContext = createContext<ElementsContextState | undefined>(
 const ThemeProvider = ({ children }: ElementsContextProps) => {
   const [isOpenSidebar, setIsOpenSidebar] = useState<boolean>(false);
   const [isExpandedIconsMobile, setIsExpandedIconsMobile] = useState(false);
+  const [isOpenDropdownMenuMobile, setIsOpenDropdownMenuMobile] =
+    useState(false);
 
   const toggleIsOpenSidebar = () => {
     setIsOpenSidebar((prevIsOpenSidebar) => !prevIsOpenSidebar);
@@ -31,11 +35,17 @@ const ThemeProvider = ({ children }: ElementsContextProps) => {
     );
   };
 
+  const toggleIsOpenDropdownMenuMobile = () => {
+    setIsOpenDropdownMenuMobile((prevStateDropdown) => !prevStateDropdown);
+  };
+
   const contextValue: ElementsContextState = {
     isOpenSidebar,
     toggleIsOpenSidebar,
     isExpandedIconsMobile,
     toggleIsExpandedIconsMobile,
+    isOpenDropdownMenuMobile,
+    toggleIsOpenDropdownMenuMobile,
   };
 
   return (
