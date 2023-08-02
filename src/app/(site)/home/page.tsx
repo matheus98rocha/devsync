@@ -10,9 +10,10 @@ function Home() {
     <ClientOnly>
       <div
         className="min-h-screen
-      w-3/6
-      lg:shadow-md
-      lg:bg-background
+      lg:w-3/6
+      w-screen
+      shadow-md
+      bg-background
       flex
       flex-col
       items-center

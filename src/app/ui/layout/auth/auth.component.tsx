@@ -31,8 +31,11 @@ function Auth({ type }: AuthProps) {
   justify-center
   gap-8
   bg-background
+  w-screen
+  h-screen
+  lg:w-96
   lg:h-auto
-  lg:min-w-[550px]
+  xl:h-[94%]
   py-9
   px-10
   rounded-md
@@ -48,8 +51,10 @@ function Auth({ type }: AuthProps) {
     justify-between
     flex-col
     gap-6
+    xl:gap-2
     w-full
     pb-4
+    xl:pb-2
     border-b border-solid border-[#d0d0d0]
     "
       >
@@ -100,6 +105,7 @@ function Auth({ type }: AuthProps) {
         border-t
         border-solid
         border-[#d0d0d0]
+        xl:py-1
         py-9
         flex
         items-center
