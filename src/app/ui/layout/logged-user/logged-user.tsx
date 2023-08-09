@@ -49,7 +49,7 @@ function LoaggedUser({ children }: LoaggedUserProps) {
       )}
       {!isMobileOnly && <ProgramingLinks showModal={showLogoutModal} />}
 
-      <Suspense fallback={<Loading />}>{children}</Suspense>
+        <Suspense fallback={<Loading />}>{children}</Suspense>
     </div>
   );
 }

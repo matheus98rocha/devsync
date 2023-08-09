@@ -1,7 +1,5 @@
-interface AboutCardArrayProps {
+export interface AboutCardProps {
     title: string;
     text: string;
     image: string;
 };
-
-export interface AboutCardProps { card: Array<AboutCardArrayProps> };

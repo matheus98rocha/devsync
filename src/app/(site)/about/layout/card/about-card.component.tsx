@@ -1,46 +1,31 @@
-import React, { useEffect, useState } from "react";
-import { AboutCardProps } from "./interfaces/about-card.interface";
+import React from "react";
 import Image from "next/image";
+import { AboutCardProps } from "./interfaces/about-card.interface";
 
-const AboutCard = ({ card }: AboutCardProps) => {
-    const [isWideScreen, setIsWideScreen] = useState(true);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setIsWideScreen(window.innerWidth >= 1520);
-        };
-
-        window.addEventListener('resize', handleResize);
-        handleResize(); // Initial check
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
-    return (
-        // <div className='grid grid-cols-2 gap-10'>
-        <div className={`grid ${isWideScreen ? 'grid-cols-2' : 'grid-cols-1'} gap-10`}>
-            {card.map((about, index) => (
-                <div key={index} 
-                className='
-                flex flex-col gap-4 p-6 rounded-lg bg-disabled-hover text-white
-                h-42
-                '>
-                    <h2 className="text-base text-gray-700 uppercase font-black">{about.title}</h2>
-                    <p className="text-sm text-gray-700">{about.text}</p>
-                    <img src={about.image} alt={about.title} 
-                    // className="w-60" 
-                    />
-                    {/* <Image
-                        src={about.image as string}
-                        width="100"
-                        height="100"
-                        alt={about.title as string}
-                    /> */}
-                </div>
-            ))}
-        </div>
-    );
+const AboutCard = ({ title, image, text }: AboutCardProps) => {
+  return (
+    <div
+      className="
+                w-72
+                h-[20]
+                flex 
+                flex-col
+                gap-4 
+                p-6 
+                rounded-lg
+                bg-disabled-hover
+                text-white
+                "
+    >
+      <h2 className="text-base text-gray-700 uppercase font-black">{title}</h2>
+      <p className="text-sm text-gray-700">{text}</p>
+      <Image
+        src={image as string}
+        width="100"
+        height="100"
+        alt={title as string}
+      />
+    </div>
+  );
 };
 export default AboutCard;
