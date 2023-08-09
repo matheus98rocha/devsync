@@ -5,8 +5,17 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  images: {
+    domains: ['s-lol-web.op.gg'],
+  },
   theme: {
     extend: {
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },   
+          '100%': { opacity: '1' },  
+        },
+      },
       colors: {
         primary: {
           DEFAULT: "#009F29",

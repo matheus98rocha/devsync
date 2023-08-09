@@ -1,42 +1,37 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import LoaggedUser from '@/app/ui/layout/logged-user/logged-user';
-import projectCollaborators from './utils/collaborators';
-import CollaboratorsCard from './layout/cards/collaborators-card.component';
-import { collaboratorsTeam } from './mock/collaborators.mock';
-import { CollaboratorsTypes } from './utils/collaborators.types';
 import Loading from '@/app/ui/components/loading/loading.component';
-import TextTypingAnimation from './components/TextTypingAnimation';
+import { aboutMock } from './mock/about.mock';
+import AboutCard from './layout/card/about-card.component';
 
 function About() {
-  const { collaborators, isLoading } = projectCollaborators(collaboratorsTeam);
-  if (isLoading) return <div className="h-screen w-screen flex items-center justify-center"><Loading /></div>
+  const words = [
+    'Nós somos uma equipe de desenvolvedores apaixonados por tecnologia e inovação. Estamos criando uma plataforma que busca simplificar e aprimorar funções já existentes e similares ao GitHub.',
+    'Nosso objetivo é criar um ambiente onde programadores de todos os níveis possam se conectar, compartilhar conhecimentos e melhorar seus projetos.',
+  ];
   return (
     <LoaggedUser>
       <div
         className="
-          min-h-screen
+        flex 
+        flex-col 
+        gap-16 
+        h-screen 
+        animate-[fadeIn_0.3s_ease-in-out_forwards]
           w-3/6
           shadow-md
           bg-background
-          flex
-          flex-col
-          gap-10
           px-24
-          items-center
-          justify-center
           overflow-x-hidden
-        "
-      >
-        <>
-          <TextTypingAnimation />
-        </>
-
-        <div className='flex justify-center items-center flex-col gap-16'>
-          <h2 className='text-lg'>Equipe de desenvolvedores</h2>
-          <div className='flex flex-row gap-16'>
-            {collaborators.map((user: CollaboratorsTypes, index: number) => <CollaboratorsCard key={index} keyValue={index} user={user.user} avatar={user.avatar} />)}
-          </div>
+        ">
+        <div className='flex flex-col gap-6'>
+          <h1 className="text-center text-3xl mb-4 font-black text-gray">A PLATAFORMA PARA TODOS OS DESENVOLVEDORES</h1>
+          {words.map(word => <p className='text-center'>{word}</p>)}
+        </div>
+        <div className="flex flex-col w-full gap-10">
+          <h2 className='uppercase font-black text-gray'>objetivos do projeto</h2>
+          <AboutCard card={aboutMock} />
         </div>
       </div>
     </LoaggedUser>
