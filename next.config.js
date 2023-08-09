@@ -8,6 +8,7 @@ const nextConfig = {
       "google.com",
       "lh3.googleusercontent.com",
       "avatars.githubusercontent.com",
+      "raw.githubusercontent.com",
     ],
   },
 };
