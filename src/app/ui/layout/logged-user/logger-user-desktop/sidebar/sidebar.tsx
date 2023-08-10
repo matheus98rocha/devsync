@@ -101,6 +101,7 @@ function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
             handleClick={() => handleLogout(true)}
             icon={ImExit}
             isExpanded={isOpenSidebar}
+            efectHoverItem={false}
             label={"Sair"}
           />
           <LogoutModal
