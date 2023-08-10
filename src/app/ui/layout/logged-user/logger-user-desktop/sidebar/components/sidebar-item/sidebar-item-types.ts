@@ -7,5 +7,5 @@ export interface SidebarItemProps {
   label: string;
   handleClick?: () => void;
   currentRoute?: string;
-  efectHoverItem?: false;
+  efectHoverItem?: boolean;
 }
