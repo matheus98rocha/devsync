@@ -8,7 +8,7 @@ function ProgramingLinksMobile() {
   const { isExpandedIconsMobile, toggleIsExpandedIconsMobile } =
     useElementsContext();
   return (
-    <div className="absolute top-4 left-3 h-[30%] flex flex-col items-center justify-start">
+    <div className="absolute top-4 left-3 h-[30%] flex flex-col items-center justify-start z-10">
       <HamburguerMenu
         isOpen={isExpandedIconsMobile}
         setIsOpen={() => toggleIsExpandedIconsMobile()}
