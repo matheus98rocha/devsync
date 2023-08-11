@@ -18,7 +18,7 @@ function Home() {
       flex-col
       items-center
       justify-start
-      overflow-x-hidden "
+      overflow-x-hidden"
       ></div>
     </ClientOnly>
   );

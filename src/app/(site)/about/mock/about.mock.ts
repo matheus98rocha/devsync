@@ -7,13 +7,13 @@ export const aboutMock = [
   },
   {
     title: "Simplicidade como Prioridade",
-    text: "Estamos empenhados em criar uma interface e uma experiência do usuário que definam novos padrões de usabilidade. Nossas soluções são projetadas para aprimorar o ambiente de desenvolvimento.",
+    text: "Nosso compromisso reside na criação de uma interface e experiência do usuário que não apenas se destaquem, mas também estabeleçam novos parâmetros de usabilidade. Cada uma de nossas soluções é cuidadosamente concebida visando aprimorar significativamente o ambiente de desenvolvimento, trazendo inovação e eficiência à vanguarda.",
     image:
       "https://www.integrasist.com.br/dados/editor/image/WhatsApp_Image_2021_04_05_at_21.13.13.jpeg",
   },
   {
     title: "Aceitando Desafios",
-    text: "A inovação é nossa companheira constante. Estamos sempre explorando novas ideias e desafiando nossos limites para proporcionar aos desenvolvedores a melhor experiência possível.",
+    text: "A busca pela inovação está sempre ao nosso lado. Não paramos de explorar novas ideias e superar nossos próprios limites, tudo para oferecer aos desenvolvedores uma experiência excepcional. Estamos comprometidos em criar um ambiente onde a criatividade e a aprendizagem floresçam, impulsionando assim o universo da programação.",
     image:
       "https://www.integrasist.com.br/dados/editor/image/WhatsApp_Image_2021_04_05_at_21.13.13.jpeg",
   },
