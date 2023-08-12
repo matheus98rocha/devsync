@@ -5,26 +5,29 @@ import ClientOnly from "@/app/ui/layout/logged-user/logged-user";
 import Post from "@/app/ui/components/post/post.component";
 
 function Home() {
-  const [isExpandedSideMenu, setIsExpandedSideMenu] = React.useState(false);
-
   return (
     <ClientOnly>
       <div
         className="
-      w-3/6
-      h-screen
-      overflow-y-scroll
-      overflow-x-hidden
-      lg:shadow-md
-      lg:bg-background
-      flex
-      flex-col
-      items-center
-      justify-start
-      px-10
-      gap-7
+        flex 
+        flex-col
+        items-start
+        justify-start
+        shadow-md
+        overflow-scroll
+        overflow-x-hidden
+        w-screen
+        lg:w-3/6
+        h-screen
+        bg-background 
+        p-10
+        gap-8
+        scroll-smooth
       "
       >
+        <Post />
+        <Post />
+        <Post />
         <Post />
         <Post />
         <Post />
