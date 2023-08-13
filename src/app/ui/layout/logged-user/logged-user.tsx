@@ -8,6 +8,7 @@ import ProgramingLinksMobile from "./logged-user-mobile/programing-links-mobile/
 import SidebarMobile from "./logged-user-mobile/sidebar-mobile/sidebar-mobile";
 import ProgramingLinks from "./logger-user-desktop/programing-links/programing-links";
 import Sidebar from "./logger-user-desktop/sidebar/sidebar";
+import Header from "./logger-user-desktop/header/header";
 
 interface LoaggedUserProps {
   children: React.ReactNode;
@@ -49,7 +50,12 @@ function LoaggedUser({ children }: LoaggedUserProps) {
       )}
       {!isMobileOnly && <ProgramingLinks showModal={showLogoutModal} />}
 
-      <Suspense fallback={<Loading />}>{children}</Suspense>
+      <Suspense fallback={<Loading />}>
+        <div className="w-screen h-full flex flex-col items-center justify-center">
+          <Header />
+          {children}
+        </div>
+      </Suspense>
     </div>
   );
 }

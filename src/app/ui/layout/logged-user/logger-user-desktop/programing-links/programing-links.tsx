@@ -12,7 +12,7 @@ function ProgramingLinks({ showModal }: { showModal: boolean }) {
       bg-background
       shadow-md
       overflow-y-hidden
-      ${showModal ? "-z-10" : ""}`}
+      `}
     >
       <ProgramingIcons />
     </div>
