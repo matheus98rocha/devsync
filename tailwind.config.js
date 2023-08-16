@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -24,7 +25,7 @@ module.exports = {
         },
         error: {
           DEFAULT: "#f84b4b",
-          hover: "#e92626"
+          hover: "#e92626",
         },
         alert: {
           DEFAULT: "#ebb44f",

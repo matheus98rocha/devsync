@@ -8,8 +8,7 @@ const nextConfig = {
       "google.com",
       "lh3.googleusercontent.com",
       "avatars.githubusercontent.com",
-      "www.integrasist.com.br",
-      "www.pixelstalk.net"
+      "raw.githubusercontent.com",
     ],
   },
 };

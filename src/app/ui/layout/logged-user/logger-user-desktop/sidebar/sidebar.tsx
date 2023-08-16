@@ -1,5 +1,5 @@
 "use client";
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
@@ -21,11 +21,14 @@ import { SidebarProps } from "./sidebar.types";
 import LogoutModal from "../../../logout-modal/logout-modal.component";
 import packageJson from "../../../../../../../package.json";
 import { useElementsContext } from "@/context/elements.context";
+import Toggle from "@/app/ui/components/toggle/toggle.component";
 
 function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
   const { data: session } = useSession();
   const appVersion = packageJson.version || "N/A";
   const { isOpenSidebar, toggleIsOpenSidebar } = useElementsContext();
+
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   const handleSignOut = () => signOut();
   return (
@@ -42,6 +45,7 @@ function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
       ${isOpenSidebar ? "w-64" : "w-24"}
       duration-75
       bg-background
+      dark:bg-black
       shadow-md
       `}
       >
@@ -80,7 +84,13 @@ function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
         </div>
 
         {/* Footer container */}
-        <div className="flex flex-col items-center justify-end gap-4">
+        <div className="flex flex-col items-center justify-center gap-4 pb-6">
+          <div className="w-full flex items-center justify-center">
+            <Toggle
+              active={isDarkTheme}
+              handleToggle={() => setIsDarkTheme(!isDarkTheme)}
+            />
+          </div>
           <div
             className="hover:cursor-pointer flex items-center justify-center gap-2"
             onClick={() => () => toggleIsOpenSidebar()}
@@ -96,11 +106,11 @@ function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
               <p className="slit-in-horizontal font-semibold">Comprimir</p>
             )}
           </div>
-
           <SidebarItem
             handleClick={() => handleLogout(true)}
             icon={ImExit}
             isExpanded={isOpenSidebar}
+            efectHoverItem={false}
             label={"Sair"}
           />
           <LogoutModal
