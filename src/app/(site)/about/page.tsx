@@ -40,7 +40,7 @@ function About() {
           <h2 className="uppercase font-black text-gray">
             objetivos do projeto
           </h2>
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
+          <div className="px-8 grid grid-cols-1 xl:grid-cols-2 gap-10">
             {
               aboutMock.map((card, index) => (
                 <div key={index}>
