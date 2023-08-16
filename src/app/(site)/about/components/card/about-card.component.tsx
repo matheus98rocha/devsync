@@ -1,8 +1,15 @@
 import React from "react";
-import Image from "next/image";
 import { AboutCardProps } from "./about-card.types";
 
 const AboutCard = ({ title, image, text }: AboutCardProps) => {
+  const cardStyle = {
+    backgroundImage: `url(${image})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    width: "100%",
+    height: "500px",
+  };
+
   return (
     <div
       className="
@@ -14,21 +21,17 @@ const AboutCard = ({ title, image, text }: AboutCardProps) => {
                 rounded-lg
                 bg-disabled-hover
                 text-white
-                "
+            "
+      style={cardStyle}
     >
-      <h2
-        className="px-6 pt-6 text-base text-gray-700 uppercase font-black">{title}</h2>
-      <p
-        className="px-6 text-sm text-gray-700">{text}</p>
-      <div className="mt-auto">
-        <Image
-          src={image as string}
-          width={500}
-          height={500}
-          alt={title as string}
-        />
+      <div className="flex flex-col h-full bg-opacity-50 bg-black p-6">
+        <h2 className="text-base text-gray-700 uppercase font-black">
+          {title}
+        </h2>
+        <p className="text-sm text-gray-700">{text}</p>
       </div>
     </div>
   );
 };
+
 export default AboutCard;

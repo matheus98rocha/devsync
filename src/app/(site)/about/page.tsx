@@ -25,7 +25,6 @@ function About() {
         py-10
         animate-[fadeIn_0.3s_ease-in-out_forwards]
         "
-        // animate-[fadeIn_0.3s_ease-in-out_forwards]
       >
         <div className="flex flex-col gap-6 p-7">
           <h1 className="text-center text-3xl mb-4 font-black text-gray">
