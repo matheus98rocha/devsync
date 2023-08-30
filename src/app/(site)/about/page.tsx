@@ -17,7 +17,6 @@ function About() {
         shadow-md
         overflow-scroll
         overflow-x-hidden
-        min-h-screen
         lg:w-3/6
         h-full
         bg-background
