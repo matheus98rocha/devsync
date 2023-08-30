@@ -20,19 +20,73 @@ Todos os estilos e padrões da aplicação se encontram no tailwind.config.js.
 
 Antes de começar o desenvolvimento de uma nova funcionalidade, siga estas etapas:
 
-Atenção: 
-  Nenhum desenvolvimento deve ser feito na branch master ou dev.
-  Não faça pull requests da dev para a master
-  Antes de desenvolver lembre de fazer um merge com a develop
+**Atenção:**
+- Nenhum desenvolvimento deve ser feito na branch master ou develop.
+- Não faça pull requests da develop para a master.
+- Antes de desenvolver, lembre-se de fazer um merge com a develop.
 
-1. Crie uma nova branch com o formato `feature/nome-da-tarefa` a partir da branch principal, rodando o comando git flow feature start.
-2. Faça merge ou rebase da dev
-3. Implemente a funcionalidade na nova branch.
-4. Realize testes e verifique se a funcionalidade está funcionando corretamente.
-5. Faça o commit das alterações e faça um push da nova branch para o repositório remoto.
-6. Crie um Pull Request para mesclar sua branch com a branch principal(dev), rodando o comando git flow feature finish.
-7. Envie o pull request para ser avaliado e aguarde aprovação
-8. Ao ser validado e aprovado, faça o merge e siga para a próxima tarefa.
+1. **Crie uma Nova Branch:** Inicie uma nova branch com o formato `feature/nome-da-tarefa` a partir da branch principal. Utilize o seguinte comando para criar a nova branch:
+   
+   ```sh
+   git checkout -b feature/nome-da-tarefa
+2. **Integre com a Branch Dev:** Antes de começar a trabalhar, integre a sua nova branch com a branch develop para obter as atualizações mais recentes. Isso ajuda a evitar conflitos mais tarde:
+
+    #### Passo 1: Alternar para a branch `develop`
+
+       git checkout develop
+
+    #### Passo 2: Sincronizar com as atualizações da *develop*
+   
+       git fetch --all
+   
+    #### Passo 3: Incorporar as últimas mudanças na *develop*
+   
+       git pull origin develop
+
+   #### Passo 4: Alternar para a nova branch da sua tarefa 
+   
+        git checkout feature/nome-da-tarefa
+
+   #### Passo 5: Integrar as alterações da branch *develop* na nova branch
+   
+       git merge develop
+
+4. **Implemente a Funcionalidade:** Desenvolva a funcionalidade na nova branch criada. Certifique-se de seguir as melhores práticas de codificação.
+5. **Testes e Verificações:** Realize testes rigorosos para garantir que a funcionalidade esteja funcionando conforme o esperado.
+6. **Commit e Push:** Após testar e verificar a funcionalidade, faça um commit das alterações e envie a nova branch para o repositório remoto:
+
+   #### Passo 1: Preparar as alterações
+   
+       git add .
+   
+   #### Passo 2: Confirmar as alterações com uma descrição
+   
+       git commit -m "Descrição concisa das alterações" 
+
+   #### Passo 3: Enviar as alterações para a sua branch
+
+       git push origin feature/nome-da-tarefa
+    
+8. **Pull Request (PR):** Crie um Pull Request para mesclar sua branch com a branch develop. 
+9. **Aguardando Avaliação:** Envie o Pull Request para ser avaliado e aguarde a aprovação.
+10. **Merge e Próxima Tarefa:** Após a aprovação, faça o merge das alterações e siga para a próxima tarefa.
+11. **Deletando a Branch:** Após o merge da funcionalidade, você pode deletar a branch local e remota utilizando o seguinte comando:
+    ```sh
+    git branch -d feature/nome-da-tarefa
+    git push origin --delete feature/nome-da-tarefa
+
+## Como Criar uma Branch
+
+Como Criar uma Branch
+
+1. Abra o terminal.
+2. Navegue até a pasta do seu projeto.
+3. Digite o seguinte comando substituindo **nome-da-tarefa** pelo nome descritivo da sua tarefa:
+   ```sh
+   git checkout -b feature/nome-da-tarefa
+
+Agora você está pronto para começar a trabalhar na nova funcionalidade!
+
 
 ## Gerenciador de Pacotes
 
