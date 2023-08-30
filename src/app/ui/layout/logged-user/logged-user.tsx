@@ -9,6 +9,8 @@ import SidebarMobile from "./logged-user-mobile/sidebar-mobile/sidebar-mobile";
 import ProgramingLinks from "./logger-user-desktop/programing-links/programing-links";
 import Sidebar from "./logger-user-desktop/sidebar/sidebar";
 import Header from "./logger-user-desktop/header/header";
+import LogoutModal from "../logout-modal/logout-modal.component";
+import { signOut } from "next-auth/react";
 
 interface LoaggedUserProps {
   children: React.ReactNode;
@@ -24,7 +26,6 @@ function LoaggedUser({ children }: LoaggedUserProps) {
   });
   const [hasMounted, setHasMounted] = useState(false);
 
-  console.log(showLogoutModal);
   useEffect(() => {
     setHasMounted(true);
   }, []);
@@ -37,27 +38,33 @@ function LoaggedUser({ children }: LoaggedUserProps) {
     );
   }
   return (
-    <div className="h-screen w-screen flex items-center justify-center">
-      {/* Mobile components*/}
-      {isMobileOnly && <SidebarMobile />}
-      {isMobileOnly && <ProgramingLinksMobile />}
+    <>
+      <LogoutModal
+        canShowlogoutModal={showLogoutModal}
+        handleLogout={signOut}
+        handleCancel={() => setShowLogoutModal(false)}
+      />
+      <div className="h-screen w-screen flex items-center justify-center">
+        {/* Mobile components*/}
+        {isMobileOnly && <SidebarMobile />}
+        {isMobileOnly && <ProgramingLinksMobile />}
 
-      {/* Desktop components */}
-      {!isMobileOnly && (
-        <Sidebar
-          canShowlogoutModal={showLogoutModal}
-          handleLogout={setShowLogoutModal}
-        />
-      )}
-      {!isMobileOnly && <ProgramingLinks />}
+        {/* Desktop components */}
+        {!isMobileOnly && (
+          <Sidebar
+            handleShowLogout={setShowLogoutModal}
+          />
+        )}
+        {!isMobileOnly && <ProgramingLinks />}
 
-      <Suspense fallback={<Loading />}>
-        <div className={`w-screen h-full flex flex-col items-center justify-center ${showLogoutModal && "-z-10"}`}>
-          <Header />
-          {children}
-        </div>
-      </Suspense>
-    </div>
+        <Suspense fallback={<Loading />}>
+          <div className="w-screen h-full flex flex-col items-center justify-center">
+            <Header />
+            {children}
+          </div>
+        </Suspense>
+      </div>
+    </>
   );
 }
 
