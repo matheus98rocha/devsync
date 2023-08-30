@@ -2,7 +2,6 @@
 import React, { memo, useState } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
-import { signOut } from "next-auth/react";
 
 import {
   AiOutlineArrowRight,
@@ -23,14 +22,13 @@ import packageJson from "../../../../../../../package.json";
 import { useElementsContext } from "@/context/elements.context";
 import Toggle from "@/app/ui/components/toggle/toggle.component";
 
-function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
+function Sidebar({ handleShowLogout }: SidebarProps) {
   const { data: session } = useSession();
   const appVersion = packageJson.version || "N/A";
   const { isOpenSidebar, toggleIsOpenSidebar } = useElementsContext();
 
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
-  const handleSignOut = () => signOut();
   return (
     <>
       <div
@@ -47,7 +45,6 @@ function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
       bg-background
       dark:bg-black
       shadow-md
-      z-20
       `}
       >
         {/* User container */}
@@ -108,16 +105,11 @@ function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
             )}
           </div>
           <SidebarItem
-            handleClick={() => handleLogout(true)}
+            handleClick={() => handleShowLogout(true)}
             icon={ImExit}
             isExpanded={isOpenSidebar}
             efectHoverItem={false}
             label={"Sair"}
-          />
-          <LogoutModal
-            canShowlogoutModal={canShowlogoutModal}
-            handleLogout={handleSignOut}
-            handleCancel={() => handleLogout(false)}
           />
         </div>
       </div>
