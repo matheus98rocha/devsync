@@ -7,10 +7,10 @@ const LogoutModal = ({ canShowlogoutModal, handleLogout, handleCancel }: LogoutM
     <>
       {
         canShowlogoutModal &&
-        <div className="z-50 fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center">
-          <div className="fixed inset-0 bg-zinc-800 opacity-60 z-30" onClick={handleCancel}></div>
+        <div className="z-[100] fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center">
+          <div className="fixed inset-0 bg-zinc-800 opacity-60" onClick={handleCancel}></div>
           <div
-            className="relative z-40 gap-2 flex flex-col rounded-2xl border border-blue-100 bg-contrastBackground p-4 shadow-lg sm:p-6 lg:p-8 animate-jump-in animate-delay-[1ms]"
+            className="relative gap-2 flex flex-col rounded-2xl border border-blue-100 bg-contrastBackground p-4 shadow-lg sm:p-6 lg:p-8 animate-jump-in animate-delay-[1ms]"
             role="alert"
           >
             <div className="w-full flex items-center justify-center">
