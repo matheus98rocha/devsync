@@ -16,7 +16,7 @@ interface LoaggedUserProps {
 
 function LoaggedUser({ children }: LoaggedUserProps) {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
-  const {} = useSession({
+  const { } = useSession({
     required: true,
     onUnauthenticated() {
       redirect("/?callbackUrl=/protected/home");
@@ -24,6 +24,7 @@ function LoaggedUser({ children }: LoaggedUserProps) {
   });
   const [hasMounted, setHasMounted] = useState(false);
 
+  console.log(showLogoutModal);
   useEffect(() => {
     setHasMounted(true);
   }, []);
@@ -48,10 +49,10 @@ function LoaggedUser({ children }: LoaggedUserProps) {
           handleLogout={setShowLogoutModal}
         />
       )}
-      {!isMobileOnly && <ProgramingLinks showModal={showLogoutModal} />}
+      {!isMobileOnly && <ProgramingLinks />}
 
       <Suspense fallback={<Loading />}>
-        <div className="w-screen h-full flex flex-col items-center justify-center">
+        <div className={`w-screen h-full flex flex-col items-center justify-center ${showLogoutModal && "-z-10"}`}>
           <Header />
           {children}
         </div>
