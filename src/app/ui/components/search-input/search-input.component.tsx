@@ -1,10 +1,7 @@
 "use client";
 import React from "react";
 import { SearchProps } from "./search-input.types";
-import {
-  AiOutlineSearch,
-  AiOutlineArrowLeft,
-} from "react-icons/ai";
+import { AiOutlineSearch, AiOutlineArrowLeft } from "react-icons/ai";
 
 function SearchInput({ searchValue, onChangeSearch }: SearchProps) {
   const [isExpandedSearchInput, setIsPexpandedSearchInput] =
@@ -38,7 +35,7 @@ function SearchInput({ searchValue, onChangeSearch }: SearchProps) {
             placeholder="Pesquisar"
             value={searchValue}
             onChange={onChangeSearch}
-            className="w-full rounded-md border-gray-200 bg-contrastBackground py-2.5 ps-2 pe-10 shadow-sm sm:text-sm"
+            className="w-full rounded-md border-gray-200 bg-contrastBackground py-2.5 ps-2 pe-10 shadow-sm sm:text-sm placeholder:text-primary"
           />
 
           <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">
