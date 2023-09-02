@@ -4,9 +4,15 @@ import * as Io from "react-icons/io";
 import * as Bi from "react-icons/bi";
 import { useElementsContext } from "@/context/elements.context";
 import SearchInput from "@/app/ui/components/search-input/search-input.component";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+
+import iconApplication from "../../../../../../../public/apple-touch-icon.svg";
+import Link from "next/link";
 
 function Header() {
   const { isOpenSidebar } = useElementsContext();
+  const pathname = usePathname();
 
   const [searchValue, setSearchValue] = React.useState("");
   return (
@@ -30,6 +36,24 @@ function Header() {
         searchValue={searchValue}
         onChangeSearch={(event) => setSearchValue(event.target.value)}
       />
+      {pathname === "/home" ? (
+        // In here when click happens you refresh the database data
+        <Image
+          src={iconApplication}
+          height={40}
+          width={40}
+          alt={"principal-icon"}
+        />
+      ) : (
+        <Link href={"/home"}>
+          <Image
+            src={iconApplication}
+            height={40}
+            width={40}
+            alt={"principal-icon"}
+          />
+        </Link>
+      )}
 
       {/* Wrapper icons */}
       <div className="flex items-center justify-center gap-4">

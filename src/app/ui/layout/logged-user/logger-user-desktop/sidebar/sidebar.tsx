@@ -10,9 +10,6 @@ import {
   AiOutlineHome,
 } from "react-icons/ai";
 import { ImExit } from "react-icons/im";
-import { MdPersonalVideo } from "react-icons/md";
-import { SiHtmlacademy } from "react-icons/si";
-import { useRouter } from "next/router";
 
 import SidebarItem from "./components/sidebar-item/sidebar-item.component";
 import { routes } from "@/constants/routes";
