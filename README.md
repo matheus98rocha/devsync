@@ -4,7 +4,7 @@ Este é o README para o PROJETO utilizando o framework Next.js.
 
 ## Visualização em Tempo Real
 
-Explore o projeto em tempo real [aqui](https://untitle-project.vercel.app/).
+Explore o projeto em tempo real [aqui](https://devsync-app.vercel.app//).
 
 ## Requisitos
 
