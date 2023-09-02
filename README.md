@@ -1,4 +1,4 @@
-# Nome do Projeto
+# DevSync
 
 Este é o README para o PROJETO utilizando o framework Next.js. 
 
