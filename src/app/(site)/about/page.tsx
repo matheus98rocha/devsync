@@ -3,6 +3,7 @@ import React from "react";
 import LoaggedUser from "@/app/ui/layout/logged-user/logged-user";
 import { aboutMock, cardTexts } from "./mock/about.mock";
 import AboutCard from "./components/card/about-card.component";
+import Loading from '@/app/ui/components/loading/loading.component'
 
 function About() {
   return (

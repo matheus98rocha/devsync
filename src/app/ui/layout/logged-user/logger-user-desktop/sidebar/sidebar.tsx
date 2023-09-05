@@ -10,9 +10,6 @@ import {
   AiOutlineHome,
 } from "react-icons/ai";
 import { ImExit } from "react-icons/im";
-import { MdPersonalVideo } from "react-icons/md";
-import { SiHtmlacademy } from "react-icons/si";
-import { useRouter } from "next/router";
 
 import SidebarItem from "./components/sidebar-item/sidebar-item.component";
 import { routes } from "@/constants/routes";
@@ -27,8 +24,6 @@ function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
   const { data: session } = useSession();
   const appVersion = packageJson.version || "N/A";
   const { isOpenSidebar, toggleIsOpenSidebar } = useElementsContext();
-
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   const handleSignOut = () => signOut();
   return (
@@ -86,10 +81,6 @@ function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
         {/* Footer container */}
         <div className="flex flex-col items-center justify-center gap-4 pb-6">
           <div className="w-full flex items-center justify-center">
-            <Toggle
-              active={isDarkTheme}
-              handleToggle={() => setIsDarkTheme(!isDarkTheme)}
-            />
           </div>
           <div
             className="hover:cursor-pointer flex items-center justify-center gap-2"
