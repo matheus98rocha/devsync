@@ -10,9 +10,9 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#009F29",
-          hover: "#008021",
-          focus: "#00681a",
+          DEFAULT: "#7e5dca",
+          hover: "#5936ab",
+          focus: "#5432a3",
         },
         error: {
           DEFAULT: "#f84b4b",
@@ -26,7 +26,7 @@ module.exports = {
           DEFAULT: "#BBBBBB",
           hover: "#AAAAAA",
         },
-        gray: "#9b9b9b",
+        gray: "#eff1f0",
         background: "#fefefe",
         contrastBackground: "#eaecec",
       },
