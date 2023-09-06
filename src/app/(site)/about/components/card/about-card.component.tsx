@@ -24,7 +24,7 @@ const AboutCard = ({ title, image, text }: AboutCardProps) => {
             "
       style={cardStyle}
     >
-      <div className="flex flex-col h-full bg-opacity-50 bg-black p-6">
+      <div className="flex flex-col h-full bg-opacity-50 bg-black p-6 gap-4">
         <h2 className="text-base text-gray-700 uppercase font-black">
           {title}
         </h2>
