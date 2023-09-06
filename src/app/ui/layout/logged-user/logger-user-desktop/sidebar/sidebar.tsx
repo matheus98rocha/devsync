@@ -14,7 +14,6 @@ import SidebarItem from "./components/sidebar-item/sidebar-item.component";
 import { routes } from "@/constants/routes";
 import Link from "next/link";
 import { SidebarProps } from "./sidebar.types";
-import LogoutModal from "../../../logout-modal/logout-modal.component";
 import packageJson from "../../../../../../../package.json";
 import { useElementsContext } from "@/context/elements.context";
 import Toggle from "@/app/ui/components/toggle/toggle.component";
