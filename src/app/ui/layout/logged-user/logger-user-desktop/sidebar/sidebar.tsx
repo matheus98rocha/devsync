@@ -9,15 +9,11 @@ import {
   AiOutlineHome,
 } from "react-icons/ai";
 import { ImExit } from "react-icons/im";
-import { MdPersonalVideo } from "react-icons/md";
-import { SiHtmlacademy } from "react-icons/si";
-import { useRouter } from "next/router";
 
 import SidebarItem from "./components/sidebar-item/sidebar-item.component";
 import { routes } from "@/constants/routes";
 import Link from "next/link";
 import { SidebarProps } from "./sidebar.types";
-import LogoutModal from "../../../logout-modal/logout-modal.component";
 import packageJson from "../../../../../../../package.json";
 import { useElementsContext } from "@/context/elements.context";
 import Toggle from "@/app/ui/components/toggle/toggle.component";
