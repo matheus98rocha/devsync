@@ -4,8 +4,9 @@ import Image from "next/image";
 import React from "react";
 
 import * as Bi from "react-icons/bi";
+import { PostProps } from "./post.types";
 
-function Post() {
+const Post = ({handleShowReplies}: PostProps) => {
   const { data: session } = useSession();
   const [isLiked, setIsLiked] = React.useState(false);
 
@@ -75,7 +76,7 @@ function Post() {
             onClick={() => setIsLiked(true)}
           />
         )}
-        <Bi.BiCommentAdd className="hover:cursor-pointer" size={25} />
+        <Bi.BiCommentAdd className="hover:cursor-pointer" size={25} onClick={() => handleShowReplies(true)} />
         <Bi.BiShare className="hover:cursor-pointer" size={25} />
         <Bi.BiSend className="hover:cursor-pointer" size={25} />
       </div>
