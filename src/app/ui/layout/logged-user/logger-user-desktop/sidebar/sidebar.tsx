@@ -2,7 +2,6 @@
 import React, { memo, useState } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
-import { signOut } from "next-auth/react";
 
 import {
   AiOutlineArrowRight,
@@ -15,17 +14,14 @@ import SidebarItem from "./components/sidebar-item/sidebar-item.component";
 import { routes } from "@/constants/routes";
 import Link from "next/link";
 import { SidebarProps } from "./sidebar.types";
-import LogoutModal from "../../../logout-modal/logout-modal.component";
 import packageJson from "../../../../../../../package.json";
 import { useElementsContext } from "@/context/elements.context";
 import Toggle from "@/app/ui/components/toggle/toggle.component";
 
-function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
+function Sidebar({ handleShowLogout }: SidebarProps) {
   const { data: session } = useSession();
   const appVersion = packageJson.version || "N/A";
   const { isOpenSidebar, toggleIsOpenSidebar } = useElementsContext();
-
-  const handleSignOut = () => signOut();
   return (
     <>
       <div
@@ -87,9 +83,8 @@ function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
             onClick={() => () => toggleIsOpenSidebar()}
           >
             <AiOutlineArrowRight
-              className={`${
-                isOpenSidebar ? "rotate-180" : "rotate-0"
-              }       duration-300`}
+              className={`${isOpenSidebar ? "rotate-180" : "rotate-0"
+                }       duration-300`}
               size={23}
               onClick={() => toggleIsOpenSidebar()}
             />
@@ -98,16 +93,11 @@ function Sidebar({ canShowlogoutModal, handleLogout }: SidebarProps) {
             )}
           </div>
           <SidebarItem
-            handleClick={() => handleLogout(true)}
+            handleClick={() => handleShowLogout(true)}
             icon={ImExit}
             isExpanded={isOpenSidebar}
             efectHoverItem={false}
             label={"Sair"}
-          />
-          <LogoutModal
-            canShowlogoutModal={canShowlogoutModal}
-            handleLogout={handleSignOut}
-            handleCancel={() => handleLogout(false)}
           />
         </div>
       </div>
