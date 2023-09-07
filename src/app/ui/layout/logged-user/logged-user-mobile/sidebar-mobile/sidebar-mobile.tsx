@@ -62,7 +62,9 @@ function SidebarMobile() {
       flex
       items-center
       justify-around
-      gap-4"
+      gap-4
+      z-50
+      "
       >
         {routes.map((route) => (
           <Link href={route.route} key={route.route}>
