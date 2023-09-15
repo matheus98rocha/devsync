@@ -2,9 +2,10 @@
 import React from "react";
 import LoaggedUser from "@/app/ui/layout/logged-user/logged-user";
 import { aboutMock, cardTexts, mobileMock } from "./mock/about.mock";
-import AboutCard from "./components/card/about-card.component";
+import AboutCard from "./components/card/about/about-card.component";
 import Loading from '@/app/ui/components/loading/loading.component'
 import { Subtitle } from "./components/subtitle/subtitle.component";
+import SectionCard from "./components/card/section/section-card.component";
 
 function About() {
   const [isLoading, setIsLoading] = React.useState(false);
@@ -48,35 +49,11 @@ function About() {
         </div>
         <div className="flex flex-col items-center justify-center w-full gap-6">
           <Subtitle text="objetivos do projeto" />
-          <div className="px-8 grid grid-cols-1 xl:grid-cols-2 gap-10">
-            {
-              aboutMock.map((card, index) => (
-                <div key={index}>
-                  <AboutCard
-                    title={card.title}
-                    text={card.text}
-                    image={card.image}
-                  />
-                </div>
-              ))
-            }
-          </div>
+          <SectionCard mock={aboutMock} />
         </div>
         <div className="flex flex-col items-center justify-center w-full gap-6">
           <Subtitle text="expandindo para versão mobile" />
-          <div className="px-8 grid grid-cols-1 xl:grid-cols-2 gap-10">
-            {
-              mobileMock.map((card, index) => (
-                <div key={index}>
-                  <AboutCard
-                    title={card.title}
-                    text={card.text}
-                    image={card.image}
-                  />
-                </div>
-              ))
-            }
-          </div>
+          <SectionCard mock={mobileMock} />
         </div>
       </div>
     </LoaggedUser>
