@@ -40,13 +40,13 @@ function About() {
         "
       >
         <div className="flex flex-col gap-6 p-7">
-          <h1 className="text-center text-3xl mb-4 font-black text-disabled">
+          <h1 className="text-center text-3xl mb-4 font-black text-primary">
             A PLATAFORMA PARA TODOS OS DESENVOLVEDORES
           </h1>
           {cardTexts.map((text, index) => <p key={index} className="text-center">{text}</p>)}
         </div>
         <div className="flex flex-col items-center justify-center w-full gap-6">
-          <h2 className="uppercase font-black text-disabled">
+          <h2 className="uppercase font-black text-primary">
             objetivos do projeto
           </h2>
           <div className="px-8 grid grid-cols-1 xl:grid-cols-2 gap-10">
@@ -64,7 +64,7 @@ function About() {
           </div>
         </div>
         <div className="flex flex-col items-center justify-center w-full gap-6">
-          <h2 className="uppercase font-black text-disabled">
+          <h2 className="uppercase font-black text-primary">
             EXPANDINDO PARA VERSÃO MOBILE
           </h2>
           <div className="px-8 grid grid-cols-1 xl:grid-cols-2 gap-10">
