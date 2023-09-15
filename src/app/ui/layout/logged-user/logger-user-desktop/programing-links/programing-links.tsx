@@ -1,10 +1,10 @@
 import React from "react";
 import ProgramingIcons from "./programing-icons/programing-icons.component";
 
-function ProgramingLinks({ showModal }: { showModal: boolean }) {
+function ProgramingLinks() {
   return (
     <div
-      className={`
+      className="
       fixed
       right-0
       w-24
@@ -12,7 +12,7 @@ function ProgramingLinks({ showModal }: { showModal: boolean }) {
       bg-background
       shadow-md
       overflow-y-hidden
-      `}
+      "
     >
       <ProgramingIcons />
     </div>

@@ -63,7 +63,7 @@ function SidebarMobile() {
       items-center
       justify-around
       gap-4
-      z-10
+      z-50
       "
       >
         {routes.map((route) => (

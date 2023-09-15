@@ -1,4 +1,3 @@
 export interface SidebarProps {
-    handleLogout: (logout: boolean) => void;
-    canShowlogoutModal: boolean;
+    handleShowLogout: (logout: boolean) => void;
 };
