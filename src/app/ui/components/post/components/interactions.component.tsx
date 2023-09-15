@@ -6,7 +6,7 @@ const Interactions = () => {
     const [isLiked, setIsLiked] = React.useState(false);
     return (
         <div className="w-full flex items-center justify-around my-2 border-t pt-5 border-[#d0d0d0]">
-            <div>
+            <div className="hover:cursor-pointer hover:text-gray duration-300">
                 {isLiked ? (
                     <Bi.BiSolidLike
                         className="hover:cursor-pointer animate-jump text-primary"
@@ -23,8 +23,8 @@ const Interactions = () => {
                 <p>Gostei</p>
             </div>
             {postMock.map((post, index) => (
-                <div key={index}>
-                    <post.icon className="hover:cursor-pointer" size={25} />
+                <div key={index} className="hover:cursor-pointer hover:text-gray duration-300">
+                    <post.icon size={25} />
                     <p>{post.label}</p>
                 </div>
             ))}
