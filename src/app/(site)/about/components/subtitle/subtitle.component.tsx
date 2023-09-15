@@ -1,0 +1,1 @@
+export const Subtitle = ({ text }: { text: string }) => <h2 className="uppercase font-black text-primary">{text}</h2>

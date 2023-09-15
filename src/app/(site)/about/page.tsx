@@ -4,6 +4,7 @@ import LoaggedUser from "@/app/ui/layout/logged-user/logged-user";
 import { aboutMock, cardTexts, mobileMock } from "./mock/about.mock";
 import AboutCard from "./components/card/about-card.component";
 import Loading from '@/app/ui/components/loading/loading.component'
+import { Subtitle } from "./components/subtitle/subtitle.component";
 
 function About() {
   const [isLoading, setIsLoading] = React.useState(false);
@@ -46,9 +47,7 @@ function About() {
           {cardTexts.map((text, index) => <p key={index} className="text-center">{text}</p>)}
         </div>
         <div className="flex flex-col items-center justify-center w-full gap-6">
-          <h2 className="uppercase font-black text-primary">
-            objetivos do projeto
-          </h2>
+          <Subtitle text="objetivos do projeto" />
           <div className="px-8 grid grid-cols-1 xl:grid-cols-2 gap-10">
             {
               aboutMock.map((card, index) => (
@@ -64,9 +63,7 @@ function About() {
           </div>
         </div>
         <div className="flex flex-col items-center justify-center w-full gap-6">
-          <h2 className="uppercase font-black text-primary">
-            EXPANDINDO PARA VERSÃO MOBILE
-          </h2>
+          <Subtitle text="expandindo para versão mobile" />
           <div className="px-8 grid grid-cols-1 xl:grid-cols-2 gap-10">
             {
               mobileMock.map((card, index) => (
