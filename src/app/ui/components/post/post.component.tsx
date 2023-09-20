@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import React from "react";
 
-import Interactions from "./components/interactions.component";
+import Interactions from "./components/interactions/interactions.component";
 
 function Post() {
   const { data: session } = useSession();
