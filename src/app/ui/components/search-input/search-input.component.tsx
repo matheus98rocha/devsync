@@ -22,7 +22,7 @@ function SearchInput({ searchValue, onChangeSearch }: SearchProps) {
   }, [ref]);
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className="w-64">
       {isExpandedSearchInput ? (
         <div className="relative animate-ease-linear duration-100">
           <label htmlFor="Search" className="sr-only">
@@ -35,7 +35,7 @@ function SearchInput({ searchValue, onChangeSearch }: SearchProps) {
             placeholder="Pesquisar"
             value={searchValue}
             onChange={onChangeSearch}
-            className="w-full rounded-md border-gray-200 bg-contrastBackground py-2.5 ps-2 pe-10 shadow-sm sm:text-sm placeholder:text-primary"
+            className="w-full rounded-md border-gray-200 bg-contrastBackground py-2.5 ps-2 pe-10 shadow-sm sm:text-sm"
           />
 
           <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">
@@ -51,7 +51,7 @@ function SearchInput({ searchValue, onChangeSearch }: SearchProps) {
         </div>
       ) : (
         <div
-          className="bg-contrastBackground p-2 rounded-md cursor-pointer"
+          className="bg-contrastBackground p-2 rounded-md cursor-pointer w-8 flex items-start justify-start"
           onClick={() => setIsPexpandedSearchInput(!isExpandedSearchInput)}
         >
           <AiOutlineSearch />
