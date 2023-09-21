@@ -1,5 +1,10 @@
 "use client";
-import { ReactElement, createContext, useContext, useState } from "react";
+import React, {
+  ReactElement,
+  createContext,
+  useContext,
+  useState,
+} from "react";
 
 type ElementsContextState = {
   isOpenSidebar: boolean;
@@ -25,19 +30,19 @@ const ThemeProvider = ({ children }: ElementsContextProps) => {
   const [isOpenDropdownMenuMobile, setIsOpenDropdownMenuMobile] =
     useState(false);
 
-  const toggleIsOpenSidebar = () => {
+  const toggleIsOpenSidebar = React.useCallback(() => {
     setIsOpenSidebar((prevIsOpenSidebar) => !prevIsOpenSidebar);
-  };
+  }, []);
 
-  const toggleIsExpandedIconsMobile = () => {
+  const toggleIsExpandedIconsMobile = React.useCallback(() => {
     setIsExpandedIconsMobile(
       (prevIsExpandedIconsMobile) => !prevIsExpandedIconsMobile
     );
-  };
+  }, []);
 
-  const toggleIsOpenDropdownMenuMobile = () => {
+  const toggleIsOpenDropdownMenuMobile = React.useCallback(() => {
     setIsOpenDropdownMenuMobile((prevStateDropdown) => !prevStateDropdown);
-  };
+  }, []);
 
   const contextValue: ElementsContextState = {
     isOpenSidebar,

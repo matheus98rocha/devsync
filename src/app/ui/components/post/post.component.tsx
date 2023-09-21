@@ -3,12 +3,10 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import React from "react";
 
-import * as Bi from "react-icons/bi";
+import Interactions from "./components/interactions/interactions.component";
 
 function Post() {
   const { data: session } = useSession();
-  const [isLiked, setIsLiked] = React.useState(false);
-
   return (
     <div
       className="
@@ -61,24 +59,7 @@ function Post() {
           placeholder="blur"
         />
       </div>
-      <div className="w-full flex items-center justify-around my-2 border-t pt-5 border-[#d0d0d0]">
-        {isLiked ? (
-          <Bi.BiSolidLike
-            className="hover:cursor-pointer animate-jump text-primary"
-            size={25}
-            onClick={() => setIsLiked(false)}
-          />
-        ) : (
-          <Bi.BiLike
-            className="hover:cursor-pointer animate-jump"
-            size={25}
-            onClick={() => setIsLiked(true)}
-          />
-        )}
-        <Bi.BiCommentAdd className="hover:cursor-pointer" size={25} />
-        <Bi.BiShare className="hover:cursor-pointer" size={25} />
-        <Bi.BiSend className="hover:cursor-pointer" size={25} />
-      </div>
+      <Interactions />
     </div>
   );
 }
