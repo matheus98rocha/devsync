@@ -8,11 +8,6 @@ function SocialMediaIcons({}) {
   const iconsData = React.useMemo(
     () => [
       {
-        label: 'Facebook',
-        icon: <BS.BsFacebook size={25} />,
-        onClickIcon: () => {},
-      },
-      {
         label: 'Google',
         icon: <BS.BsGoogle size={25} />,
         onClickIcon: () =>
