@@ -17,11 +17,20 @@ import { SidebarProps } from "./sidebar.types";
 import packageJson from "../../../../../../../package.json";
 import { useElementsContext } from "@/context/elements.context";
 import Toggle from "@/app/ui/components/toggle/toggle.component";
+import UserContentSidebar from "./components/user-content-sidebar/user-content-sidebar.component";
 
 function Sidebar({ handleShowLogout }: SidebarProps) {
+  const [canShowUserData, setCanShowUserData] = React.useState<boolean>(false);
   const { data: session } = useSession();
   const appVersion = packageJson.version || "N/A";
   const { isOpenSidebar, toggleIsOpenSidebar } = useElementsContext();
+
+  React.useEffect(() => {
+    if (session?.user?.image) {
+      setCanShowUserData(true);
+    }
+  }, [session?.user?.image]);
+
   return (
     <>
       <div
@@ -32,7 +41,7 @@ function Sidebar({ handleShowLogout }: SidebarProps) {
       grid-cols-1
       grid-rows-[300px_auto_100px]
       h-screen 
-      py-4
+      py-2
       ${isOpenSidebar ? "w-64" : "w-24"}
       duration-75
       bg-background
@@ -41,27 +50,15 @@ function Sidebar({ handleShowLogout }: SidebarProps) {
       `}
       >
         {/* User container */}
-        <div className="flex items-center justify-start flex-col gap-4">
-          {session?.user?.image && (
-            <Image
-              src={session.user.image as string}
-              blurDataURL={session.user.image as string}
-              width={isOpenSidebar ? 60 : 30}
-              height={isOpenSidebar ? 60 : 30}
-              priority={true}
-              alt="use-profile"
-              className="rounded-full"
-            />
-          )}
-          {isOpenSidebar && (
-            <p className="font-semibold animate-fade animate-duration-[3ms] break-all">
-              {session?.user?.name}
-            </p>
-          )}
-        </div>
+        <UserContentSidebar
+          canShowData={canShowUserData}
+          isOpenSidebar={isOpenSidebar}
+          userImagem={session?.user?.image as string}
+          userName={session?.user?.name as string}
+        />
 
         {/* Main Container */}
-        <div className="flex flex-col items-center justify-start gap-4">
+        <div className="flex flex-col items-center justify-start gap-4 pt-6">
           {routes.map((route) => (
             <Link href={route.route} key={route.route} className="w-full">
               <SidebarItem
@@ -76,15 +73,15 @@ function Sidebar({ handleShowLogout }: SidebarProps) {
 
         {/* Footer container */}
         <div className="flex flex-col items-center justify-center gap-4 pb-6">
-          <div className="w-full flex items-center justify-center">
-          </div>
+          <div className="w-full flex items-center justify-center"></div>
           <div
             className="hover:cursor-pointer flex items-center justify-center gap-2"
             onClick={() => () => toggleIsOpenSidebar()}
           >
             <AiOutlineArrowRight
-              className={`${isOpenSidebar ? "rotate-180" : "rotate-0"
-                }       duration-300`}
+              className={`${
+                isOpenSidebar ? "rotate-180" : "rotate-0"
+              }       duration-300`}
               size={23}
               onClick={() => toggleIsOpenSidebar()}
             />
