@@ -15,7 +15,7 @@ export default function Home() {
     }
   }, [session, status]);
 
-  if (status) return <div className="h-screen w-screen flex items-center justify-center"><Loading /></div>
+  if (status === "loading") return <div className="h-screen w-screen flex items-center justify-center"><Loading /></div>
   return (
     <>
       <div
