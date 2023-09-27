@@ -11,6 +11,7 @@ import Sidebar from "./logger-user-desktop/sidebar/sidebar";
 import Header from "./logger-user-desktop/header/header";
 import LogoutModal from "../logout-modal/logout-modal.component";
 import { signOut } from "next-auth/react";
+import LoadingFullScreen from "../../components/loading-full-screen/loading-full-screen";
 
 interface LoaggedUserProps {
   children: React.ReactNode;
@@ -19,24 +20,15 @@ interface LoaggedUserProps {
 
 function LoaggedUser({ children, currentPage }: LoaggedUserProps) {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
-  const {} = useSession({
+  const {status} = useSession({
     required: true,
     onUnauthenticated() {
       redirect(`/?callbackUrl=/protected/${currentPage}`);
     },
   });
-  const [hasMounted, setHasMounted] = useState(false);
 
-  useEffect(() => {
-    setHasMounted(true);
-  }, []);
-
-  if (!hasMounted) {
-    return (
-      <div className="h-screen w-screen flex items-center justify-center">
-        <Loading />
-      </div>
-    );
+  if (status === 'loading') {
+    return <LoadingFullScreen />;
   }
   return (
     <>
