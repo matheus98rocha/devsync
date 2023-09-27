@@ -1,13 +1,14 @@
-import React from 'react'
-import Auth from '../../ui/layout/auth/auth.component'
+import React from "react";
+import Auth from "../../ui/layout/auth/auth.component";
+import UnathenticatedUser from "@/app/ui/layout/unathenticated-user/unathenticated-user";
 
 export const metadata = {
-  title: 'Criar Conta',
-}
+  title: "Criar Conta",
+};
 
-export default function Home() {
+export default function CreateAccount() {
   return (
-    <>
+    <UnathenticatedUser>
       <div
         className="
       h-screen 
@@ -20,6 +21,6 @@ export default function Home() {
       >
         <Auth type="create-account" />
       </div>
-    </>
-  )
+    </UnathenticatedUser>
+  );
 }
