@@ -3,4 +3,5 @@ export interface IUserContentSidebar {
   isOpenSidebar: boolean;
   userName: string;
   userImagem: string;
+  handleOpenMenuSidebar: () => void;
 }

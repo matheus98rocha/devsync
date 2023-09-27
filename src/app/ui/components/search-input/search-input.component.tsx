@@ -2,6 +2,7 @@
 import React from "react";
 import { SearchProps } from "./search-input.types";
 import { AiOutlineSearch, AiOutlineArrowLeft } from "react-icons/ai";
+import useClickOutside from "@/utils/handle-click-outside-element";
 
 function SearchInput({ searchValue, onChangeSearch }: SearchProps) {
   const [isExpandedSearchInput, setIsPexpandedSearchInput] =
@@ -9,17 +10,9 @@ function SearchInput({ searchValue, onChangeSearch }: SearchProps) {
 
   const ref = React.useRef<HTMLDivElement>(null);
 
-  React.useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
-        setIsPexpandedSearchInput(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [ref]);
+  useClickOutside(ref, () => {
+    setIsPexpandedSearchInput(false);
+  });
 
   return (
     <div ref={ref} className="w-64">

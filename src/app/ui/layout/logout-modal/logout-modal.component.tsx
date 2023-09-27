@@ -16,7 +16,11 @@ const LogoutModal = ({
             onClick={handleCancel}
           ></div>
           <div
-            className="relative gap-2 flex flex-col rounded-2xl border border-blue-100 bg-contrastBackground p-4 shadow-lg sm:p-6 lg:p-8 animate-jump-in animate-delay-[1ms]"
+            className="relative
+            gap-2
+            flex
+            flex-col
+            rounded-2xl border border-blue-100 bg-contrastBackground p-4 shadow-lg sm:p-6 lg:p-8 animate-jump-in animate-delay-[1ms]"
             role="alert"
           >
             <div className="w-full flex items-center justify-center">

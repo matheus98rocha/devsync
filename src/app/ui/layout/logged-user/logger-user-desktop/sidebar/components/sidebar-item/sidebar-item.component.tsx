@@ -15,7 +15,8 @@ function SidebarItem({
   return (
     <div
       key={currentRoute}
-      className={`flex
+      className={`
+      flex
       items-center
       justify-center
       gap-2
@@ -23,7 +24,7 @@ function SidebarItem({
       ${pathname === currentRoute ? "text-contrastBackground" : "text-black"}
       ${pathname === currentRoute ? "hover:bg-primaryFocus" : "none"}
       slit-in-horizontal
-      p-4
+      py-4
       font-semibold
       hover:cursor-pointer`}
       onMouseOver={() => setShowLabelOnCompress(true)}

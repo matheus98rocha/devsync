@@ -18,12 +18,16 @@ import packageJson from "../../../../../../../package.json";
 import { useElementsContext } from "@/context/elements.context";
 import Toggle from "@/app/ui/components/toggle/toggle.component";
 import UserContentSidebar from "./components/user-content-sidebar/user-content-sidebar.component";
+import SidebarMenu from "./components/sidebar-menu/sidebar-menu.component";
+import useClickOutside from "@/utils/handle-click-outside-element";
 
 function Sidebar({ handleShowLogout }: SidebarProps) {
   const [canShowUserData, setCanShowUserData] = React.useState<boolean>(false);
   const { data: session } = useSession();
   const appVersion = packageJson.version || "N/A";
   const { isOpenSidebar, toggleIsOpenSidebar } = useElementsContext();
+  const [isOpenMenuSidebar, setIsOpenMenuSidebar] = useState<boolean>(false);
+  const ref = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     if (session?.user?.image) {
@@ -31,9 +35,14 @@ function Sidebar({ handleShowLogout }: SidebarProps) {
     }
   }, [session?.user?.image]);
 
+  useClickOutside(ref, () => {
+    setIsOpenMenuSidebar(false);
+  });
+
   return (
     <>
       <div
+        ref={ref}
         className={`
       fixed
       left-0
@@ -49,8 +58,13 @@ function Sidebar({ handleShowLogout }: SidebarProps) {
       shadow-md
       `}
       >
+        <SidebarMenu
+          isOpenMenu={isOpenMenuSidebar}
+          isOpenSidebar={isOpenSidebar}
+        />
         {/* User container */}
         <UserContentSidebar
+          handleOpenMenuSidebar={() => setIsOpenMenuSidebar(!isOpenMenuSidebar)}
           canShowData={canShowUserData}
           isOpenSidebar={isOpenSidebar}
           userImagem={session?.user?.image as string}

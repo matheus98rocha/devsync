@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { IUserContentSidebar } from "./user-content-sidebar.interface";
 import Image from "next/image";
@@ -7,9 +8,19 @@ function UserContentSidebar({
   isOpenSidebar,
   userName,
   userImagem,
+  handleOpenMenuSidebar,
 }: IUserContentSidebar) {
   return (
-    <div className="flex items-center justify-start flex-col gap-4">
+    <div
+      onClick={handleOpenMenuSidebar}
+      className="
+    flex
+    items-center
+    justify-start
+    flex-col
+    gap-4
+    hover:cursor-pointer"
+    >
       {canShowData && (
         <Image
           src={userImagem}
