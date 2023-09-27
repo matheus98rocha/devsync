@@ -5,8 +5,6 @@ import SocialMediaIcons from "./components/social-media-icons/social-media-icons
 import Link from "next/link";
 import { AuthProps } from "./auth.types";
 import PrimaryInput from "../../components/input/primary-input.component";
-import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
 import PrimaryButton from "../../components/button/primary-button.component";
 import Image from "next/image";
 
@@ -15,15 +13,6 @@ import iconApplication from "../../../../../public/apple-touch-icon.svg";
 function Auth({ type }: AuthProps) {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-
-  const { data: session } = useSession();
-
-  React.useEffect(() => {
-    if (session) {
-      redirect("/home");
-    }
-  }, [session]);
-
   return (
     <div
       className="
