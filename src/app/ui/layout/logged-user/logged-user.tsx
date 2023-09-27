@@ -14,14 +14,15 @@ import { signOut } from "next-auth/react";
 
 interface LoaggedUserProps {
   children: React.ReactNode;
+  currentPage: string;
 }
 
-function LoaggedUser({ children }: LoaggedUserProps) {
+function LoaggedUser({ children, currentPage }: LoaggedUserProps) {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
-  const { } = useSession({
+  const {} = useSession({
     required: true,
     onUnauthenticated() {
-      redirect("/?callbackUrl=/protected/home");
+      redirect(`/?callbackUrl=/protected/${currentPage}`);
     },
   });
   const [hasMounted, setHasMounted] = useState(false);
@@ -50,11 +51,7 @@ function LoaggedUser({ children }: LoaggedUserProps) {
         {isMobileOnly && <ProgramingLinksMobile />}
 
         {/* Desktop components */}
-        {!isMobileOnly && (
-          <Sidebar
-            handleShowLogout={setShowLogoutModal}
-          />
-        )}
+        {!isMobileOnly && <Sidebar handleShowLogout={setShowLogoutModal} />}
         {!isMobileOnly && <ProgramingLinks />}
 
         <Suspense fallback={<Loading />}>

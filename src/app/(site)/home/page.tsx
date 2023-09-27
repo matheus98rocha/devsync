@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
 
-import ClientOnly from "@/app/ui/layout/logged-user/logged-user";
+import LoaggedUser from "@/app/ui/layout/logged-user/logged-user";
 import Post from "@/app/ui/components/post/post.component";
 
 function Home() {
   return (
-    <ClientOnly>
+    <LoaggedUser currentPage="about">
       <div
         className="
         flex 
@@ -32,7 +32,7 @@ function Home() {
         <Post />
         <Post />
       </div>
-    </ClientOnly>
+    </LoaggedUser>
   );
 }
 

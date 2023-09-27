@@ -1,16 +1,15 @@
-'use client'
-import React from 'react'
+"use client";
+import React from "react";
 
-import LoaggedUser from '@/app/ui/layout/logged-user/logged-user'
-import Loading from '@/app/ui/components/loading/loading.component'
+import LoaggedUser from "@/app/ui/layout/logged-user/logged-user";
+import Loading from "@/app/ui/components/loading/loading.component";
 
 function About() {
-
   return (
-    <LoaggedUser>
+    <LoaggedUser currentPage="about">
       <h1>Sobre</h1>
     </LoaggedUser>
-  )
+  );
 }
 
-export default About
+export default About;
