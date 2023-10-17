@@ -1,9 +1,14 @@
 const { default: NextAuth } = require("next-auth/next");
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import { prisma } from "@/utils/lib/db/prisma";
+
+import { Adapter } from "next-auth/adapters";
 
 
 const authOptions = {
+  adapter: PrismaAdapter(prisma) as Adapter,
   providers: [
     GitHubProvider({
       clientId: process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID as string,
