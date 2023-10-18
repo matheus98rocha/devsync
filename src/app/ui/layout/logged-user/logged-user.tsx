@@ -18,7 +18,7 @@ interface LoaggedUserProps {
 
 function LoaggedUser({ children }: LoaggedUserProps) {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
-  const { } = useSession({
+  const {} = useSession({
     required: true,
     onUnauthenticated() {
       redirect("/?callbackUrl=/protected/home");
@@ -50,16 +50,11 @@ function LoaggedUser({ children }: LoaggedUserProps) {
         {isMobileOnly && <ProgramingLinksMobile />}
 
         {/* Desktop components */}
-        {!isMobileOnly && (
-          <Sidebar
-            handleShowLogout={setShowLogoutModal}
-          />
-        )}
+        {!isMobileOnly && <Sidebar handleShowLogout={setShowLogoutModal} />}
         {!isMobileOnly && <ProgramingLinks />}
 
         <Suspense fallback={<Loading />}>
           <div className="w-screen h-full flex flex-col items-center justify-center">
-            <Header />
             {children}
           </div>
         </Suspense>
