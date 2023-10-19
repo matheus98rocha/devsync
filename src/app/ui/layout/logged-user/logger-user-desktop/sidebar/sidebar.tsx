@@ -47,6 +47,7 @@ function Sidebar({ handleShowLogout }: SidebarProps) {
       bg-background
       dark:bg-black
       shadow-md
+      z-40
       `}
       >
         {/* User container */}

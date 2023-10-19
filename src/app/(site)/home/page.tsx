@@ -14,7 +14,7 @@ async function Home() {
     
   return (
     <ClientOnly>
-      <Header usersData={[...users]} />
+      <Header usersData={users} />
       <div
         className="
         flex 

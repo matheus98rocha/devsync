@@ -8,7 +8,6 @@ import ProgramingLinksMobile from "./logged-user-mobile/programing-links-mobile/
 import SidebarMobile from "./logged-user-mobile/sidebar-mobile/sidebar-mobile";
 import ProgramingLinks from "./logger-user-desktop/programing-links/programing-links";
 import Sidebar from "./logger-user-desktop/sidebar/sidebar";
-import Header from "./logger-user-desktop/header/header";
 import LogoutModal from "../logout-modal/logout-modal.component";
 import { signOut } from "next-auth/react";
 
@@ -44,7 +43,7 @@ function LoaggedUser({ children }: LoaggedUserProps) {
         handleLogout={signOut}
         handleCancel={() => setShowLogoutModal(false)}
       />
-      <div className="h-screen w-screen flex items-center justify-center">
+      <div className="relative h-screen w-screen flex items-center justify-center">
         {/* Mobile components*/}
         {isMobileOnly && <SidebarMobile />}
         {isMobileOnly && <ProgramingLinksMobile />}
