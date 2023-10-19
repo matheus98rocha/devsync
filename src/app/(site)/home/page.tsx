@@ -1,6 +1,6 @@
 import React from "react";
 
-import ClientOnly from "@/app/ui/layout/logged-user/logged-user";
+import LoaggedUser from "@/app/ui/layout/logged-user/logged-user";
 import Post from "@/app/ui/components/post/post.component";
 import { prisma } from "@/utils/lib/db/prisma";
 import Header from "@/app/ui/layout/logged-user/logger-user-desktop/header/header";
@@ -13,7 +13,7 @@ async function Home() {
     });
     
   return (
-    <ClientOnly>
+    <LoaggedUser currentPage="home">
       <Header usersData={[...users]} />
       <div
         className="
@@ -40,7 +40,7 @@ async function Home() {
         <Post />
         <Post />
       </div>
-    </ClientOnly>
+    </LoaggedUser>
   );
 }
 

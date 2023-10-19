@@ -4,14 +4,20 @@ import React from "react";
 import Auth from "./ui/layout/auth/auth.component";
 import Loading from "./ui/components/loading/loading.component";
 import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
+import UnathenticatedUser from "./ui/layout/unathenticated-user/unathenticated-user";
 
 export default function Home() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
 
-  session && <Loading />;
+  React.useEffect(() => {
+    if (session) {
+      redirect("/home");
+    }
+  }, [session, status]);
 
   return (
-    <>
+    <UnathenticatedUser>
       <div
         className="
       h-screen 
@@ -24,6 +30,6 @@ export default function Home() {
       >
         <Auth type="login" />
       </div>
-    </>
+    </UnathenticatedUser>
   );
 }

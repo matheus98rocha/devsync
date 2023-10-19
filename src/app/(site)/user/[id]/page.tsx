@@ -11,7 +11,7 @@ interface UserPageProps {
 async function User({ params: { id } }: UserPageProps) {
   const userData = await prisma.user.findUnique({ where: { id } });
   return (
-    <LoaggedUser>
+    <LoaggedUser currentPage="user">
       <p>{userData?.name}</p>
     </LoaggedUser>
   );
