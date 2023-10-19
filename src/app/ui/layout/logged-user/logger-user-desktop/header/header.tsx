@@ -20,7 +20,7 @@ function Header() {
       className={`
     h-10 
     ${isOpenSidebar ? "w-3/6" : "w-[89%]"}
-   bg-background 
+    bg-background 
     mb-1
     flex
     items-center
@@ -29,43 +29,19 @@ function Header() {
     px-4
     py-8
     shadow-md
-
-    `}
+  `}
     >
       <SearchInput
         searchValue={searchValue}
         onChangeSearch={(event) => setSearchValue(event.target.value)}
       />
       {pathname === "/home" ? (
-        // In here when click happens you refresh the database data
-        <Image
-          src={iconApplication}
-          height={40}
-          width={40}
-          alt={"principal-icon"}
-        />
+        <Image src={iconApplication} height={40} width={40} alt="principal-icon" />
       ) : (
-        <Link href={"/home"}>
-          <Image
-            src={iconApplication}
-            height={40}
-            width={40}
-            alt={"principal-icon"}
-          />
+        <Link href="/home">
+          <Image src={iconApplication} height={40} width={40} alt="principal-icon" />
         </Link>
       )}
-
-      {/* Wrapper icons */}
-      <div className="flex items-center justify-center gap-4">
-        <div className="flex items-center justify-center gap-1 flex-col hover:cursor-pointer">
-          <Bi.BiMessageSquareDots size={25} />
-          <span className="text-xs">Mensagens</span>
-        </div>
-        <div className="flex items-center justify-center gap-2 flex-col hover:cursor-pointer">
-          <Io.IoMdNotificationsOutline size={25} />
-          <span className="text-xs">Notificações</span>
-        </div>
-      </div>
     </div>
   );
 }

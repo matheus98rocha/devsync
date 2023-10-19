@@ -20,16 +20,14 @@ interface LoaggedUserProps {
 
 function LoaggedUser({ children, currentPage }: LoaggedUserProps) {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
-  const {status} = useSession({
+  const { status } = useSession({
     required: true,
     onUnauthenticated() {
       redirect(`/?callbackUrl=/protected/${currentPage}`);
     },
   });
 
-  if (status === 'loading') {
-    return <LoadingFullScreen />;
-  }
+  if (status === 'loading') return <LoadingFullScreen />;
   return (
     <>
       <LogoutModal
@@ -39,12 +37,12 @@ function LoaggedUser({ children, currentPage }: LoaggedUserProps) {
       />
       <div className="h-screen w-screen flex items-center justify-center">
         {/* Mobile components*/}
-        {isMobileOnly && <SidebarMobile />}
-        {isMobileOnly && <ProgramingLinksMobile />}
+        {isMobileOnly && <SidebarMobile />}        
+        {/* {isMobileOnly && <ProgramingLinksMobile />} */}
 
         {/* Desktop components */}
         {!isMobileOnly && <Sidebar handleShowLogout={setShowLogoutModal} />}
-        {!isMobileOnly && <ProgramingLinks />}
+        {/* {!isMobileOnly && <ProgramingLinks />} */}
 
         <Suspense fallback={<Loading />}>
           <div className="w-screen h-full flex flex-col items-center justify-center">
