@@ -18,7 +18,7 @@ function SidebarMobile() {
   const handleSignOut = () => signOut();
   return (
     <>
-      <div className="absolute top-4 right-5 shadow-md bg-transparent rounded-full">
+      <div className="absolute top-4 right-5 shadow-md bg-transparent rounded-full z-10">
         {session?.user?.image && (
           <Image
             src={session.user.image as string}

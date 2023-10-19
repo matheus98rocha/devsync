@@ -6,8 +6,17 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  images: {
+    domains: ['s-lol-web.op.gg'],
+  },
   theme: {
     extend: {
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },   
+          '100%': { opacity: '1' },  
+        },
+      },
       colors: {
         primary: {
           DEFAULT: "#7e5dca",
@@ -26,7 +35,8 @@ module.exports = {
           DEFAULT: "#BBBBBB",
           hover: "#AAAAAA",
         },
-        gray: "#eff1f0",
+        gray: "#8A8A8A",
+        lightGray: "#eff1f0",
         background: "#fefefe",
         contrastBackground: "#eaecec",
       },

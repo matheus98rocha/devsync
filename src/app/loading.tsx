@@ -1,7 +1,9 @@
 import React from "react";
-import ReactLoading from "react-loading";
+import Loading from "./ui/components/loading/loading.component";
 
-const Loading = () => (
+function LoadingPage() {
+  return (
+    <div className="flex h-screen items-center justify-center">
   <div role="status">
     <svg
       aria-hidden="true"
@@ -20,6 +22,8 @@ const Loading = () => (
       />
     </svg>
   </div>
-);
+    </div>
+  );
+}
 
-export default Loading;
+export default LoadingPage;

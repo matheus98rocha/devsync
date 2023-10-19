@@ -9,12 +9,22 @@ import { usePathname } from "next/navigation";
 
 import iconApplication from "../../../../../../../public/apple-touch-icon.svg";
 import Link from "next/link";
+import { IUser } from "@/app/interfaces/user";
 
-function Header() {
+interface HeaderProps {
+  usersData: any[];
+}
+
+function Header({ usersData }: HeaderProps) {
   const { isOpenSidebar } = useElementsContext();
   const pathname = usePathname();
 
+  React.useEffect(() => {
+    console.log(usersData);
+  }, [usersData]);
+
   const [searchValue, setSearchValue] = React.useState("");
+
   return (
     <div
       className={`
@@ -34,6 +44,8 @@ function Header() {
       <SearchInput
         searchValue={searchValue}
         onChangeSearch={(event) => setSearchValue(event.target.value)}
+        handleResetSearchBar={() => setSearchValue("")}
+        usersData={usersData}
       />
       {pathname === "/home" ? (
         <Image src={iconApplication} height={40} width={40} alt="principal-icon" />

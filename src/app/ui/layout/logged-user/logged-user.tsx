@@ -20,7 +20,7 @@ interface LoaggedUserProps {
 
 function LoaggedUser({ children, currentPage }: LoaggedUserProps) {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
-  const { status } = useSession({
+  const {status} = useSession({
     required: true,
     onUnauthenticated() {
       redirect(`/?callbackUrl=/protected/${currentPage}`);
@@ -46,7 +46,6 @@ function LoaggedUser({ children, currentPage }: LoaggedUserProps) {
 
         <Suspense fallback={<Loading />}>
           <div className="w-screen h-full flex flex-col items-center justify-center">
-            <Header />
             {children}
           </div>
         </Suspense>

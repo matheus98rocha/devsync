@@ -1,61 +1,49 @@
-'use client'
-import React from 'react'
-import * as BS from 'react-icons/bs'
+"use client";
+import React from "react";
+import * as BS from "react-icons/bs";
 
-import { signIn } from 'next-auth/react'
+import { signIn } from "next-auth/react";
 
 function SocialMediaIcons({}) {
   const iconsData = React.useMemo(
     () => [
       {
-        label: 'Google',
+        label: "Google",
         icon: <BS.BsGoogle size={25} />,
         onClickIcon: () =>
-          signIn('google', {
-            callbackUrl: '/home',
-          }),
-      },
-      {
-        label: 'GitHub',
-        icon: <BS.BsGithub size={25} />,
-        onClickIcon: () =>
-          signIn('github', {
-            callbackUrl: '/home',
+          signIn("google", {
+            callbackUrl: "/home",
           }),
       },
     ],
-    [],
-  )
+    []
+  );
 
   return (
     <div
       className="
-      flex
-      items-center
-      justify-center
-      gap-6"
+    w-full
+    bg-slate-500
+    rounded
+    p-3
+    flex
+    items-center
+    justify-center
+    gap-3
+    cursor-pointer
+    hover:bg-[#4285F4]
+    animate-ease-linear
+    delay-150"
+      onClick={() =>
+        signIn("google", {
+          callbackUrl: "/home",
+        })
+      }
     >
-      {iconsData.map((item, index) => (
-        <div
-          key={index}
-          onClick={() => item.onClickIcon()}
-          className="
-          flex
-          items-center
-          justify-center
-          gap-4
-          flex-col
-          hover:animate-jump
-          hover:text-primary
-          hover:cursor-pointer
-          "
-        >
-          <p>{item.label}</p>
-          {item.icon}
-        </div>
-      ))}
+      <BS.BsGoogle size={25} color="#ffff" />
+      <p className="text-sm text-white">GOOGLE</p>
     </div>
-  )
+  );
 }
 
-export default SocialMediaIcons
+export default SocialMediaIcons;
