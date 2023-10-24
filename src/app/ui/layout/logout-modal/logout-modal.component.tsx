@@ -27,16 +27,18 @@ const LogoutModal = ({
             </p>
             <div className="mt-6 flex flex-wrap gap-4 lg:grid lg:grid-cols-2 lg:gap-4">
               <PrimaryButton
-                buttonText="Desconectar"
+                buttonContent="Desconectar"
                 handleOnClick={handleLogout}
                 isDisabled={false}
                 buttonType="outlined"
+                borderRadius="rounded"
               />
               <PrimaryButton
-                buttonText="Cancelar"
+                buttonContent="Cancelar"
                 handleOnClick={handleCancel}
                 isDisabled={false}
                 buttonType="alert"
+                borderRadius="rounded"
               />
             </div>
           </div>

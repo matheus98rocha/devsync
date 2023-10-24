@@ -11,8 +11,7 @@ describe('Logout Modal', () => {
         render(
             <LogoutModal
                 handleLogout={mockOnLogout}
-                handleCancel={mockOnCancel}
-            />
+                handleCancel={mockOnCancel} canShowlogoutModal={false}            />
         );
 
         const logoutButton = screen.getByText('Desconectar');
