@@ -2,15 +2,21 @@ import React from 'react'
 import { ButtonProps } from './primary-button.types'
 
 const PrimaryButton = ({
-  buttonText,
+  buttonContent,
   buttonType,
   handleOnClick,
   isDisabled,
+  borderRadius,
 }: ButtonProps) => {
   return (
     <button
       disabled={isDisabled}
       className={`
+      flex
+      items-center
+      justify-center
+      text-center
+
       ${isDisabled && 'bg-disabled'} 
       ${buttonType === 'primary' && !isDisabled && 'bg-primary'} 
       ${buttonType === 'alert' && !isDisabled && 'bg-alert'} 
@@ -27,16 +33,16 @@ const PrimaryButton = ({
       duration-300
     text-white
     font-bold 
-     ${!isDisabled  ? 'cursor-pointer' : 'cursor-not-allowed'}
+     ${!isDisabled ? 'cursor-pointer' : 'cursor-not-allowed'}
       outline-none
       border-none
-      rounded
+      ${borderRadius}
       text-base
       w-full
       h-12`}
       onClick={handleOnClick}
     >
-      {buttonText}
+      {buttonContent}
     </button>
   )
 }

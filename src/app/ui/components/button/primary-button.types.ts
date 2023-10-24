@@ -1,6 +1,7 @@
 export interface ButtonProps {
-    buttonText: string,
+    buttonContent: React.ReactNode,
     buttonType: 'primary' | 'alert' | 'error' | 'outlined',
     handleOnClick: () => void,
-    isDisabled: boolean
+    isDisabled: boolean,
+    borderRadius?: "rounded" | "rounded-full"
 };
