@@ -11,9 +11,8 @@ import Sidebar from "./logger-user-desktop/sidebar/sidebar";
 import LogoutModal from "../logout-modal/logout-modal.component";
 import { signOut } from "next-auth/react";
 import LoadingFullScreen from "../../components/loading-full-screen/loading-full-screen";
-import { GrAdd } from 'react-icons/gr';
-import PrimaryButton from "../../components/button/primary-button.component";
 import PostModal from "../post-modal/post-modal.component";
+import PostButton from "./components/post-button/post-button.component";
 
 interface LoaggedUserProps {
   children: React.ReactNode;
@@ -23,12 +22,20 @@ interface LoaggedUserProps {
 function LoaggedUser({ children, currentPage }: LoaggedUserProps) {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [showPostModal, setShowPostModal] = useState(false);
+  const [selectedFile, setSelectedFile] = React.useState<File | null>(null);
+  const [text, setText] = React.useState("");
+
   const { status } = useSession({
     required: true,
     onUnauthenticated() {
       redirect(`/?callbackUrl=/protected/${currentPage}`);
     },
   });
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (files && files[0]) setSelectedFile(files[0]);
+  };
 
   if (status === 'loading') return <LoadingFullScreen />;
   return (
@@ -41,6 +48,10 @@ function LoaggedUser({ children, currentPage }: LoaggedUserProps) {
       <PostModal
         canShowPostModal={showPostModal}
         handleCloseModal={() => setShowPostModal(false)}
+        text={text}
+        handleText={setText}
+        handleFileChange={handleFileChange}
+        selectedFile={selectedFile}
       />
       <div className="h-screen w-screen flex items-center justify-center">
         {/* Mobile components*/}
@@ -55,20 +66,7 @@ function LoaggedUser({ children, currentPage }: LoaggedUserProps) {
           <div className="w-screen h-full flex flex-col items-center justify-center">
             {children}
           </div>
-
-
-
-          <div className={`fixed right-[10%] ${isMobileOnly ? "bottom-[15%]" : "bottom-[10%]"} w-12`}>
-            <PrimaryButton
-              buttonContent={
-                <GrAdd style={{ filter: 'invert(100%) sepia(100%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)', }} />
-              }
-              handleOnClick={() => setShowPostModal(true)}
-              isDisabled={false}
-              buttonType="primary"
-              borderRadius="rounded-full"
-            />
-          </div>
+          <PostButton handlePostModalVisibility={setShowPostModal} />
         </Suspense>
       </div>
     </>
