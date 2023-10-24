@@ -36,6 +36,8 @@ module.exports = {
           hover: "#AAAAAA",
         },
         gray: "#8A8A8A",
+        white: "#fff",
+        black: "#000",
         lightGray: "#eff1f0",
         background: "#fefefe",
         contrastBackground: "#eaecec",
