@@ -11,10 +11,13 @@ module.exports = {
   },
   theme: {
     extend: {
+      boxShadow: {
+        'postIcon': '0 3px 5px #0000004D',
+      },
       keyframes: {
         fadeIn: {
-          '0%': { opacity: '0' },   
-          '100%': { opacity: '1' },  
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
         },
       },
       colors: {
