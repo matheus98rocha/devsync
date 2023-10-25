@@ -4,6 +4,9 @@ import Image from "next/image";
 import React from "react";
 import { BsFillEnvelopeFill } from "react-icons/bs";
 import { UploadButton } from "../components/upload-button.component";
+import { revalidatePath } from "next/cache";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 interface UserPageProps {
   params: {
@@ -12,7 +15,10 @@ interface UserPageProps {
 }
 
 async function User({ params: { id } }: UserPageProps) {
-  const userData = await prisma.user.findUnique({ where: { id } });
+  let userData = await prisma.user.findUnique({ where: { id } });
+
+  const session = await getServerSession(authOptions);
+
   async function handleChangeBannerImage() {
     "use server";
     await prisma.user.update({
@@ -22,15 +28,14 @@ async function User({ params: { id } }: UserPageProps) {
           "https://utfs.io/f/76856c16-da05-4428-93aa-17b728380cd6-lgt4zu.jpeg",
       },
     });
+    revalidatePath("/user/");
   }
   return (
     <LoaggedUser>
       <div className="h-screen w-[89%] flex justify-start flex-col">
         {userData?.banner ? (
           <Image
-            src={
-              "https://utfs.io/f/76856c16-da05-4428-93aa-17b728380cd6-lgt4zu.jpeg"
-            }
+            src={userData?.banner}
             alt="user-banner"
             width={400}
             height={800}
@@ -57,6 +62,13 @@ async function User({ params: { id } }: UserPageProps) {
             Seguir
           </button>
           <UploadButton handleChangeBannerImage={handleChangeBannerImage} />
+          <>
+            {session?.user.id === userData?.id ? (
+              <p>Usuário logado</p>
+            ) : (
+              <p>Não é o usuário</p>
+            )}
+          </>
         </div>
       </div>
     </LoaggedUser>
