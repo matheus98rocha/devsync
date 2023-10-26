@@ -29,7 +29,7 @@ function Header({ usersData }: HeaderProps) {
     <div
       className={`
     h-10 
-    ${isOpenSidebar ? "w-3/6" : "w-[89%]"}
+    ${isOpenSidebar ? "w-3/6" : "w-[99.4%]"}
     bg-background 
     mb-1
     flex
