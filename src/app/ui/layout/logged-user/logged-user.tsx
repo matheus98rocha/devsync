@@ -47,11 +47,17 @@ function LoaggedUser({ children, currentPage }: LoaggedUserProps) {
       />
       <PostModal
         canShowPostModal={showPostModal}
-        handleCloseModal={() => setShowPostModal(false)}
+        handleCloseModal={() => {
+          setShowPostModal(false);
+          setSelectedFile(null);
+          setText("");
+        }}
         text={text}
         handleText={setText}
         handleFileChange={handleFileChange}
         selectedFile={selectedFile}
+        handleSelectedFile={setSelectedFile}
+        characterLimit={300}
       />
       <div className="h-screen w-screen flex items-center justify-center">
         {/* Mobile components*/}
