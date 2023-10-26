@@ -1,17 +1,16 @@
-import React from "react";
-
 import LoaggedUser from "@/app/ui/layout/logged-user/logged-user";
 import Post from "@/app/ui/components/post/post.component";
 import { prisma } from "@/utils/lib/db/prisma";
 import Header from "@/app/ui/layout/logged-user/logger-user-desktop/header/header";
+import PostCreation from "./components/post-creation/post-creation.component";
 
 async function Home() {
-    const users = await prisma.user.findMany({
-      orderBy: {
-        id: "desc",
-      },
-    });
-    
+  const users = await prisma.user.findMany({
+    orderBy: {
+      id: "desc",
+    },
+  });
+
   return (
     <LoaggedUser currentPage="home">
       <Header usersData={[...users]} />
@@ -33,6 +32,7 @@ async function Home() {
         scroll-smooth
       "
       >
+        <PostCreation />
         <Post />
         <Post />
         <Post />
