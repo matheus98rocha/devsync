@@ -42,6 +42,7 @@ model User {
   name          String?
   email         String?   @unique
   emailVerified DateTime?
+  posts         Post[]
   image         String?
   accounts      Account[]
   sessions      Session[]
@@ -57,4 +58,14 @@ model VerificationToken {
 
   @@unique([identifier, token])
   @@map("verificationtokens")
+}
+
+model Post {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  text      String
+  published Boolean @default(true)
+  author    User?   @relation(fields: [authorId], references: [id])
+  authorId  String? @db.ObjectId
+
+  @@map("post")
 }
