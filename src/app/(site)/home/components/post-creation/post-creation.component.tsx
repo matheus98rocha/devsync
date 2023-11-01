@@ -3,10 +3,11 @@ import React from "react";
 import PostField from "../post-field/post-field.component";
 import PostModal from "@/app/ui/layout/post-modal/post-modal.component";
 
-const PostCreation = () => {
+const PostCreation = (
+    { postText, handleTextPost, publish }: { postText: string, handleTextPost: (postText: string) => void, publish: any }
+) => {
     const [showPostModal, setShowPostModal] = React.useState(false);
     const [selectedFile, setSelectedFile] = React.useState<File | null>(null);
-    const [text, setText] = React.useState("");
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const files = event.target.files;
@@ -19,14 +20,15 @@ const PostCreation = () => {
                 handleCloseModal={() => {
                     setShowPostModal(false);
                     setSelectedFile(null);
-                    setText("");
+                    handleTextPost("");
                 }}
-                text={text}
-                handleText={setText}
+                text={postText}
+                handleText={handleTextPost}
                 handleFileChange={handleFileChange}
                 selectedFile={selectedFile}
                 handleSelectedFile={setSelectedFile}
                 characterLimit={300}
+                publish={publish}
             />
             <PostField handlePostModalVisibility={setShowPostModal} />
         </>
