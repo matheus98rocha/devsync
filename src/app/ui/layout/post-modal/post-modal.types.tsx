@@ -7,4 +7,5 @@ export interface PostModalProps {
     handleSelectedFile: (file: File | null) => void,
     handleFileChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
     characterLimit: number,
+    publish: any,
 };

@@ -14,10 +14,12 @@ const PostModal = ({
     handleSelectedFile,
     handleFileChange,
     characterLimit,
+    publish,
 }: PostModalProps) => {
     const { data: session } = useSession();
     const remainingCharacters = characterLimit - text.length;
     const characterCounter = remainingCharacters < 0 ? 'text-red-500' : 'text-primary';
+    console.log(text)
     return (
         <>
             {canShowPostModal && (
@@ -89,14 +91,14 @@ const PostModal = ({
                                     <span className="max-w-[128px] text-sm whitespace-nowrap overflow-hidden text-ellipsis">{selectedFile["name"]}</span>
                                 }
                             </div>
-                            {selectedFile && <div> <AiOutlineClose className={"text-[1.3em] hover:text-gray duration-300"} onClick={() => handleSelectedFile(null)}/></div>}
+                            {selectedFile && <div> <AiOutlineClose className={"text-[1.3em] hover:text-gray duration-300"} onClick={() => handleSelectedFile(null)} /></div>}
                         </div>
 
 
                         {/* post button */}
                         <PrimaryButton
                             buttonContent="Publicar"
-                            handleOnClick={() => alert("PUBLICADO")}
+                            handleOnClick={async () => await publish()}
                             isDisabled={false}
                             buttonType="primary"
                             borderRadius="rounded-full"
