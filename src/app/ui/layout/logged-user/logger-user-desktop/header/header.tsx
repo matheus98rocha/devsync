@@ -19,10 +19,6 @@ function Header({ usersData }: HeaderProps) {
   const { isOpenSidebar } = useElementsContext();
   const pathname = usePathname();
 
-  React.useEffect(() => {
-    console.log(usersData);
-  }, [usersData]);
-
   const [searchValue, setSearchValue] = React.useState("");
 
   return (
