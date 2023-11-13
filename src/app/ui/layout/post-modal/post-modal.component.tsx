@@ -106,7 +106,7 @@ const PostModal = ({
                                     const result = await publish();
                                     console.log(result);
                                     return result;
-                                } catch(err) { console.error("Error creating post", err)}}}
+                                } catch { console.error("Error creating post")}}}
                             isDisabled={false}
                             buttonType="primary"
                             borderRadius="rounded-full"
