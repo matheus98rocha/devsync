@@ -1,34 +1,18 @@
-"use client"
-import React from 'react';
+"use server"
+
 import LoaggedUser from "@/app/ui/layout/logged-user/logged-user";
 import Post from "@/app/ui/components/post/post.component";
 import Header from "@/app/ui/layout/logged-user/logger-user-desktop/header/header";
-import PostCreation from "./components/post-creation/post-creation.component";
-import { prismaService } from './utils/prisma-service';
-
-interface User {
-  id: string;
-  name: string | null;
-  email: string | null;
-  emailVerified: Date | null;
-  image: string | null;
-};
+import { prisma } from "@/utils/lib/db/prisma";
+import PostContent from "./components/post-content/post-content.component";
+import { publish } from "./utils/publish";
 
 async function Home() {
-  const [postText, setPostText] = React.useState("");
-  const [users, setUsers] = React.useState<User[]>([]);
-
-  React.useEffect(() => {
-    const getUserData = async () => {
-      const usersData = await prismaService.users();
-      setUsers(usersData);
-    };
-    getUserData();
-  }, []);
-
-  const publish = async () => {
-    await prismaService.publish(postText);
-  };
+  const users = await prisma.user.findMany({
+    orderBy: {
+      id: "desc",
+    },
+  });
   return (
     <LoaggedUser currentPage="home">
       <Header usersData={[...users]} />
@@ -50,10 +34,7 @@ async function Home() {
         scroll-smooth
       "
       >
-        <PostCreation
-          postText={postText} handleTextPost={setPostText}
-          publish={publish}
-        />
+        <PostContent publish={publish} />
         <Post />
         <Post />
         <Post />
