@@ -2,6 +2,8 @@
 import { ReactElement, createContext, useContext, useState } from "react";
 
 type ElementsContextState = {
+  text: string;
+  handleText: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   isOpenSidebar: boolean;
   toggleIsOpenSidebar: () => void;
   isExpandedIconsMobile: boolean;
@@ -20,10 +22,13 @@ const ElementsContext = createContext<ElementsContextState | undefined>(
 
 // Componente de Provedor do Contexto
 const ThemeProvider = ({ children }: ElementsContextProps) => {
+  const [text, setText] = useState("");
   const [isOpenSidebar, setIsOpenSidebar] = useState<boolean>(false);
   const [isExpandedIconsMobile, setIsExpandedIconsMobile] = useState(false);
   const [isOpenDropdownMenuMobile, setIsOpenDropdownMenuMobile] =
     useState(false);
+
+  const handleText = (event: React.ChangeEvent<HTMLTextAreaElement>) => setText(event.target.value);
 
   const toggleIsOpenSidebar = () => {
     setIsOpenSidebar((prevIsOpenSidebar) => !prevIsOpenSidebar);
@@ -40,6 +45,8 @@ const ThemeProvider = ({ children }: ElementsContextProps) => {
   };
 
   const contextValue: ElementsContextState = {
+    text,
+    handleText,
     isOpenSidebar,
     toggleIsOpenSidebar,
     isExpandedIconsMobile,
