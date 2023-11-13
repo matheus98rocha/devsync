@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react';
 import PrimaryButton from "../../components/button/primary-button.component";
 import { PostModalProps } from "./post-modal.types";
@@ -19,7 +21,7 @@ const PostModal = ({
     const { data: session } = useSession();
     const remainingCharacters = characterLimit - text.length;
     const characterCounter = remainingCharacters < 0 ? 'text-red-500' : 'text-primary';
-    console.log(text)
+    console.log(text);
     return (
         <>
             {canShowPostModal && (
@@ -65,7 +67,8 @@ const PostModal = ({
                             <textarea
                                 placeholder="No que você está pensando?"
                                 value={text}
-                                onChange={(e) => handleText(e.target.value)}
+                                // onChange={(e) => handleText(e.target.value)}
+                                onChange={(e) => handleText(e)}
                                 className="resize-none border-none outline-none sm:w-[40rem] sm:h-[15rem] w-[14rem] h-[8rem]"
                             />
                             {/* characters limit per post */}
@@ -98,7 +101,12 @@ const PostModal = ({
                         {/* post button */}
                         <PrimaryButton
                             buttonContent="Publicar"
-                            handleOnClick={async () => await publish()}
+                            handleOnClick={async () => {
+                                try {
+                                    const result = await publish();
+                                    console.log(result);
+                                    return result;
+                                } catch(err) { console.error("Error creating post", err)}}}
                             isDisabled={false}
                             buttonType="primary"
                             borderRadius="rounded-full"
