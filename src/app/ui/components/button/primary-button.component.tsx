@@ -8,9 +8,10 @@ const PrimaryButton = ({
   isDisabled,
   borderRadius,
 }: ButtonProps) => {
+  const disabled = typeof isDisabled === 'function' ? isDisabled() : isDisabled;
   return (
     <button
-      disabled={isDisabled}
+      disabled={disabled}
       className={`
       flex
       items-center

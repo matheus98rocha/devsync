@@ -1,5 +1,5 @@
 import React from "react";
-import { CharactersLimit } from "@/app/ui/components/characters-limit/characters-limit.component";
+import { CharactersLimit } from "@/utils/characters-limit/characters-limit.component";
 import { ChooseFileIcon } from "@/app/ui/components/choose-file-icon/choose-file-icon.component";
 import { TextArea } from "@/app/ui/components/text-area/text-area.component";
 import PostButton from "../post-button/post-button.component";
