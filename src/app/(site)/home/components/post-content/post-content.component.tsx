@@ -3,38 +3,31 @@
 import React from "react";
 import PostField from "../post-field/post-field.component";
 import PostModal from "@/app/ui/layout/post-modal/post-modal.component";
-import { useElementsContext } from "@/context/elements.context";
 
-const PostContent = ({ publish }: { publish: any }) => {
-    const { text, handleText } = useElementsContext();
-    const [showPostModal, setShowPostModal] = React.useState(false);
+const PostContent = () => {
+    const [text, setText] = React.useState<string>("");
     const [selectedFile, setSelectedFile] = React.useState<File | null>(null);
-
+    const [showPostModal, setShowPostModal] = React.useState(false);
+    
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const files = event.target.files;
         if (files && files[0]) setSelectedFile(files[0]);
     };
-
     const handleResetModal = () => {
-        setShowPostModal(false);
         setSelectedFile(null);
-        handleText({ target: { value: "" } } as React.ChangeEvent<HTMLTextAreaElement>);
+        setText("");
+        setShowPostModal(false);
     };
     return (
         <>
             <PostModal
                 canShowPostModal={showPostModal}
                 handleCloseModal={handleResetModal}
-                text={text}
-                handleText={handleText}
                 handleFileChange={handleFileChange}
-                selectedFile={selectedFile}
                 handleSelectedFile={setSelectedFile}
-                characterLimit={300}
-                publish={() => {
-                    handleResetModal();
-                    publish;
-                }}
+                selectedFile={selectedFile}
+                handleText={setText}
+                text={text}
             />
             <PostField handlePostModalVisibility={setShowPostModal} />
         </>
