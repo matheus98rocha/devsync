@@ -17,6 +17,7 @@ const ModalForm = ({ text, handleText, selectedFile, handleFileChange, handleSel
             {/* text area */}
             <div className='flex flex-col gap-5'>
                 <TextArea
+                characterLimit={300}
                     placeholder="No que você está pensando?"
                     text={text}
                     handleText={handleText}
