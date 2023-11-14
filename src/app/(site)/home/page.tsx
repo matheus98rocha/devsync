@@ -5,7 +5,6 @@ import Post from "@/app/ui/components/post/post.component";
 import Header from "@/app/ui/layout/logged-user/logger-user-desktop/header/header";
 import { prisma } from "@/utils/lib/db/prisma";
 import PostContent from "./components/post-content/post-content.component";
-import { publish } from "./utils/publish";
 
 async function Home() {
   const users = await prisma.user.findMany({
@@ -34,7 +33,7 @@ async function Home() {
         scroll-smooth
       "
       >
-        <PostContent publish={publish} />
+        <PostContent />
         <Post />
         <Post />
         <Post />
