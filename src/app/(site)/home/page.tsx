@@ -6,7 +6,7 @@ import { prisma } from "@/utils/lib/db/prisma";
 import Header from "@/app/ui/layout/logged-user/logger-user-desktop/header/header";
 
 async function Home() {
-    const users = await prisma.user.findMany({
+    const users = await prisma.users.findMany({
       orderBy: {
         id: "desc",
       },

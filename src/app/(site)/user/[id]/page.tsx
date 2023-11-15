@@ -15,13 +15,13 @@ interface UserPageProps {
 }
 
 async function User({ params: { id } }: UserPageProps) {
-  let userData = await prisma.user.findUnique({ where: { id } });
+  let userData = await prisma.users.findUnique({ where: { id } });
 
   const session = await getServerSession(authOptions);
 
   async function handleChangeBannerImage() {
     "use server";
-    await prisma.user.update({
+    await prisma.users.update({
       where: { id: id },
       data: {
         banner:
@@ -61,14 +61,9 @@ async function User({ params: { id } }: UserPageProps) {
           <button className="bg-primary p-2 rounded-md text-white hover:bg-primary-hover">
             Seguir
           </button>
-          <UploadButton handleChangeBannerImage={handleChangeBannerImage} />
-          <>
-            {session?.user.id === userData?.id ? (
-              <p>Usuário logado</p>
-            ) : (
-              <p>Não é o usuário</p>
-            )}
-          </>
+          {session?.user.id === userData?.id && (
+            <UploadButton handleChangeBannerImage={handleChangeBannerImage} />
+          )}
         </div>
       </div>
     </LoaggedUser>
