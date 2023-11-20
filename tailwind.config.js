@@ -27,7 +27,7 @@ module.exports = {
           focus: "#5432a3",
         },
         error: {
-          DEFAULT: "#f84b4b",
+          DEFAULT: "#D72828",
           hover: "#e92626",
         },
         alert: {
