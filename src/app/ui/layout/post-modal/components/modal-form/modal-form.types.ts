@@ -4,5 +4,6 @@ export interface ModalFormProps {
     selectedFile: File | null,
     handleSelectedFile: (file: File | null) => void,
     handleFileChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
-    handleCloseModal: () => void,
+    handleSubmitPost: () => void,
+    handleShowError: () => void,
 };

@@ -2,14 +2,16 @@ import { publish } from "@/app/(site)/home/service/publish.service";
 import PrimaryButton from "@/app/ui/components/button/primary-button.component";
 import { PostButtonProps } from "./post-button.types";
 
-const PostButton = ({ textContent, iconContent, text, isLoading, handleIsLoading, handleCloseModal }: PostButtonProps) => {
+const PostButton = ({ textContent, iconContent, text, isLoading, handleIsLoading, handleSubmitPost, handleShowError }: PostButtonProps) => {
     const handleSubmit = async () => {
         try {
             handleIsLoading(true);
             await publish(text);
             handleIsLoading(false);
-            return handleCloseModal();
-        } catch { console.log("Error while trying to create a post") }
+            return handleSubmitPost();
+        } catch { 
+            return handleShowError();
+        }
     };
     const isButtonDisabled = text.length <= 0 ? true : false;
     return (

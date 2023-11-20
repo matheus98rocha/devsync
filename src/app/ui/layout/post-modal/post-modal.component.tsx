@@ -14,6 +14,8 @@ const PostModal = ({
     canShowPostModal,
     handleFileChange,
     handleCloseModal,
+    handleSubmitPost,
+    handleShowError,
 }: PostModalProps) => {
     const { data: session } = useSession();
     return (
@@ -57,11 +59,12 @@ const PostModal = ({
                         </div>
                         <ModalForm
                             handleFileChange={handleFileChange}
-                            handleCloseModal={handleCloseModal}
+                            handleSubmitPost={handleSubmitPost}
                             handleSelectedFile={handleSelectedFile}
                             handleText={handleText}
                             selectedFile={selectedFile}
                             text={text}
+                            handleShowError={handleShowError}
                         />
                     </div>
                 </div>

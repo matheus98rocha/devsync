@@ -6,5 +6,6 @@ export interface PostButtonProps {
     text: string,
     isLoading: boolean,
     handleIsLoading: (isLoading: boolean) => void,
-    handleCloseModal: () => void
+    handleSubmitPost: () => void,
+    handleShowError: () => void,
 };
