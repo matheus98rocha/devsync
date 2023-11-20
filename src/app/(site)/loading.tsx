@@ -1,5 +1,4 @@
 import React from "react";
-import Loading from "../ui/components/loading/loading.component";
 
 function LoadingPage() {
   return (
