@@ -62,10 +62,10 @@ model VerificationToken {
 }
 
 model Post {
-  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
   text     String
-  author   User?   @relation(fields: [authorId], references: [id])
-  authorId String? @db.ObjectId
+  author   User   @relation(fields: [authorId], references: [id])
+  authorId String @db.ObjectId
 
   @@map("post")
 }
