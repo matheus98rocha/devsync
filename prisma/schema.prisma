@@ -46,8 +46,9 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  banner        String?
 
-  @@map("users")
+  @@map("user")
 }
 
 model VerificationToken {
