@@ -1,6 +1,5 @@
 "use client"
 
-import React, { Suspense } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useSession } from 'next-auth/react';
 import Image from "next/image";
