@@ -15,13 +15,13 @@ interface UserPageProps {
 }
 
 async function User({ params: { id } }: UserPageProps) {
-  let userData = await prisma.users.findUnique({ where: { id } });
+  let userData = await prisma.user.findUnique({ where: { id } });
 
   const session = await getServerSession(authOptions);
 
   async function handleChangeBannerImage() {
     "use server";
-    await prisma.users.update({
+    await prisma.user.update({
       where: { id: id },
       data: {
         banner:

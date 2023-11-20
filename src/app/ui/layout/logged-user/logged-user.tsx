@@ -10,32 +10,23 @@ import ProgramingLinks from "./logger-user-desktop/programing-links/programing-l
 import Sidebar from "./logger-user-desktop/sidebar/sidebar";
 import LogoutModal from "../logout-modal/logout-modal.component";
 import { signOut } from "next-auth/react";
+import LoadingFullScreen from "../../components/loading-full-screen/loading-full-screen";
 
 interface LoaggedUserProps {
   children: React.ReactNode;
+  currentPage: string;
 }
 
-function LoaggedUser({ children }: LoaggedUserProps) {
+function LoaggedUser({ children, currentPage }: LoaggedUserProps) {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
-  const {} = useSession({
+  const {status} = useSession({
     required: true,
     onUnauthenticated() {
-      redirect("/?callbackUrl=/protected/home");
+      redirect(`/?callbackUrl=/protected/${currentPage}`);
     },
   });
-  const [hasMounted, setHasMounted] = useState(false);
 
-  useEffect(() => {
-    setHasMounted(true);
-  }, []);
-
-  if (!hasMounted) {
-    return (
-      <div className="h-screen w-screen flex items-center justify-center">
-        <Loading />
-      </div>
-    );
-  }
+  if (status === 'loading') return <LoadingFullScreen />;
   return (
     <>
       <LogoutModal
@@ -45,12 +36,12 @@ function LoaggedUser({ children }: LoaggedUserProps) {
       />
       <div className="relative h-screen w-screen flex items-center justify-center">
         {/* Mobile components*/}
-        {isMobileOnly && <SidebarMobile />}
-        {isMobileOnly && <ProgramingLinksMobile />}
+        {isMobileOnly && <SidebarMobile />}        
+        {/* {isMobileOnly && <ProgramingLinksMobile />} */}
 
         {/* Desktop components */}
         {!isMobileOnly && <Sidebar handleShowLogout={setShowLogoutModal} />}
-        {!isMobileOnly && <ProgramingLinks />}
+        {/* {!isMobileOnly && <ProgramingLinks />} */}
 
         <Suspense fallback={<Loading />}>
           <div className="w-screen h-full flex flex-col items-center justify-center">

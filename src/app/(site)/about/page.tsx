@@ -22,7 +22,7 @@ function About() {
     );
   }
   return (
-    <LoaggedUser>
+    <LoaggedUser currentPage="about">
       <div
         className="
         flex 

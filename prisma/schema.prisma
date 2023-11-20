@@ -35,12 +35,15 @@ model sessions {
   userId       String   @db.ObjectId
 }
 
-model users {
-  id            String  @id @default(auto()) @map("_id") @db.ObjectId
-  email         String  @unique
-  emailVerified Json?
-  image         String
-  name          String
+model User {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  posts         Post[]
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
   banner        String?
 
   @@map("user")
@@ -54,4 +57,14 @@ model verificationtokens {
   token      Json?  @unique
 
   @@unique([identifier, token])
+}
+
+model Post {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  text      String
+  published Boolean @default(true)
+  author    User?   @relation(fields: [authorId], references: [id])
+  authorId  String? @db.ObjectId
+
+  @@map("post")
 }
