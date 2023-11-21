@@ -5,7 +5,7 @@ import React from "react";
 
 import * as Bi from "react-icons/bi";
 
-function Post() {
+function Post({ text }: { text: string }) {
   const { data: session } = useSession();
   const [isLiked, setIsLiked] = React.useState(false);
 
@@ -44,10 +44,10 @@ function Post() {
       </div>
       <div className="w-full flex items-start justify-items-start">
         <p className="text-sm font-medium">
-          Pessoal esse é o meu mais novo projeto, espero que gostem
+          {text}
         </p>
       </div>
-      <div className="relative w-full h-96">
+      {/* <div className="relative w-full h-96">
         <Image
           src={
             "https://raw.githubusercontent.com/matheus98rocha/prime-flix/master/public/readme/home.png"
@@ -60,7 +60,7 @@ function Post() {
           alt="post-image"
           placeholder="blur"
         />
-      </div>
+      </div> */}
       <div className="w-full flex items-center justify-around my-2 border-t pt-5 border-[#d0d0d0]">
         {isLiked ? (
           <Bi.BiSolidLike
@@ -75,9 +75,9 @@ function Post() {
             onClick={() => setIsLiked(true)}
           />
         )}
-        <Bi.BiCommentAdd className="hover:cursor-pointer" size={25} />
+        {/* <Bi.BiCommentAdd className="hover:cursor-pointer" size={25} />
         <Bi.BiShare className="hover:cursor-pointer" size={25} />
-        <Bi.BiSend className="hover:cursor-pointer" size={25} />
+        <Bi.BiSend className="hover:cursor-pointer" size={25} /> */}
       </div>
     </div>
   );
