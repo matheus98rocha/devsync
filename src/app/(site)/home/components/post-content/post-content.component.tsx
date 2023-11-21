@@ -7,7 +7,7 @@ import SucessfulAlert from "@/app/ui/components/alert/sucess/sucessful-alert.com
 import ErrorAlert from "@/app/ui/components/alert/error/error-alert.component";
 import { handleAlertVisibility } from "@/utils/alert-visibility/alert-visibility";
 
-const PostContent = ({ authorId }: { authorId: string }) => {
+const PostContent = ({ authorId }: { authorId: any }) => {
     const [text, setText] = React.useState<string>("");
     const [showSucessfulAlert, setShowSucessfulAlert] = React.useState<boolean>(false);
     const [showErrorAlert, setShowErrorAlert] = React.useState<boolean>(false);

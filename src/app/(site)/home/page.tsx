@@ -8,6 +8,12 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Feed from "./components/feed/feed.component";
 
+interface User {
+  id: string;
+  name: string;
+  image: string;
+};
+
 async function Home() {
   const users = await prisma.user.findMany({
     orderBy: {
@@ -45,7 +51,7 @@ async function Home() {
       "
       >
         <PostContent authorId={authorId} />
-        <Feed authorPost={posts} />
+        <Feed authorPost={posts} users={users as User[]} />
       </div>
     </LoaggedUser>
   );

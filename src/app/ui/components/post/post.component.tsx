@@ -5,7 +5,7 @@ import React from "react";
 
 import * as Bi from "react-icons/bi";
 
-function Post({ text }: { text: string }) {
+function Post({ text, image, name }: { text: string; image: string; name: string }) {
   const { data: session } = useSession();
   const [isLiked, setIsLiked] = React.useState(false);
 
@@ -31,8 +31,8 @@ function Post({ text }: { text: string }) {
       <div className="w-full flex items-center justify-items-start gap-4 my-2 border-b pb-5 border-[#d0d0d0]">
         {session?.user?.image && (
           <Image
-            src={session.user.image as string}
-            blurDataURL={session.user.image as string}
+            src={image}
+            blurDataURL={image}
             width={30}
             height={30}
             priority={true}
@@ -40,14 +40,12 @@ function Post({ text }: { text: string }) {
             className="rounded-full"
           />
         )}
-        <span className="text-sm font-medium">{session?.user?.name}</span>
+        <span className="text-sm font-medium">{name}</span>
       </div>
       <div className="w-full flex items-start justify-items-start">
-        <p className="text-sm font-medium">
-          {text}
-        </p>
+        <p className="text-sm font-medium">{text}</p>
       </div>
-      {/* <div className="relative w-full h-96">
+            {/* <div className="relative w-full h-96">
         <Image
           src={
             "https://raw.githubusercontent.com/matheus98rocha/prime-flix/master/public/readme/home.png"
@@ -75,7 +73,7 @@ function Post({ text }: { text: string }) {
             onClick={() => setIsLiked(true)}
           />
         )}
-        {/* <Bi.BiCommentAdd className="hover:cursor-pointer" size={25} />
+       {/* <Bi.BiCommentAdd className="hover:cursor-pointer" size={25} />
         <Bi.BiShare className="hover:cursor-pointer" size={25} />
         <Bi.BiSend className="hover:cursor-pointer" size={25} /> */}
       </div>
