@@ -2,14 +2,24 @@ import { publish } from "@/app/(site)/home/service/publish.service";
 import PrimaryButton from "@/app/ui/components/button/primary-button.component";
 import { PostButtonProps } from "./post-button.types";
 
-const PostButton = ({ textContent, iconContent, text, isLoading, handleIsLoading, handleSubmitPost, handleShowError }: PostButtonProps) => {
+const PostButton = ({ 
+    textContent, 
+    iconContent, 
+    text, 
+    authorId,
+    isLoading, 
+    handleIsLoading, 
+    handleSubmitPost, 
+    handleShowError 
+}: PostButtonProps) => {
     const handleSubmit = async () => {
         try {
             handleIsLoading(true);
-            await publish(text);
+            await publish(text, authorId);
             handleIsLoading(false);
             return handleSubmitPost();
         } catch { 
+            handleIsLoading(false);
             return handleShowError();
         }
     };

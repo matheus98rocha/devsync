@@ -1,5 +1,6 @@
 export interface PostModalProps {
     text: string,
+    authorId: string,
     handleText: (text: string) => void,
     selectedFile: File | null,
     handleSelectedFile: (selectedFile: File | null) => void,
