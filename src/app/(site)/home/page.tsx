@@ -1,12 +1,12 @@
 "use server";
 
 import LoaggedUser from "@/app/ui/layout/logged-user/logged-user";
-import Post from "@/app/ui/components/post/post.component";
 import Header from "@/app/ui/layout/logged-user/logger-user-desktop/header/header";
 import { prisma } from "@/utils/lib/db/prisma";
 import PostContent from "./components/post-content/post-content.component";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import Feed from "./components/feed/feed.component";
 
 async function Home() {
   const users = await prisma.user.findMany({
@@ -15,7 +15,14 @@ async function Home() {
     },
   });
   const session = await getServerSession(authOptions);
-  console.log("Id User", session.user.id);
+  
+  const authorId = session.user.id;
+
+  const posts = await prisma.post.findMany({
+    orderBy: {
+      authorId: "desc"
+    }
+  });
   return (
     <LoaggedUser currentPage="home">
       <Header usersData={[...users]} />
@@ -37,13 +44,8 @@ async function Home() {
         scroll-smooth
       "
       >
-        <PostContent />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        <PostContent authorId={authorId} />
+        <Feed authorPost={posts} />
       </div>
     </LoaggedUser>
   );
