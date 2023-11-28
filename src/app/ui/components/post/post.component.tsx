@@ -30,7 +30,7 @@ function Post({ handleDeleteModal, text, image, name, authorId }: PostProps) {
     gap-6
     animate-fade-up
     "
-      onClick={() => setShowOptions(!showOptions)}
+      onClick={() => { if (showOptions) setShowOptions(!showOptions) }}
     >
       <div className="w-full flex items-center justify-items-start gap-4 my-2 border-b pb-5 border-[#d0d0d0]">
         {session?.user?.image && (
