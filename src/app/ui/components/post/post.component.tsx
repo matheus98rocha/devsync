@@ -4,10 +4,13 @@ import Image from "next/image";
 import React from "react";
 
 import * as Bi from "react-icons/bi";
+import PostOptions from "./components/post-options/post-options.component";
+import { PostProps } from "./post.types";
 
-function Post({ text, image, name }: { text: string; image: string; name: string }) {
+function Post({ handleDeleteModal, text, image, name, authorId }: PostProps) {
   const { data: session } = useSession();
-  const [isLiked, setIsLiked] = React.useState(false);
+  const [isLiked, setIsLiked] = React.useState<boolean>(false);
+  const [showOptions, setShowOptions] = React.useState<boolean>(false);
 
   return (
     <div
@@ -27,6 +30,7 @@ function Post({ text, image, name }: { text: string; image: string; name: string
     gap-6
     animate-fade-up
     "
+      onClick={() => setShowOptions(!showOptions)}
     >
       <div className="w-full flex items-center justify-items-start gap-4 my-2 border-b pb-5 border-[#d0d0d0]">
         {session?.user?.image && (
@@ -41,11 +45,18 @@ function Post({ text, image, name }: { text: string; image: string; name: string
           />
         )}
         <span className="text-sm font-medium">{name}</span>
+
+        <PostOptions
+          handleDeleteModal={handleDeleteModal}
+          showOptions={showOptions}
+          handleShowOptions={setShowOptions}
+          isCurrentSession={authorId}
+        />
       </div>
       <div className="w-full flex items-start justify-items-start">
         <p className="text-sm font-medium">{text}</p>
       </div>
-            {/* <div className="relative w-full h-96">
+      {/* <div className="relative w-full h-96">
         <Image
           src={
             "https://raw.githubusercontent.com/matheus98rocha/prime-flix/master/public/readme/home.png"
@@ -73,7 +84,7 @@ function Post({ text, image, name }: { text: string; image: string; name: string
             onClick={() => setIsLiked(true)}
           />
         )}
-       {/* <Bi.BiCommentAdd className="hover:cursor-pointer" size={25} />
+        {/* <Bi.BiCommentAdd className="hover:cursor-pointer" size={25} />
         <Bi.BiShare className="hover:cursor-pointer" size={25} />
         <Bi.BiSend className="hover:cursor-pointer" size={25} /> */}
       </div>
