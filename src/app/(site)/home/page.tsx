@@ -21,7 +21,7 @@ async function Home() {
     },
   });
   const session = await getServerSession(authOptions);
-  
+
   const authorId = session.user.id;
 
   const posts = await prisma.post.findMany({
@@ -29,6 +29,7 @@ async function Home() {
       authorId: "desc"
     }
   });
+
   return (
     <LoaggedUser currentPage="home">
       <Header usersData={[...users]} />
@@ -51,7 +52,7 @@ async function Home() {
       "
       >
         <PostContent authorId={authorId} />
-        <Feed authorPost={posts} users={users as User[]} />
+        <Feed authorPost={posts} users={users as User[]} authorId={authorId} />
       </div>
     </LoaggedUser>
   );
