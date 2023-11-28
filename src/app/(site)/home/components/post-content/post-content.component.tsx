@@ -26,7 +26,8 @@ const PostContent = ({ authorId }: { authorId: any }) => {
 
     const handleSubmitPost = () => {
         handleResetModal();
-        return handleAlertVisibility(setShowSucessfulAlert);
+        handleAlertVisibility(setShowSucessfulAlert);
+        return setTimeout(() => { window.location.reload() }, 2000);
     };
 
     const handleError = () => handleAlertVisibility(setShowErrorAlert);
