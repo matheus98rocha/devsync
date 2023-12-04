@@ -1,7 +1,7 @@
 export interface PostProps {
-    handleDeleteModal: any,
+    handleDeleteModal: (deletePostModal: boolean) => void,
     text: string; 
     image: string; 
     name: string, 
-    authorId: string,
+    amIThePostOwner: string,
 };

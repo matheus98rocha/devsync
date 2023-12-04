@@ -7,7 +7,7 @@ import * as Bi from "react-icons/bi";
 import PostOptions from "./components/post-options/post-options.component";
 import { PostProps } from "./post.types";
 
-function Post({ handleDeleteModal, text, image, name, authorId }: PostProps) {
+function Post({ handleDeleteModal, text, image, name, amIThePostOwner }: PostProps) {
   const { data: session } = useSession();
   const [isLiked, setIsLiked] = React.useState<boolean>(false);
   const [showOptions, setShowOptions] = React.useState<boolean>(false);
@@ -50,7 +50,7 @@ function Post({ handleDeleteModal, text, image, name, authorId }: PostProps) {
           handleDeleteModal={handleDeleteModal}
           showOptions={showOptions}
           handleShowOptions={setShowOptions}
-          isCurrentSession={authorId}
+          amIThePostOwner={amIThePostOwner}
         />
       </div>
       <div className="w-full flex items-start justify-items-start">

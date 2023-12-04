@@ -6,14 +6,14 @@ export const postOptions = {
         {
             label: "Deletar publicação",
             icon: React.createElement(FaRegTrashCan),
-            isClicked: true,
+            isClicked: (handleDeleteModal: (deleteModal: boolean) => void) => handleDeleteModal(true),
         }
     ],
     otherPostsOptions: [
         {
             label: "Ocultar publicação",
             icon: React.createElement(FaFlag),
-            isClicked: "",
+            isClicked: () => alert("EM PRODUÇÃO!"),
         }
     ],
 };

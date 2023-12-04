@@ -1,18 +1,18 @@
 "use client"
 
 import React from "react";
-import PostField from "../post-field/post-field.component";
+import PostButton from "../post-button/post-button.component";
 import PostModal from "@/app/ui/layout/post-modal/post-modal.component";
-import SucessfulAlert from "@/app/ui/components/alert/sucess/sucessful-alert.component";
-import ErrorAlert from "@/app/ui/components/alert/error/error-alert.component";
 import { handleAlertVisibility } from "@/utils/alert-visibility/alert-visibility";
+import Alert from "@/app/ui/components/alert/alert.component";
+import { AlertEnum } from "@/app/ui/components/alert/alert.types";
 
-const PostContent = ({ authorId }: { authorId: any }) => {
+const PostContent = ({ authorId }: { authorId: string }) => {
     const [text, setText] = React.useState<string>("");
     const [showSucessfulAlert, setShowSucessfulAlert] = React.useState<boolean>(false);
     const [showErrorAlert, setShowErrorAlert] = React.useState<boolean>(false);
     const [selectedFile, setSelectedFile] = React.useState<File | null>(null);
-    const [showPostModal, setShowPostModal] = React.useState(false);
+    const [showPostModal, setShowPostModal] = React.useState<boolean>(false);
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const files = event.target.files;
@@ -45,9 +45,9 @@ const PostContent = ({ authorId }: { authorId: any }) => {
                 authorId={authorId}
                 handleShowError={handleError}
             />
-            <ErrorAlert showAlert={showErrorAlert} message="ERROR AO PUBLICAR" />
-            <SucessfulAlert showAlert={showSucessfulAlert} message="ENVIADO COM SUCESSO" />
-            <PostField handlePostModalVisibility={setShowPostModal} />
+            <Alert showAlert={showSucessfulAlert} message="SUA POSTAGEM ESTÁ NO AR!" type={AlertEnum.SUCESS} />
+            <Alert showAlert={showErrorAlert} message="OCORREU UM ERROR AO PUBLICAR" type={AlertEnum.ERROR} />
+            <PostButton handlePostModalVisibility={setShowPostModal} />
         </>
     )
 };

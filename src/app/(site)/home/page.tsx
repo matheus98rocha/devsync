@@ -22,7 +22,7 @@ async function Home() {
   });
   const session = await getServerSession(authOptions);
 
-  const authorId = session.user.id;
+  const myUserId = session.user.id;
 
   const posts = await prisma.post.findMany({
     orderBy: {
@@ -51,8 +51,8 @@ async function Home() {
         scroll-smooth
       "
       >
-        <PostContent authorId={authorId} />
-        <Feed authorPost={posts} users={users as User[]} authorId={authorId} />
+        <PostContent authorId={myUserId} />
+        <Feed Posts={posts} users={users as User[]} myUserId={myUserId} />
       </div>
     </LoaggedUser>
   );

@@ -1,8 +1,7 @@
 import React from "react";
+import { PostButtonProps } from "./post-button.types";
 
-const PostField = (
-    { handlePostModalVisibility }: { handlePostModalVisibility: (postModalVisibility: boolean) => void }
-) => {
+const PostButton = ({ handlePostModalVisibility }: PostButtonProps) => {
     return (
         <div className="
         w-full
@@ -21,10 +20,10 @@ const PostField = (
         cursor-pointer
         "
             onClick={() => handlePostModalVisibility(true)}
-            >
+        >
             <p className="opacity-50">Começar uma publicação</p>
         </div>
     )
 };
 
-export default PostField;
+export default PostButton;
