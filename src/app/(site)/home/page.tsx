@@ -12,7 +12,7 @@ interface User {
   id: string;
   name: string;
   image: string;
-};
+}
 
 async function Home() {
   const users = await prisma.user.findMany({
@@ -22,13 +22,30 @@ async function Home() {
   });
   const session = await getServerSession(authOptions);
 
-  const myUserId = session.user.id;
+  const currentUserId = session.user.id;
 
   const posts = await prisma.post.findMany({
     orderBy: {
-      authorId: "desc"
+      authorId: "desc",
+    },
+  });
+
+  const mappedPosts = posts.map((post) => {
+    if (post.authorId === currentUserId) {
+      return {
+        ...post,
+        isAuthor: true,
+      };
+    } else {
+      return {
+        ...post,
+        isAuthor: false,
+      };
     }
   });
+  // Adaptar a base de dados para recuperar as imagens com o onUpdate: Cascade
+  // Utilizar a lógica de isAuthor para identificar se o usuário pode ou não deletar um documento
+  //Ajustar dropdown
 
   return (
     <LoaggedUser currentPage="home">
@@ -51,8 +68,12 @@ async function Home() {
         scroll-smooth
       "
       >
-        <PostContent authorId={myUserId} />
-        <Feed Posts={posts} users={users as User[]} myUserId={myUserId} />
+        <PostContent authorId={currentUserId} />
+        <Feed
+          Posts={mappedPosts}
+          users={users as User[]}
+          myUserId={currentUserId}
+        />
       </div>
     </LoaggedUser>
   );
