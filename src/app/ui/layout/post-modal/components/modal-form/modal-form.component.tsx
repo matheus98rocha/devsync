@@ -6,7 +6,7 @@ import PostButton from "../post-button/post-button.component";
 import { ModalFormProps } from "./modal-form.types";
 import Loading from "@/app/ui/components/loading/loading.component";
 
-const ModalForm = ({ text, authorId, handleText, selectedFile, handleFileChange, handleSelectedFile, handleSubmitPost, handleShowError }: ModalFormProps) => {
+const ModalForm = ({ text, myUserId, handleText, selectedFile, handleFileChange, handleSelectedFile, handleSubmitPost, handleShowError }: ModalFormProps) => {
     const [isLoading, setIsLoading] = React.useState<boolean>(true);
 
     React.useEffect(() => {
@@ -41,7 +41,7 @@ const ModalForm = ({ text, authorId, handleText, selectedFile, handleFileChange,
                     iconContent={<Loading />}
                     handleIsLoading={setIsLoading}
                     text={text}
-                    authorId={authorId}
+                    myUserId={myUserId}
                     handleSubmitPost={handleSubmitPost}
                     handleShowError={handleShowError}
                 />

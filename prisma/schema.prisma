@@ -64,7 +64,7 @@ model VerificationToken {
 model Post {
   id       String @id @default(auto()) @map("_id") @db.ObjectId
   text     String
-  author   User   @relation(fields: [authorId], references: [id])
+  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
   authorId String @db.ObjectId
 
   @@map("post")

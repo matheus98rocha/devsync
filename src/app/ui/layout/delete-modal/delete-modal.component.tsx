@@ -1,17 +1,15 @@
 import PrimaryButton from "../../components/button/primary-button.component";
 import { GoAlertFill } from "react-icons/go";
+import { DeleteModalProps } from "./delete-modal.types";
+import Loading from "@/app/ui/components/loading/loading.component";
 
 const DeleteModal = ({
-    message,
+    message, 
     showDeleteModal,
+    isLoading,
     handleDelete,
     handleCancel,
-}: {
-    message: string,
-    handleDelete: () => void,
-    handleCancel: () => void,
-    showDeleteModal: boolean
-}) => {
+}: DeleteModalProps) => {
     return (
         <>
             {showDeleteModal && (
@@ -31,7 +29,7 @@ const DeleteModal = ({
                         <p className="text-center text-gray-500">{message}</p>
                         <div className="mt-6 flex flex-wrap gap-4 lg:grid lg:grid-cols-2 lg:gap-4">
                             <PrimaryButton
-                                buttonContent="Remover"
+                                buttonContent={isLoading ? <Loading /> : "Remover"}
                                 handleOnClick={handleDelete}
                                 isDisabled={false}
                                 buttonType="error"

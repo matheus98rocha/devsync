@@ -6,8 +6,9 @@ import PostModal from "@/app/ui/layout/post-modal/post-modal.component";
 import { handleAlertVisibility } from "@/utils/alert-visibility/alert-visibility";
 import Alert from "@/app/ui/components/alert/alert.component";
 import { AlertEnum } from "@/app/ui/components/alert/alert.types";
+import { IPostContentProps } from "./post-content.types";
 
-const PostContent = ({ authorId }: { authorId: string }) => {
+const PostContent = ({ myUserId }: IPostContentProps) => {
     const [text, setText] = React.useState<string>("");
     const [showSucessfulAlert, setShowSucessfulAlert] = React.useState<boolean>(false);
     const [showErrorAlert, setShowErrorAlert] = React.useState<boolean>(false);
@@ -18,18 +19,18 @@ const PostContent = ({ authorId }: { authorId: string }) => {
         const files = event.target.files;
         if (files && files[0]) setSelectedFile(files[0]);
     };
+    
     const handleResetModal = () => {
         setSelectedFile(null);
         setText("");
         setShowPostModal(false);
     };
 
-    const handleSubmitPost = () => {
+    const handleSubmitPost = async() => {
         handleResetModal();
         handleAlertVisibility(setShowSucessfulAlert);
-        return setTimeout(() => { window.location.reload() }, 2000);
+        // FUNÇÃO PARA ATUALIZAR OS POSTS
     };
-
     const handleError = () => handleAlertVisibility(setShowErrorAlert);
     return (
         <>
@@ -42,7 +43,7 @@ const PostContent = ({ authorId }: { authorId: string }) => {
                 selectedFile={selectedFile}
                 handleText={setText}
                 text={text}
-                authorId={authorId}
+                myUserId={myUserId}
                 handleShowError={handleError}
             />
             <Alert showAlert={showSucessfulAlert} message="SUA POSTAGEM ESTÁ NO AR!" type={AlertEnum.SUCESS} />
