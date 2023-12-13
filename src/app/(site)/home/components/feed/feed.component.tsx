@@ -14,7 +14,7 @@ const Feed = ({ posts, myUserId }: FeedProps) => {
     const [showDeletePostModal, setShowDeletePostModal] = React.useState<boolean>(false);
     const [isLoadingDeletePost, setIsLoadingDeletePost] = React.useState<boolean>(false);
 
-    const isMyPost: Array<ICurrentUserPost> = posts.map((post: IPost) => {
+    const isMyPost: ICurrentUserPost[] = posts.map((post: IPost) => {
         return {
             id: post.id,
             text: post.text,

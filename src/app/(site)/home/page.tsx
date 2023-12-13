@@ -10,31 +10,38 @@ import Feed from "./components/feed/feed.component";
 import { IPost } from "@/app/interfaces/post";
 
 async function Home() {
-
   const users = await prisma.user.findMany({ orderBy: { id: "desc" } }); // get all users from the database
 
   const session = await getServerSession(authOptions); // will get the session of the user logged
 
   const myUserId = session.user.id; // get the user id from the current session
 
-  const posts = await prisma.post.findMany({
-    orderBy: { authorId: "desc" },
-    include: { author: true }, // Include the author's information (id, name, image...)
-  });
-  // Adaptar a base de dados para recuperar as imagens com o onUpdate: Cascade
-  // Utilizar a lógica de isAuthor para identificar se o usuário pode ou não deletar um documento
-  //Ajustar dropdown
-
+  // const posts = await prisma.post.findMany({
+  //   orderBy: { authorId: "desc" },
+  //   include: { author: true }, // Include the author's information (id, name, image...)
+  // });
 
   // UPDATE NEW POSTS
-  const getPosts = async () => {
-    await prisma.post.findMany({
+  const getPosts = async (): Promise<IPost[]> => {
+    const posts = await prisma.post.findMany({
       orderBy: { authorId: "desc" },
       include: { author: true },
     });
-  };
 
-  const refreshPosts = async () => await getPosts();
+    return posts;
+  };
+  const posts = await getPosts();
+
+  // Criar uma função que gera esse map dentro de um utils que ficara dentro da pasta home
+  // const mappedPosts = handleMapPosts(posts);
+  // const mappedPosts = posts.map((e) => {
+  //   return{
+  //      ...e,
+  //       e.AuthorId === sessionId ? author:true: author:false
+  //    }
+  // });
+
+  // const refreshPosts = await getPosts();
 
   return (
     <LoaggedUser currentPage="home">
@@ -58,7 +65,7 @@ async function Home() {
       "
       >
         <PostContent myUserId={myUserId} />
-        <Feed posts={posts as Array<IPost>} myUserId={myUserId} />
+        <Feed posts={posts} myUserId={myUserId} />
       </div>
     </LoaggedUser>
   );
