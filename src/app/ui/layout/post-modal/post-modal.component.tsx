@@ -8,7 +8,7 @@ import { PostModalProps } from './post-modal.types';
 
 const PostModal = ({
     text,
-    authorId,
+    myUserId,
     handleText,
     selectedFile,
     handleSelectedFile,
@@ -65,7 +65,7 @@ const PostModal = ({
                             handleText={handleText}
                             selectedFile={selectedFile}
                             text={text}
-                            authorId={authorId}
+                            myUserId={myUserId}
                             handleShowError={handleShowError}
                         />
                     </div>

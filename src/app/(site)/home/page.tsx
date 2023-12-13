@@ -7,45 +7,34 @@ import PostContent from "./components/post-content/post-content.component";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Feed from "./components/feed/feed.component";
-
-interface User {
-  id: string;
-  name: string;
-  image: string;
-}
+import { IPost } from "@/app/interfaces/post";
 
 async function Home() {
-  const users = await prisma.user.findMany({
-    orderBy: {
-      id: "desc",
-    },
-  });
-  const session = await getServerSession(authOptions);
 
-  const currentUserId = session.user.id;
+  const users = await prisma.user.findMany({ orderBy: { id: "desc" } }); // get all users from the database
+
+  const session = await getServerSession(authOptions); // will get the session of the user logged
+
+  const myUserId = session.user.id; // get the user id from the current session
 
   const posts = await prisma.post.findMany({
-    orderBy: {
-      authorId: "desc",
-    },
-  });
-
-  const mappedPosts = posts.map((post) => {
-    if (post.authorId === currentUserId) {
-      return {
-        ...post,
-        isAuthor: true,
-      };
-    } else {
-      return {
-        ...post,
-        isAuthor: false,
-      };
-    }
+    orderBy: { authorId: "desc" },
+    include: { author: true }, // Include the author's information (id, name, image...)
   });
   // Adaptar a base de dados para recuperar as imagens com o onUpdate: Cascade
   // Utilizar a lógica de isAuthor para identificar se o usuário pode ou não deletar um documento
   //Ajustar dropdown
+
+
+  // UPDATE NEW POSTS
+  const getPosts = async () => {
+    await prisma.post.findMany({
+      orderBy: { authorId: "desc" },
+      include: { author: true },
+    });
+  };
+
+  const refreshPosts = async () => await getPosts();
 
   return (
     <LoaggedUser currentPage="home">
@@ -68,12 +57,8 @@ async function Home() {
         scroll-smooth
       "
       >
-        <PostContent authorId={currentUserId} />
-        <Feed
-          Posts={mappedPosts}
-          users={users as User[]}
-          myUserId={currentUserId}
-        />
+        <PostContent myUserId={myUserId} />
+        <Feed posts={posts as Array<IPost>} myUserId={myUserId} />
       </div>
     </LoaggedUser>
   );

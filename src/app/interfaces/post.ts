@@ -1,13 +1,14 @@
-export interface IPost {
-  id: string;
-  authorId: string;
-  text: string;
-}
+import { IUser } from "./user";
 
-export interface IMappedPost extends IPost {
-  id: string;
-  authorId: string;
-  text: string;
-  isAuthor: boolean;
-  image: string;
-}
+export interface IPost {
+    id: string;
+    authorId?: string;
+    text: string;
+    author?: IUser;
+};
+
+export interface ICurrentUserPost extends IPost {
+    currentUserPost: boolean;
+    image: string | null;
+    name: string | null;
+};
