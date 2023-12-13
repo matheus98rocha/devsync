@@ -8,9 +8,16 @@ import Alert from "@/app/ui/components/alert/alert.component";
 import { FeedProps } from "./feed.types";
 import { handleAlertVisibility } from "@/utils/alert-visibility/alert-visibility";
 import { ICurrentUserPost, IPost } from "@/app/interfaces/post";
+import PostButton from "./components/post-button.component";
+import PostModal from "@/app/ui/layout/post-modal/post-modal.component";
 
 const Feed = ({ posts, myUserId }: FeedProps) => {
-    const [showSucessfulAlert, setShowSucessfulAlert] = React.useState<boolean>(false);
+    const [text, setText] = React.useState<string>("");
+    const [selectedFile, setSelectedFile] = React.useState<File | null>(null);
+    const [showErrorAlert, setShowErrorAlert] = React.useState<boolean>(false);
+    const [showPostModal, setShowPostModal] = React.useState<boolean>(false);
+    const [showSuccessfulNewPostAlert, setShowSuccessfulNewPostAlert] = React.useState<boolean>(false);
+    const [showSuccessfulDeletedPostAlert, setSuccessfulDeletedPostAlert] = React.useState<boolean>(false);
     const [showDeletePostModal, setShowDeletePostModal] = React.useState<boolean>(false);
     const [isLoadingDeletePost, setIsLoadingDeletePost] = React.useState<boolean>(false);
 
@@ -23,17 +30,37 @@ const Feed = ({ posts, myUserId }: FeedProps) => {
             currentUserPost: post.authorId === myUserId ? true : false, // it will check if the user logged made the post
         };
     });
+
+    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const files = event.target.files;
+        if (files && files[0]) setSelectedFile(files[0]);
+    };
+
+    const handleResetModal = () => {
+        setSelectedFile(null);
+        setText("");
+        setShowPostModal(false);
+    };
+
+    const handleSubmitPost = async () => {
+        handleResetModal();
+        handleAlertVisibility(setShowSuccessfulNewPostAlert);
+    };
+
     const deletePost = async (id: string, isThatMyPost: boolean) => {
         if (isThatMyPost) {
             setIsLoadingDeletePost(true);
             await handleDeletePost(id);
-            handleAlertVisibility(setShowSucessfulAlert);
-            setShowDeletePostModal(false);
+            handleAlertVisibility(setSuccessfulDeletedPostAlert);
+            setShowDeletePostModal(false)
             setIsLoadingDeletePost(false);
         };
     };
+
+    const handleError = () => handleAlertVisibility(setShowErrorAlert);
     return (
         <>
+            <PostButton buttonText="Começar uma publicação" handlePostModalVisibility={setShowPostModal} />
             {isMyPost.map((post: ICurrentUserPost, index: number) => (
                 <div className="w-full" key={index}>
                     <Post
@@ -54,7 +81,21 @@ const Feed = ({ posts, myUserId }: FeedProps) => {
                 </div>
             )
             )}
-            {<Alert showAlert={showSucessfulAlert} message="SUA PUBLICAÇÃO FOI REMOVIDA!" type={AlertEnum.SUCESS} />}
+            <PostModal
+                canShowPostModal={showPostModal}
+                handleCloseModal={handleResetModal}
+                handleSubmitPost={handleSubmitPost}
+                handleFileChange={handleFileChange}
+                handleSelectedFile={setSelectedFile}
+                selectedFile={selectedFile}
+                handleText={setText}
+                text={text}
+                myUserId={myUserId}
+                handleShowError={handleError}
+            />
+            <Alert showAlert={showSuccessfulNewPostAlert} message="SUA POSTAGEM ESTÁ NO AR" type={AlertEnum.SUCESS} />
+            <Alert showAlert={showSuccessfulDeletedPostAlert} message="SUA POSTAGEM FOI REMOVIDA" type={AlertEnum.SUCESS} />
+            <Alert showAlert={showErrorAlert} message="OCORREU UM ERROR AO PUBLICAR" type={AlertEnum.ERROR} />
         </>
     );
 };

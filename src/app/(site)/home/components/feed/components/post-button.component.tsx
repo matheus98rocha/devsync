@@ -1,9 +1,8 @@
 import React from "react";
 import { PostButtonProps } from "./post-button.types";
 
-const PostButton = ({ handlePostModalVisibility }: PostButtonProps) => {
-    return (
-        <div className="
+const PostButton = ({ buttonText, handlePostModalVisibility }: PostButtonProps) => (
+    <button className="
         w-full
         h-auto
         border
@@ -19,11 +18,10 @@ const PostButton = ({ handlePostModalVisibility }: PostButtonProps) => {
         animate-fade-up
         cursor-pointer
         "
-            onClick={() => handlePostModalVisibility(true)}
-        >
-            <p className="opacity-50">Começar uma publicação</p>
-        </div>
-    )
-};
+        onClick={() => handlePostModalVisibility(true)}
+    >
+        <p className="opacity-50">{buttonText}</p>
+    </button>
+);
 
 export default PostButton;

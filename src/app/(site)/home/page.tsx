@@ -3,11 +3,11 @@
 import LoaggedUser from "@/app/ui/layout/logged-user/logged-user";
 import Header from "@/app/ui/layout/logged-user/logger-user-desktop/header/header";
 import { prisma } from "@/utils/lib/db/prisma";
-import PostContent from "./components/post-content/post-content.component";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Feed from "./components/feed/feed.component";
 import { IPost } from "@/app/interfaces/post";
+import { handleMapPosts } from "./utils/mapped-posts";
 
 async function Home() {
   const users = await prisma.user.findMany({ orderBy: { id: "desc" } }); // get all users from the database
@@ -16,32 +16,12 @@ async function Home() {
 
   const myUserId = session.user.id; // get the user id from the current session
 
-  // const posts = await prisma.post.findMany({
-  //   orderBy: { authorId: "desc" },
-  //   include: { author: true }, // Include the author's information (id, name, image...)
-  // });
+  const posts = await prisma.post.findMany({
+    orderBy: { authorId: "desc" },
+    include: { author: true }, // Include the author's information (id, name, image...)
+  });
 
-  // UPDATE NEW POSTS
-  const getPosts = async (): Promise<IPost[]> => {
-    const posts = await prisma.post.findMany({
-      orderBy: { authorId: "desc" },
-      include: { author: true },
-    });
-
-    return posts;
-  };
-  const posts = await getPosts();
-
-  // Criar uma função que gera esse map dentro de um utils que ficara dentro da pasta home
-  // const mappedPosts = handleMapPosts(posts);
-  // const mappedPosts = posts.map((e) => {
-  //   return{
-  //      ...e,
-  //       e.AuthorId === sessionId ? author:true: author:false
-  //    }
-  // });
-
-  // const refreshPosts = await getPosts();
+  const mappedPosts = handleMapPosts(posts, myUserId);
 
   return (
     <LoaggedUser currentPage="home">
@@ -64,8 +44,7 @@ async function Home() {
         scroll-smooth
       "
       >
-        <PostContent myUserId={myUserId} />
-        <Feed posts={posts} myUserId={myUserId} />
+        <Feed posts={mappedPosts} myUserId={myUserId} />
       </div>
     </LoaggedUser>
   );

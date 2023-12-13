@@ -1,1 +1,0 @@
-export interface PostButtonProps { handlePostModalVisibility: (postModalVisibility: boolean) => void };
