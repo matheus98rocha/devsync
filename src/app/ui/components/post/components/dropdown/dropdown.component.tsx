@@ -1,9 +1,9 @@
 import React from "react";
 import { DropdownProps } from "./dropdown.types";
 
-const Dropdown = ({ checkPostOptions, options }: DropdownProps) => (
+const Dropdown = ({ openDeletePostModal, options }: DropdownProps) => (
     <div className="bg-white shadow-md rounded-md overflow-hidden mt-2"
-        onClick={checkPostOptions}>
+        onClick={openDeletePostModal}>
         <ul className="py-2">
             {options.map((option, index) => (
                 <li key={index} className="flex items-center justify-center px-4 py-2 w-[15rem] hover:bg-gray-100 cursor-pointer">

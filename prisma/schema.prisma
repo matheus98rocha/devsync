@@ -62,10 +62,12 @@ model VerificationToken {
 }
 
 model Post {
-  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  image    String?
+  name     String?
   text     String
-  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  authorId String @db.ObjectId
+  author   User    @relation(fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  authorId String  @db.ObjectId
 
   @@map("post")
 }

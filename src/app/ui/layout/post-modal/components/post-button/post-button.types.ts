@@ -5,6 +5,8 @@ export interface PostButtonProps {
     iconContent: ReactNode,
     text: string,
     myUserId: string,
+    name: string,
+    image: string,
     isLoading: boolean,
     handleIsLoading: (isLoading: boolean) => void,
     handleSubmitPost: () => void,

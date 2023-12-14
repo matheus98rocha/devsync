@@ -10,25 +10,24 @@ const PostOptions = ({
   handleShowOptions,
   isMyPost,
 }: PostOptionsProps) => {
-  const checkPosts = isMyPost
-    ? postOptions.myPostsOptions
-    : postOptions.otherPostsOptions;
-  const checkPostFeature = () => {
-    if (isMyPost) return handleDeleteModal(true);
-    return alert("Em desenvolvimento...");
-  };
+  const openDeletePostModal = () => isMyPost && handleDeleteModal(true);
   return (
-    <div className="relative inline-block ml-auto">
-        <BsThreeDots
+    <>
+      {
+        isMyPost &&
+        <div className="relative inline-block ml-auto">
+          <BsThreeDots
             className="cursor-pointer"
             onClick={() => handleShowOptions(!showOptions)}
-        />
-        {showOptions && (
+          />
+          {showOptions && (
             <div className="absolute top-0 right-0 mt-8">
-                <Dropdown checkPostOptions={checkPostFeature} options={checkPosts} />
+              <Dropdown openDeletePostModal={openDeletePostModal} options={postOptions.myPostsOptions} />
             </div>
-        )}
-    </div>
+          )}
+        </div>
+      }
+    </>
   );
 };
 

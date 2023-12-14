@@ -7,6 +7,8 @@ const PostButton = ({
     iconContent,
     text,
     myUserId,
+    name,
+    image,
     isLoading,
     handleIsLoading,
     handleSubmitPost,
@@ -15,7 +17,7 @@ const PostButton = ({
     const handleSubmit = async () => {
         try {
             handleIsLoading(true);
-            await publish(text, myUserId);
+            await publish(text, myUserId, name, image);
             handleIsLoading(false);
             return handleSubmitPost();
         } catch {

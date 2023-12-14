@@ -1,6 +1,8 @@
 export interface ModalFormProps {
     text: string,
     myUserId: string,
+    name: string,
+    image: string,
     handleText: (text: string) => void,
     selectedFile: File | null,
     handleSelectedFile: (file: File | null) => void,

@@ -6,7 +6,6 @@ import { prisma } from "@/utils/lib/db/prisma";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Feed from "./components/feed/feed.component";
-import { IPost } from "@/app/interfaces/post";
 import { handleMapPosts } from "./utils/mapped-posts";
 
 async function Home() {
@@ -14,15 +13,14 @@ async function Home() {
 
   const session = await getServerSession(authOptions); // will get the session of the user logged
 
-  const myUserId = session.user.id; // get the user id from the current session
+  const { id, name, image } = session.user;
 
   const posts = await prisma.post.findMany({
     orderBy: { authorId: "desc" },
-    include: { author: true }, // Include the author's information (id, name, image...)
+    select: { id: true, text: true, name: true, image: true, authorId: true },
   });
 
-  const mappedPosts = handleMapPosts(posts, myUserId);
-
+  const mappedPosts = handleMapPosts(posts, id);
   return (
     <LoaggedUser currentPage="home">
       <Header usersData={[...users]} />
@@ -44,10 +42,10 @@ async function Home() {
         scroll-smooth
       "
       >
-        <Feed posts={mappedPosts} myUserId={myUserId} />
+        <Feed posts={mappedPosts} myUserId={id} image={image} name={name} />
       </div>
     </LoaggedUser>
   );
-}
+};
 
 export default Home;

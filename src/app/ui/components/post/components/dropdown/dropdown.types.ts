@@ -1,6 +1,6 @@
 import React from "react";
 
 export interface DropdownProps {
-    checkPostOptions: () => void,
+    openDeletePostModal: () => void,
     options: Array<{ icon: React.ReactNode, label: string }>,
 };

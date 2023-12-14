@@ -11,7 +11,7 @@ import { ICurrentUserPost, IPost } from "@/app/interfaces/post";
 import PostButton from "./components/post-button.component";
 import PostModal from "@/app/ui/layout/post-modal/post-modal.component";
 
-const Feed = ({ posts, myUserId }: FeedProps) => {
+const Feed = ({ name, image, posts, myUserId }: FeedProps) => {
     const [text, setText] = React.useState<string>("");
     const [selectedFile, setSelectedFile] = React.useState<File | null>(null);
     const [showErrorAlert, setShowErrorAlert] = React.useState<boolean>(false);
@@ -20,16 +20,6 @@ const Feed = ({ posts, myUserId }: FeedProps) => {
     const [showSuccessfulDeletedPostAlert, setSuccessfulDeletedPostAlert] = React.useState<boolean>(false);
     const [showDeletePostModal, setShowDeletePostModal] = React.useState<boolean>(false);
     const [isLoadingDeletePost, setIsLoadingDeletePost] = React.useState<boolean>(false);
-
-    const isMyPost: ICurrentUserPost[] = posts.map((post: IPost) => {
-        return {
-            id: post.id,
-            text: post.text,
-            image: post.author?.image || (null || ""), // use null if image is undefined
-            name: post.author?.name || (null || ""),   // use null if name is undefined
-            currentUserPost: post.authorId === myUserId ? true : false, // it will check if the user logged made the post
-        };
-    });
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const files = event.target.files;
@@ -56,12 +46,11 @@ const Feed = ({ posts, myUserId }: FeedProps) => {
             setIsLoadingDeletePost(false);
         };
     };
-
     const handleError = () => handleAlertVisibility(setShowErrorAlert);
     return (
         <>
             <PostButton buttonText="Começar uma publicação" handlePostModalVisibility={setShowPostModal} />
-            {isMyPost.map((post: ICurrentUserPost, index: number) => (
+            {posts.map((post: any, index: number) => (
                 <div className="w-full" key={index}>
                     <Post
                         key={index}
@@ -91,6 +80,8 @@ const Feed = ({ posts, myUserId }: FeedProps) => {
                 handleText={setText}
                 text={text}
                 myUserId={myUserId}
+                name={name}
+                image={image}
                 handleShowError={handleError}
             />
             <Alert showAlert={showSuccessfulNewPostAlert} message="SUA POSTAGEM ESTÁ NO AR" type={AlertEnum.SUCESS} />

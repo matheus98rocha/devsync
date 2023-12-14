@@ -1,6 +1,8 @@
 import { IPost } from "@/app/interfaces/post";
 
 export interface FeedProps {
-    posts: Array<IPost>,
+    posts: IPost[],
     myUserId: string,
+    name: string,
+    image: string,
 };
