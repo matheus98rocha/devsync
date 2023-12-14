@@ -6,7 +6,7 @@ import React from "react";
 import * as Bi from "react-icons/bi";
 import PostOptions from "./components/post-options/post-options.component";
 import { PostProps } from "./post.types";
-import DeleteModal from "../../layout/delete-modal/delete-modal.component";
+import DeleteModal from "../delete-modal/delete-modal.component";
 
 function Post({
   handleDeleteModal,

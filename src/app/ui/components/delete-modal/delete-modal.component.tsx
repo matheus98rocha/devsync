@@ -1,4 +1,4 @@
-import PrimaryButton from "../../components/button/primary-button.component";
+import PrimaryButton from "../button/primary-button.component";
 import { GoAlertFill } from "react-icons/go";
 import { DeleteModalProps } from "./delete-modal.types";
 import Loading from "@/app/ui/components/loading/loading.component";
