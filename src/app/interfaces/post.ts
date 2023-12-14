@@ -11,6 +11,4 @@ export interface IPost {
 
 export interface ICurrentUserPost extends IPost {
     currentUserPost: boolean;
-    image: string | null;
-    name: string | null;
 };
