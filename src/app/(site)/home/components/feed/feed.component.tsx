@@ -46,75 +46,56 @@ const Feed = ({ posts, myUserId }: FeedProps) => {
     setShowPostModal(false);
   };
 
-  const handleSubmitPost = async () => {
-    handleResetModal();
-    handleAlertVisibility(setShowSuccessfulNewPostAlert);
-  };
+    const deletePost = async (id: string) => {
+        setIsLoadingDeletePost(true);
+        await handleDeletePost(id);
+        handleAlertVisibility(setSuccessfulDeletedPostAlert);
+        setShowDeletePostModal(false)
+        setIsLoadingDeletePost(false);
+    };
+    const handleError = () => handleAlertVisibility(setShowErrorAlert);
+    return (
+        <>
+            <PostButton buttonText="Começar uma publicação" handlePostModalVisibility={setShowPostModal} />
+            {posts.map((post: any, index: number) => (
+                <div className="w-full" key={index}>
+                    <Post
+                        key={index}
+                        text={post.text}
+                        image={post.image}
+                        name={post.name}
+                        handleDeleteModal={() => setShowDeletePostModal(true)}
+                        isMyPost={post.currentUserPost}
 
-  const deletePost = async (id: string, isThatMyPost: boolean) => {
-    if (isThatMyPost) {
-      setIsLoadingDeletePost(true);
-      await handleDeletePost(id);
-      handleAlertVisibility(setSuccessfulDeletedPostAlert);
-      setShowDeletePostModal(false);
-      setIsLoadingDeletePost(false);
-    }
-  };
-
-  const handleError = () => handleAlertVisibility(setShowErrorAlert);
-  return (
-    <>
-      <PostModal
-        canShowPostModal={showPostModal}
-        handleCloseModal={handleResetModal}
-        handleSubmitPost={handleSubmitPost}
-        handleFileChange={handleFileChange}
-        handleSelectedFile={setSelectedFile}
-        selectedFile={selectedFile}
-        handleText={setText}
-        text={text}
-        myUserId={myUserId}
-        handleShowError={handleError}
-      />
-      <Alert
-        showAlert={showSuccessfulNewPostAlert}
-        message="SUA POSTAGEM ESTÁ NO AR"
-        type={AlertEnum.SUCESS}
-      />
-      <Alert
-        showAlert={showSuccessfulDeletedPostAlert}
-        message="SUA POSTAGEM FOI REMOVIDA"
-        type={AlertEnum.SUCESS}
-      />
-      <Alert
-        showAlert={showErrorAlert}
-        message="OCORREU UM ERROR AO PUBLICAR"
-        type={AlertEnum.ERROR}
-      />
-      <PostButton
-        buttonText="Começar uma publicação"
-        handlePostModalVisibility={setShowPostModal}
-      />
-      {isMyPost.map((post: ICurrentUserPost, index: number) => (
-        <div className="w-full" key={index}>
-          <Post
-            key={index}
-            text={post.text}
-            image={post.image}
-            name={post.name}
-            handleDeleteModal={() => setShowDeletePostModal(true)}
-            isMyPost={post.currentUserPost}
-            // delete post modal
-            deleteModalMessage="Deletar uma publicação é uma ação irreversível!"
-            handleCancel={() => setShowDeletePostModal(false)}
-            handleDelete={() => deletePost(post.id, post.currentUserPost)}
-            showDeleteModal={showDeletePostModal}
-            isLoadingDeletePost={isLoadingDeletePost}
-          />
-        </div>
-      ))}
-    </>
-  );
+                        // delete post modal 
+                        deleteModalMessage="Deletar uma publicação é uma ação irreversível!"
+                        handleCancel={() => setShowDeletePostModal(false)}
+                        handleDelete={() => deletePost(post.id)}
+                        showDeleteModal={showDeletePostModal}
+                        isLoadingDeletePost={isLoadingDeletePost}
+                    />
+                </div>
+            )
+            )}
+            <PostModal
+                canShowPostModal={showPostModal}
+                handleCloseModal={handleResetModal}
+                handleSubmitPost={handleSubmitPost}
+                handleFileChange={handleFileChange}
+                handleSelectedFile={setSelectedFile}
+                selectedFile={selectedFile}
+                handleText={setText}
+                text={text}
+                myUserId={myUserId}
+                name={name}
+                image={image}
+                handleShowError={handleError}
+            />
+            <Alert showAlert={showSuccessfulNewPostAlert} message="SUA POSTAGEM ESTÁ NO AR" type={AlertEnum.SUCESS} />
+            <Alert showAlert={showSuccessfulDeletedPostAlert} message="SUA POSTAGEM FOI REMOVIDA" type={AlertEnum.SUCESS} />
+            <Alert showAlert={showErrorAlert} message="OCORREU UM ERROR AO PUBLICAR" type={AlertEnum.ERROR} />
+        </>
+    );
 };
 
 export default Feed;
