@@ -37,14 +37,12 @@ const Feed = ({ name, image, posts, myUserId }: FeedProps) => {
         handleAlertVisibility(setShowSuccessfulNewPostAlert);
     };
 
-    const deletePost = async (id: string, isThatMyPost: boolean) => {
-        if (isThatMyPost) {
-            setIsLoadingDeletePost(true);
-            await handleDeletePost(id);
-            handleAlertVisibility(setSuccessfulDeletedPostAlert);
-            setShowDeletePostModal(false)
-            setIsLoadingDeletePost(false);
-        };
+    const deletePost = async (id: string) => {
+        setIsLoadingDeletePost(true);
+        await handleDeletePost(id);
+        handleAlertVisibility(setSuccessfulDeletedPostAlert);
+        setShowDeletePostModal(false)
+        setIsLoadingDeletePost(false);
     };
     const handleError = () => handleAlertVisibility(setShowErrorAlert);
     return (
@@ -63,7 +61,7 @@ const Feed = ({ name, image, posts, myUserId }: FeedProps) => {
                         // delete post modal 
                         deleteModalMessage="Deletar uma publicação é uma ação irreversível!"
                         handleCancel={() => setShowDeletePostModal(false)}
-                        handleDelete={() => deletePost(post.id, post.currentUserPost)}
+                        handleDelete={() => deletePost(post.id)}
                         showDeleteModal={showDeletePostModal}
                         isLoadingDeletePost={isLoadingDeletePost}
                     />
