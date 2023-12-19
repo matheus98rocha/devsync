@@ -4,15 +4,12 @@ import Loading from "@/app/ui/components/loading/loading.component";
 import { isMobileOnly } from "mobile-device-detect";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
-import ProgramingLinksMobile from "./logged-user-mobile/programing-links-mobile/programing-links-mobile.component";
 import SidebarMobile from "./logged-user-mobile/sidebar-mobile/sidebar-mobile";
-import ProgramingLinks from "./logger-user-desktop/programing-links/programing-links";
 import Sidebar from "./logger-user-desktop/sidebar/sidebar";
 import Header from "./logger-user-desktop/header/header";
 import LogoutModal from "../logout-modal/logout-modal.component";
 import { signOut } from "next-auth/react";
 import LoadingFullScreen from "../../components/loading-full-screen/loading-full-screen";
-import HeaderMobile from "./logged-user-mobile/header-mobile/header-mobile";
 import { IUser } from "@/app/interfaces/user";
 
 interface LoaggedUserProps {
@@ -51,7 +48,9 @@ function LoaggedUser({ children, currentPage, usersData }: LoaggedUserProps) {
 
         <Suspense fallback={<Loading />}>
           <div className={`w-screen h-full flex flex-col items-center justify-center ${!isMobileOnly && "pl-2"}`}>
-            {isMobileOnly ? <HeaderMobile usersData={usersData as IUser[]} /> : <Header usersData={usersData as IUser[]} />}
+            {currentPage === "home" &&
+              <Header handleShowLogoutModal={setShowLogoutModal} isOnMobile={isMobileOnly} usersData={usersData as IUser[]} />
+            }
             {children}
           </div>
         </Suspense>

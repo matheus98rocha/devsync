@@ -3,15 +3,15 @@ import React from "react";
 import { useElementsContext } from "@/context/elements.context";
 import SearchInput from "@/app/ui/components/search-input/search-input.component";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-
 import iconApplication from "../../../../../../../public/apple-touch-icon.svg";
 import Link from "next/link";
 import { IHeaderProps } from "./header.types";
+import { useSession } from "next-auth/react";
 
-function Header({ usersData}: IHeaderProps) {
+function Header({ isOnMobile, usersData, handleShowLogoutModal }: IHeaderProps) {
+  const { data: session } = useSession();
+  const { isOpenDropdownMenuMobile, toggleIsOpenDropdownMenuMobile } = useElementsContext();
   const { isOpenSidebar } = useElementsContext();
-  const pathname = usePathname();
 
   React.useEffect(() => {
     console.log(usersData);
@@ -19,7 +19,6 @@ function Header({ usersData}: IHeaderProps) {
 
   const [searchValue, setSearchValue] = React.useState("");
 
-  console.log(pathname)
   return (
     <div
       className={`
@@ -31,9 +30,10 @@ function Header({ usersData}: IHeaderProps) {
         items-center
         justify-between
         ease-out duration-75
-        px-4
+        px-10
         py-8
         shadow-md
+        md:px-10
   `}
     >
       <SearchInput
@@ -42,12 +42,33 @@ function Header({ usersData}: IHeaderProps) {
         handleResetSearchBar={() => setSearchValue("")}
         usersData={usersData}
       />
-      {pathname === "/home" ?
-        <Image src={iconApplication} height={40} width={40} alt="principal-icon" />
-        :
-        <Link href="/home">
-          <Image src={iconApplication} height={40} width={40} alt="principal-icon" />
-        </Link>
+
+      {
+        isOnMobile ?
+          session?.user?.image && (
+            <div className="relative">
+              <Image
+                src={session.user.image as string}
+                blurDataURL={session.user.image as string}
+                placeholder="blur"
+                width={40}
+                height={40}
+                priority={true}
+                alt="use-profile"
+                className="rounded-full cursor-pointer"
+                onClick={() => toggleIsOpenDropdownMenuMobile()}
+              />
+              {isOpenDropdownMenuMobile && (
+                <div className="absolute top-10 right-1 p-2 bg-contrastBackground shadow-lg">
+                  <p onClick={() => handleShowLogoutModal(true)}>Sair</p>
+                </div>
+              )}
+            </div>
+          )
+          :
+          <Link href="/home">
+            <Image src={iconApplication} height={40} width={40} alt="principal-icon" />
+          </Link>
       }
     </div>
   );

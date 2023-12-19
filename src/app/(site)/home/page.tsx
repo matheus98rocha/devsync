@@ -2,17 +2,12 @@
 
 import LoaggedUser from "@/app/ui/layout/logged-user/logged-user";
 import Post from "@/app/ui/components/post/post.component";
-import { prisma } from "@/utils/lib/db/prisma";
+import { findAllUsers } from "@/services/prisma.services";
 
 async function Home() {
-  const users = await prisma.user.findMany({
-    orderBy: {
-      id: "desc",
-    },
-  });
-  console.log(users);
+  const users = await findAllUsers();
   return (
-    <LoaggedUser currentPage="home" usersData={[...users]}>
+    <LoaggedUser currentPage="home" usersData={users}>
       <div
         className="
         flex 
@@ -26,16 +21,12 @@ async function Home() {
         lg:w-3/6
         h-screen
         bg-background 
-        p-10
         gap-8
         scroll-smooth
+        py-14
+        sm:p-14
       "
       >
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
         <Post />
       </div>
     </LoaggedUser>

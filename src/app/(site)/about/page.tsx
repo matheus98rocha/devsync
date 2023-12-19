@@ -1,8 +1,8 @@
 "use client";
+
 import React from "react";
 import LoaggedUser from "@/app/ui/layout/logged-user/logged-user";
 import { aboutMock, cardTexts, mobileMock } from "./mock/about.mock";
-import AboutCard from "./components/card/about/about-card.component";
 import Loading from '@/app/ui/components/loading/loading.component'
 import { Subtitle } from "./components/subtitle/subtitle.component";
 import SectionCard from "./components/card/section/section-card.component";
@@ -51,7 +51,7 @@ function About() {
           <Subtitle text="objetivos do projeto" />
           <SectionCard mock={aboutMock} />
         </div>
-        <div className="flex flex-col items-center justify-center w-full gap-6 py-16">
+        <div className="flex flex-col items-center justify-center w-full gap-6 mb-16">
           <Subtitle text="expandindo para versão mobile" />
           <SectionCard mock={mobileMock} />
         </div>

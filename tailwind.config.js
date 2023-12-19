@@ -10,15 +10,15 @@ module.exports = {
     domains: ['s-lol-web.op.gg'],
   },
   theme: {
-    screens:{
-      iphoneSE: {'max': '420px'},
-      galaxyFold: {'max': '330px'},
-    },
     extend: {
+      screens: {
+        iphoneSE: { 'max': '420px' },
+        galaxyFold: { 'max': '330px' },
+      },
       keyframes: {
         fadeIn: {
-          '0%': { opacity: '0' },   
-          '100%': { opacity: '1' },  
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
         },
       },
       colors: {

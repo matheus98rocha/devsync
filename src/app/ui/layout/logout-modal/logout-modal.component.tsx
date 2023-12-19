@@ -16,13 +16,13 @@ const LogoutModal = ({
             onClick={handleCancel}
           ></div>
           <div
-            className="relative gap-2 flex flex-col rounded-2xl border border-blue-100 bg-contrastBackground p-4 shadow-lg sm:p-6 lg:p-8 animate-jump-in animate-delay-[1ms]"
+            className="relative gap-2 flex flex-col rounded-2xl border border-blue-100 bg-contrastBackground p-4 shadow-lg sm:p-6 lg:p-8 animate-jump-in animate-delay-[1ms] iphoneSE:w-60"
             role="alert"
           >
             <div className="w-full flex items-center justify-center">
               <GoAlertFill className="text-alert" size={45} />
             </div>
-            <p className="mt-4 text-gray-500">
+            <p className="mt-4 text-gray-500 text-center px-2">
               Tem certeza de que deseja sair ?
             </p>
             <div className="mt-6 flex flex-wrap gap-4 lg:grid lg:grid-cols-2 lg:gap-4">
