@@ -5,5 +5,5 @@ export interface SearchProps {
   searchValue: string;
   onChangeSearch: (event: ChangeEvent<HTMLInputElement>) => void;
   handleResetSearchBar: () => void;
-  usersData: IUser[]
+  usersData: IUser[],
 }

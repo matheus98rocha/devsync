@@ -4,14 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-interface SearchListProps {
-  users: IUser[];
-}
-
-function SearchList({ users }: SearchListProps) {
+function SearchList({ users }: {users: IUser[]}) {
   return (
     <ul
-      className="
+      className={`
       absolute
       mt-2
       p-2
@@ -21,7 +17,10 @@ function SearchList({ users }: SearchListProps) {
       w-64
       animate-fade-down
       cursor-pointer
-      "
+      iphoneSE:w-48
+      galaxyFold:w-32
+      z-10
+      `}
     >
       {users.map((user) => {
         return (

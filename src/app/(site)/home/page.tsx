@@ -1,20 +1,18 @@
-import React from "react";
+"use server"
 
 import LoaggedUser from "@/app/ui/layout/logged-user/logged-user";
 import Post from "@/app/ui/components/post/post.component";
 import { prisma } from "@/utils/lib/db/prisma";
-import Header from "@/app/ui/layout/logged-user/logger-user-desktop/header/header";
 
 async function Home() {
-    const users = await prisma.user.findMany({
-      orderBy: {
-        id: "desc",
-      },
-    });
-    
+  const users = await prisma.user.findMany({
+    orderBy: {
+      id: "desc",
+    },
+  });
+  console.log(users);
   return (
-    <LoaggedUser currentPage="home">
-      <Header usersData={[...users]} />
+    <LoaggedUser currentPage="home" usersData={[...users]}>
       <div
         className="
         flex 

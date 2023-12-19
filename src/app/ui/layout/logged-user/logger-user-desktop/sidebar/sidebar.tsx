@@ -35,7 +35,7 @@ function Sidebar({ handleShowLogout }: SidebarProps) {
     <>
       <div
         className={`
-      fixed
+      relative
       left-0
       grid
       grid-cols-1

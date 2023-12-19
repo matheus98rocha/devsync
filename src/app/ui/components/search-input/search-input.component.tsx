@@ -31,19 +31,19 @@ function SearchInput({
   const [filteredUsers, setFilteredUsers] = React.useState<IUser[]>([]);
   React.useEffect(() => {
     const filterUsers = () => {
-      const filtered = usersData.filter((user) =>
-        user.name?.toLowerCase().includes(searchValue.toLowerCase())
-      );
-      setFilteredUsers(filtered);
-    };
+      if (usersData) {
+        const filtered = usersData.filter((user) => user.name?.toLowerCase().includes(searchValue.toLowerCase()));
+        setFilteredUsers(filtered);
+      };
+    }
     filterUsers();
   }, [usersData, searchValue]);
 
   return (
-    <div ref={ref} className="w-64">
+<div ref={ref} className="w-64 iphoneSE:w-48 galaxyFold:w-32 duration-300">
       <>
         {isExpandedSearchInput ? (
-          <div className="relative animate-ease-linear duration-100">
+          <div className={`relative animate-ease-linear duration-100 iphoneSE:w-48 galaxyFold:w-32`}>
             <label htmlFor="Search" className="sr-only">
               Search{" "}
             </label>
@@ -83,7 +83,7 @@ function SearchInput({
         )}
       </>
       {searchValue && filteredUsers.length > 0 && (
-        <SearchList users={filteredUsers}/>
+        <SearchList users={filteredUsers} />
       )}
     </div>
   );

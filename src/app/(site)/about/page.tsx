@@ -51,7 +51,7 @@ function About() {
           <Subtitle text="objetivos do projeto" />
           <SectionCard mock={aboutMock} />
         </div>
-        <div className="flex flex-col items-center justify-center w-full gap-6">
+        <div className="flex flex-col items-center justify-center w-full gap-6 py-16">
           <Subtitle text="expandindo para versão mobile" />
           <SectionCard mock={mobileMock} />
         </div>
