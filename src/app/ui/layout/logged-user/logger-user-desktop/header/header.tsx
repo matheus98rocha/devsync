@@ -13,10 +13,6 @@ function Header({ isOnMobile, usersData, handleShowLogoutModal }: IHeaderProps) 
   const { isOpenDropdownMenuMobile, toggleIsOpenDropdownMenuMobile } = useElementsContext();
   const { isOpenSidebar } = useElementsContext();
 
-  React.useEffect(() => {
-    console.log(usersData);
-  }, [usersData]);
-
   const [searchValue, setSearchValue] = React.useState("");
 
   return (

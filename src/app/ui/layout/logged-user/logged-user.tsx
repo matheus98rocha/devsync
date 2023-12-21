@@ -15,7 +15,7 @@ import { IUser } from "@/app/interfaces/user";
 interface LoaggedUserProps {
   children: React.ReactNode;
   currentPage: string;
-  usersData?: IUser[],
+  usersData?: IUser[];
 }
 
 function LoaggedUser({ children, currentPage, usersData }: LoaggedUserProps) {
@@ -26,8 +26,8 @@ function LoaggedUser({ children, currentPage, usersData }: LoaggedUserProps) {
       redirect(`/?callbackUrl=/protected/${currentPage}`);
     },
   });
-  console.log(usersData)
-  if (status === 'loading') return <LoadingFullScreen />;
+
+  if (status === "loading") return <LoadingFullScreen />;
   return (
     <>
       <LogoutModal
@@ -47,10 +47,18 @@ function LoaggedUser({ children, currentPage, usersData }: LoaggedUserProps) {
         {/* {!isMobileOnly && <ProgramingLinks />} */}
 
         <Suspense fallback={<Loading />}>
-          <div className={`w-screen h-full flex flex-col items-center justify-center ${!isMobileOnly && "pl-2"}`}>
-            {currentPage === "home" &&
-              <Header handleShowLogoutModal={setShowLogoutModal} isOnMobile={isMobileOnly} usersData={usersData as IUser[]} />
-            }
+          <div
+            className={`w-screen h-full flex flex-col items-center justify-center ${
+              !isMobileOnly && "pl-2"
+            }`}
+          >
+            {currentPage === "home" && (
+              <Header
+                handleShowLogoutModal={setShowLogoutModal}
+                isOnMobile={isMobileOnly}
+                usersData={usersData as IUser[]}
+              />
+            )}
             {children}
           </div>
         </Suspense>
