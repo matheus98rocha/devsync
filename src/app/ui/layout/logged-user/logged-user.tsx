@@ -47,24 +47,20 @@ function LoaggedUser({ children, currentPage, usersData }: LoaggedUserProps) {
         {/* {!isMobileOnly && <ProgramingLinks />} */}
 
         <Suspense fallback={<Loading />}>
-          <div
-            className={`w-screen h-full flex flex-col items-center justify-center ${
-              !isMobileOnly && "pl-2"
-            }`}
-          >
-            {currentPage === "home" && (
+          <div className={`w-screen h-full flex flex-col items-center justify-center ${!isMobileOnly && "pl-2"}`}>
+            {currentPage === "home" &&
               <Header
                 handleShowLogoutModal={setShowLogoutModal}
                 isOnMobile={isMobileOnly}
                 usersData={usersData as IUser[]}
               />
-            )}
+            }
             {children}
           </div>
         </Suspense>
       </div>
     </>
   );
-}
+};
 
 export default LoaggedUser;

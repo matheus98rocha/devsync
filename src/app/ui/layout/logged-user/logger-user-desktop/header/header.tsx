@@ -12,9 +12,7 @@ function Header({ isOnMobile, usersData, handleShowLogoutModal }: IHeaderProps) 
   const { data: session } = useSession();
   const { isOpenDropdownMenuMobile, toggleIsOpenDropdownMenuMobile } = useElementsContext();
   const { isOpenSidebar } = useElementsContext();
-
   const [searchValue, setSearchValue] = React.useState("");
-
   return (
     <div
       className={`
@@ -26,19 +24,17 @@ function Header({ isOnMobile, usersData, handleShowLogoutModal }: IHeaderProps) 
         items-center
         justify-between
         ease-out duration-75
-        px-10
         py-8
         shadow-md
-        md:px-10
-  `}
-    >
+        px-10
+        md:px-4
+  `}>
       <SearchInput
         searchValue={searchValue}
         onChangeSearch={(event) => setSearchValue(event.target.value)}
         handleResetSearchBar={() => setSearchValue("")}
         usersData={usersData}
       />
-
       {
         isOnMobile ?
           session?.user?.image && (

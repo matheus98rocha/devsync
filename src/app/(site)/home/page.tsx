@@ -18,15 +18,15 @@ async function Home() {
         overflow-scroll
         overflow-x-hidden
         w-screen
-        lg:w-3/6
         h-screen
         bg-background 
         gap-8
         scroll-smooth
         py-14
         sm:p-14
-      "
-      >
+        sm:pb-36
+        lg:w-3/6
+      ">
         <Post />
       </div>
     </LoaggedUser>

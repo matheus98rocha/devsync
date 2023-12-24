@@ -40,10 +40,10 @@ function SearchInput({
   }, [usersData, searchValue]);
 
   return (
-<div ref={ref} className="w-64 iphoneSE:w-48 galaxyFold:w-32 duration-300">
+    <div ref={ref} className="w-32 sm:w-64 duration-300">
       <>
         {isExpandedSearchInput ? (
-          <div className={`relative animate-ease-linear duration-100 iphoneSE:w-48 galaxyFold:w-32`}>
+          <div className={`relative animate-ease-linear duration-100 w-32 sm:w-64`}>
             <label htmlFor="Search" className="sr-only">
               Search{" "}
             </label>
@@ -82,9 +82,7 @@ function SearchInput({
           </div>
         )}
       </>
-      {searchValue && filteredUsers.length > 0 && (
-        <SearchList users={filteredUsers} />
-      )}
+      {searchValue && filteredUsers.length > 0 && isExpandedSearchInput && <SearchList users={filteredUsers} />}
     </div>
   );
 }

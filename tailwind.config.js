@@ -11,10 +11,6 @@ module.exports = {
   },
   theme: {
     extend: {
-      screens: {
-        iphoneSE: { 'max': '420px' },
-        galaxyFold: { 'max': '330px' },
-      },
       keyframes: {
         fadeIn: {
           '0%': { opacity: '0' },
