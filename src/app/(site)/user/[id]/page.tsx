@@ -1,4 +1,4 @@
-import LoaggedUser from "@/app/ui/layout/logged-user/logged-user";
+import LoaggedUser from "@/app/layout/logged-user/logged-user";
 import { prisma } from "@/utils/lib/db/prisma";
 import React from "react";
 

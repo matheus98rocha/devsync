@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import LoaggedUser from "@/app/ui/layout/logged-user/logged-user";
+import LoaggedUser from "@/app/layout/logged-user/logged-user";
 import { aboutMock, cardTexts, mobileMock } from "./mock/about.mock";
-import Loading from '@/app/ui/components/loading/loading.component'
+import Loading from '@/app/components/loading/loading.component'
 import { Subtitle } from "./components/subtitle/subtitle.component";
 import SectionCard from "./components/card/section/section-card.component";
 

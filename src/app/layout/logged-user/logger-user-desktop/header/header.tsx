@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
 import { useElementsContext } from "@/context/elements.context";
-import SearchInput from "@/app/ui/components/search-input/search-input.component";
+import SearchInput from "@/app/components/search-input/search-input.component";
 import Image from "next/image";
-import iconApplication from "../../../../../../../public/apple-touch-icon.svg";
+import iconApplication from "../../../../../../public//apple-touch-icon.svg";
 import Link from "next/link";
 import { IHeaderProps } from "./header.types";
 import { useSession } from "next-auth/react";

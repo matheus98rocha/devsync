@@ -1,11 +1,9 @@
 import React from "react";
 import SocialMediaIcons from "./components/social-media-icons/social-media-icons.components";
 import { AuthProps } from "./auth.types";
-import PrimaryInput from "../../components/input/primary-input.component";
-import PrimaryButton from "../../components/button/primary-button.component";
 import Image from "next/image";
 
-import iconApplication from "../../../../../public/apple-touch-icon.svg";
+import iconApplication from "../../../../public/apple-touch-icon.svg";
 
 function Auth({ type }: AuthProps) {
   const [email, setEmail] = React.useState("");
@@ -42,6 +40,6 @@ function Auth({ type }: AuthProps) {
       <SocialMediaIcons />
     </div>
   );
-}
+};
 
 export default Auth;

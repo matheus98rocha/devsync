@@ -1,7 +1,7 @@
 "use server"
 
-import LoaggedUser from "@/app/ui/layout/logged-user/logged-user";
-import Post from "@/app/ui/components/post/post.component";
+import Post from "@/app/components/post/post.component";
+import LoaggedUser from "@/app/layout/logged-user/logged-user";
 import { findAllUsers } from "@/services/prisma.services";
 
 async function Home() {

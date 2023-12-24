@@ -1,6 +1,6 @@
 "use client";
 import React, { Suspense, useEffect, useState } from "react";
-import Loading from "@/app/ui/components/loading/loading.component";
+import Loading from "@/app/components/loading/loading.component";
 import { isMobileOnly } from "mobile-device-detect";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
