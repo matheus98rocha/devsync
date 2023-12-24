@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import HamburguerMenu from "@/app/ui/components/hamburguer-menu/hamburguer-menu.component";
+import HamburguerMenu from "@/app/components/hamburguer-menu/hamburguer-menu.component";
 import ProgramingIcons from "../../logger-user-desktop/programing-links/programing-icons/programing-icons.component";
 import { useElementsContext } from "@/context/elements.context";
 
